@@ -1,0 +1,273 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { properties } from "@/data/properties";
+import { useState } from "react";
+
+import { InquiryForm } from "@/components/InquiryForm";
+import { MapPin, IndianRupee, ShieldCheck, Phone, ArrowLeft, CheckCircle2, Building2 } from "lucide-react";
+
+export const Route = createFileRoute("/properties/$id")({
+  head: ({ params }) => {
+    const property = properties.find((p) => p.id === params.id);
+    const seoTitle = property
+      ? `${property.title} in ${property.location} | Shyam Ji Estate`
+      : "Property Details | Shyam Ji Estate";
+    
+    const seoDesc = property
+      ? `${property.title} in ${property.location}. Price: ${property.price}. Contact Shyam Ji Estate for details and site visits.`
+      : "Detailed overview of the property at Shyam Ji Estate.";
+
+    return {
+      meta: [
+        { title: seoTitle },
+        { name: "description", content: seoDesc },
+        { property: "og:title", content: seoTitle },
+        { property: "og:description", content: seoDesc },
+        { property: "og:url", content: `/properties/${params.id}` },
+      ],
+    };
+  },
+  component: PropertyDetailPage,
+});
+
+function PropertyDetailPage() {
+  const { id } = Route.useParams();
+  const property = properties.find((p) => p.id === id);
+
+  if (!property) {
+    return (
+      <div className="container-x py-20 text-center">
+        <h1 className="text-3xl font-bold text-primary">Property Not Found</h1>
+        <p className="mt-4 text-muted-foreground">The property you are looking for does not exist or has been removed.</p>
+        <Link to="/" className="mt-6 inline-flex items-center gap-2 rounded bg-accent px-6 py-3 text-sm font-bold uppercase text-accent-foreground">
+          <ArrowLeft className="h-4 w-4" /> Go back home
+        </Link>
+      </div>
+    );
+  }
+
+  const galleryImages = property.gallery && property.gallery.length > 0
+    ? property.gallery
+    : [property.image];
+
+  const [activeImage, setActiveImage] = useState(galleryImages[0]);
+
+  const categoryInterestMap: Record<string, string> = {
+    buy: "Buy",
+    rent: "Rent",
+    pg: "PG / Hostel",
+    commercial: "Commercial",
+  };
+  const defaultInterest = categoryInterestMap[property.category] ?? "Buy";
+
+  const priceBreakup = [...(property.priceBreakup || [])];
+  if (property.category === "pg" || property.category === "rent") {
+    const hasBrokerage = priceBreakup.some(item => item.label.toLowerCase().includes("brokerage"));
+    if (!hasBrokerage) {
+      const totalIdx = priceBreakup.findIndex(item => item.isTotal);
+      const brokerageItem = { label: "Brokerage Fee", value: "21 Days Rent" };
+      if (totalIdx !== -1) {
+        priceBreakup.splice(totalIdx, 0, brokerageItem);
+      } else {
+        priceBreakup.push(brokerageItem);
+      }
+    }
+  }
+
+  return (
+    <>
+      <section className="container-x py-12">
+        <Link to="/" className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-accent mb-6 transition">
+          <ArrowLeft className="h-4 w-4" /> Back to all properties
+        </Link>
+
+        {/* Title & Meta Header */}
+        <div className="mb-8">
+          <h1 className="font-display text-3xl md:text-4xl font-extrabold text-[#0B1528] leading-tight">
+            {property.title}
+          </h1>
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-3 text-xs md:text-sm text-muted-foreground font-semibold uppercase tracking-wider">
+            <span className="flex items-center gap-1">
+              <MapPin className="h-4 w-4 text-[#C49545]" /> {property.location}
+            </span>
+            <span className="text-border/60">|</span>
+            <span className="text-[#C49545] font-bold">{property.price}</span>
+            <span className="text-border/60">|</span>
+            <span className="bg-[#0B1528] text-white px-3 py-1 rounded text-[10px] font-extrabold tracking-widest">
+              {property.badge}
+            </span>
+          </div>
+        </div>
+
+        <div className="grid gap-8 lg:grid-cols-3">
+          {/* Main Details and Gallery (Left 2 columns on desktop) */}
+          <div className="lg:col-span-2 space-y-8">
+            {/* Gallery Component */}
+            <div className="space-y-4 min-w-0">
+              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-lg bg-muted shadow-card border">
+                <img
+                  src={activeImage}
+                  alt={property.title}
+                  className="h-full w-full object-cover transition duration-300"
+                />
+                <span className="absolute left-4 top-4 rounded bg-primary px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary-foreground shadow-md">
+                  {property.badge}
+                </span>
+              </div>
+              
+              {galleryImages.length > 1 && (
+                <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-thin">
+                  {galleryImages.map((img, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setActiveImage(img)}
+                      className={`relative aspect-[4/3] w-24 flex-shrink-0 overflow-hidden rounded-md border-2 transition ${
+                        activeImage === img ? "border-accent scale-95 shadow-md" : "border-border hover:border-accent/50"
+                      }`}
+                    >
+                      <img src={img} alt={`Gallery ${i + 1}`} className="h-full w-full object-cover" />
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Quick Overview */}
+            <div className="bg-card rounded-lg border p-6 shadow-sm">
+              <h2 className="font-display text-xl font-bold text-primary uppercase tracking-wide">
+                Property Overview
+              </h2>
+              <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-muted-foreground">Price</span>
+                  <span className="text-base font-bold text-accent">{property.price}</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-muted-foreground">Location</span>
+                  <span className="text-sm font-semibold text-primary">{property.location}</span>
+                </div>
+                {(property.category === "pg" || property.category === "rent") && (
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-muted-foreground">Brokerage</span>
+                    <span className="text-sm font-semibold text-accent">21 Days Rent</span>
+                  </div>
+                )}
+                {property.detailedFeatures?.map((feat) => (
+                  <div key={feat.label} className="flex items-center justify-between">
+                    <span className="text-sm text-muted-foreground">{feat.label}</span>
+                    <span className="text-sm font-semibold text-primary">{feat.value}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Description */}
+            <div className="space-y-3">
+              <h2 className="font-display text-xl font-bold text-primary uppercase tracking-wide">
+                Description
+              </h2>
+              <div className="text-sm leading-relaxed text-muted-foreground bg-muted/30 p-5 rounded-lg border">
+                {property.description}
+              </div>
+            </div>
+
+            {/* Key Features Bullet List */}
+            <div className="space-y-3">
+              <h2 className="font-display text-xl font-bold text-primary uppercase tracking-wide">
+                Amenities & Key Features
+              </h2>
+              <div className="grid gap-3 sm:grid-cols-2 bg-card rounded-lg border p-6">
+                {property.features.map((f) => (
+                  <div key={f} className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0" />
+                    <span>{f}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Price Breakup Section */}
+            {priceBreakup && priceBreakup.length > 0 && (
+              <div className="bg-card rounded-lg border p-6 shadow-sm space-y-4">
+                <h2 className="font-display text-xl font-bold text-primary uppercase tracking-wide flex items-center gap-2">
+                  <IndianRupee className="h-5 w-5 text-accent" /> Price Breakup & Charges
+                </h2>
+                <div className="overflow-x-auto rounded-md border">
+                  <table className="min-w-full divide-y divide-border">
+                    <thead className="bg-muted/50">
+                      <tr>
+                        <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                          Component / Fee Name
+                        </th>
+                        <th className="px-6 py-3 text-right text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                          Amount
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="bg-card divide-y divide-border">
+                      {priceBreakup.map((item, idx) => (
+                        <tr key={idx} className={item.isTotal ? "bg-accent/10 font-bold" : ""}>
+                          <td className="px-6 py-4 text-sm text-primary font-medium">
+                            {item.label}
+                          </td>
+                          <td className="px-6 py-4 text-right text-sm font-semibold text-primary">
+                            {item.value}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <div className="flex items-start gap-2.5 text-xs text-muted-foreground bg-muted/20 p-3 rounded border">
+                  <ShieldCheck className="h-4 w-4 text-accent flex-shrink-0 mt-0.5" />
+                  <p>
+                    Prices listed above are estimates based on standard calculations. Utility bills and actual charges may vary based on exact usage and final agreement.
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Inquiry Form and Contact Sidebar (Right 1 column on desktop) */}
+          <div className="space-y-6">
+            <div className="sticky top-24 space-y-6">
+              {/* Dedicated Inquiry Form */}
+              <InquiryForm
+                subject={`Inquiry for ${property.title} (ID: ${property.id})`}
+                defaultInterest={defaultInterest}
+                formTitle="Inquire About This Property"
+                formSubtitle="Fill out the form below and our property expert will reach out directly."
+                formIcon={<Building2 className="h-6 w-6" />}
+              />
+
+              {/* Agent contact info card */}
+              <div className="bg-primary text-primary-foreground rounded-lg p-6 shadow-md space-y-4">
+                <h3 className="font-display text-lg font-bold text-accent uppercase tracking-wide">
+                  Direct Contact
+                </h3>
+                <p className="text-xs text-primary-foreground/80">
+                  Prefer direct calling? Speak to our expert property consultant instantly.
+                </p>
+                <div className="space-y-3 pt-2">
+                  <a href="tel:+918595777428" className="flex items-center gap-3 rounded bg-white/10 p-3 hover:bg-white/15 transition">
+                    <Phone className="h-5 w-5 text-accent" />
+                    <div>
+                      <div className="text-[10px] uppercase font-bold text-accent">Call Agent</div>
+                      <div className="text-sm font-bold">+91 8595777428</div>
+                    </div>
+                  </a>
+                  <a href="tel:+919311510866" className="flex items-center gap-3 rounded bg-white/10 p-3 hover:bg-white/15 transition">
+                    <Phone className="h-5 w-5 text-accent" />
+                    <div>
+                      <div className="text-[10px] uppercase font-bold text-accent">Office Desk</div>
+                      <div className="text-sm font-bold">+91 9311510866</div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
