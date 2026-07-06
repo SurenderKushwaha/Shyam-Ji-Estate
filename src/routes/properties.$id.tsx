@@ -3,7 +3,49 @@ import { properties } from "@/data/properties";
 import { useState } from "react";
 
 import { InquiryForm } from "@/components/InquiryForm";
-import { MapPin, IndianRupee, ShieldCheck, Phone, ArrowLeft, CheckCircle2, Building2 } from "lucide-react";
+import { 
+  MapPin, 
+  IndianRupee, 
+  ShieldCheck, 
+  Phone, 
+  ArrowLeft, 
+  CheckCircle2, 
+  Building2,
+  Percent,
+  Bed,
+  Bath,
+  Compass,
+  UserCheck,
+  Layers,
+  Wrench,
+  Utensils,
+  Armchair,
+  Hammer,
+  Sparkles,
+  Zap,
+  Lock
+} from "lucide-react";
+
+const getIconForLabel = (label: string) => {
+  const lowercase = label.toLowerCase();
+  if (lowercase.includes("price") || lowercase.includes("rent")) return IndianRupee;
+  if (lowercase.includes("location") || lowercase.includes("address")) return MapPin;
+  if (lowercase.includes("brokerage")) return Percent;
+  if (lowercase.includes("room") || lowercase.includes("occupancy") || lowercase.includes("sharing")) return Bed;
+  if (lowercase.includes("washroom") || lowercase.includes("bathroom") || lowercase.includes("toilet")) return Bath;
+  if (lowercase.includes("balcony")) return Compass;
+  if (lowercase.includes("gender") || lowercase.includes("boys") || lowercase.includes("girls") || lowercase.includes("preferred")) return UserCheck;
+  if (lowercase.includes("floor")) return Layers;
+  if (lowercase.includes("maintenance")) return Wrench;
+  if (lowercase.includes("kitchen")) return Utensils;
+  if (lowercase.includes("furnish") || lowercase.includes("bedding") || lowercase.includes("sofa")) return Armchair;
+  if (lowercase.includes("construction") || lowercase.includes("status") || lowercase.includes("age")) return Hammer;
+  if (lowercase.includes("inclusion") || lowercase.includes("amenit")) return Sparkles;
+  if (lowercase.includes("safety") || lowercase.includes("security") || lowercase.includes("safe")) return ShieldCheck;
+  if (lowercase.includes("water") || lowercase.includes("electricity") || lowercase.includes("power") || lowercase.includes("utility")) return Zap;
+  if (lowercase.includes("independent") || lowercase.includes("independence")) return Lock;
+  return Building2;
+};
 
 export const Route = createFileRoute("/properties/$id")({
   head: ({ params }) => {
@@ -132,33 +174,50 @@ function PropertyDetailPage() {
             </div>
 
             {/* Quick Overview */}
-            <div className="bg-card rounded-lg border p-6 shadow-sm">
-              <h2 className="font-display text-xl font-bold text-primary uppercase tracking-wide">
-                Property Overview
-              </h2>
-              <div className="mt-4 grid gap-4 sm:grid-cols-2">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-muted-foreground">Price</span>
-                  <span className="text-base font-bold text-accent">{property.price}</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-muted-foreground">Location</span>
-                  <span className="text-sm font-semibold text-primary">{property.location}</span>
-                </div>
-                {(property.category === "pg" || property.category === "rent") && (
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-muted-foreground">Brokerage</span>
-                    <span className="text-sm font-semibold text-accent">21 Days Rent</span>
+            {(() => {
+              const overviewItems = [
+                { label: "Price", value: property.price },
+                { label: "Location", value: property.location },
+                ...((property.category === "pg" || property.category === "rent") ? [{ label: "Brokerage", value: "21 Days Rent" }] : []),
+                ...(property.detailedFeatures || [])
+              ];
+
+              return (
+                <div className="bg-card rounded-xl border border-border/80 p-6 md:p-8 shadow-card space-y-6">
+                  <div className="flex items-center justify-between border-b pb-4 border-border/60">
+                    <h2 className="font-display text-xl md:text-2xl font-extrabold text-primary uppercase tracking-wide">
+                      Property Overview
+                    </h2>
+                    <span className="text-xs font-bold bg-accent/15 text-accent px-3.5 py-1.5 rounded-full uppercase tracking-wider">
+                      Key Details
+                    </span>
                   </div>
-                )}
-                {property.detailedFeatures?.map((feat) => (
-                  <div key={feat.label} className="flex items-center justify-between">
-                    <span className="text-sm text-muted-foreground">{feat.label}</span>
-                    <span className="text-sm font-semibold text-primary">{feat.value}</span>
+                  <div className="grid gap-4 grid-cols-2 sm:grid-cols-3">
+                    {overviewItems.map((item, idx) => {
+                      const Icon = getIconForLabel(item.label);
+                      return (
+                        <div 
+                          key={idx} 
+                          className="flex flex-col p-4 rounded-xl border border-border/40 bg-muted/10 hover:bg-muted/30 hover:border-accent/40 hover:-translate-y-0.5 transition-all duration-300 group shadow-[0_2px_8px_-3px_rgba(0,0,0,0.03)] hover:shadow-md"
+                        >
+                          <div className="flex items-center gap-2.5 mb-2.5">
+                            <div className="p-2 rounded-lg bg-accent/5 text-accent group-hover:bg-accent group-hover:text-primary transition-all duration-300">
+                              <Icon className="h-4.5 w-4.5" />
+                            </div>
+                            <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-muted-foreground group-hover:text-primary transition-colors duration-300">
+                              {item.label}
+                            </span>
+                          </div>
+                          <span className="text-sm font-semibold text-primary mt-auto leading-snug">
+                            {item.value}
+                          </span>
+                        </div>
+                      );
+                    })}
                   </div>
-                ))}
-              </div>
-            </div>
+                </div>
+              );
+            })()}
 
             {/* Description */}
             <div className="space-y-3">
