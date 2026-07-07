@@ -33,3 +33,6 @@ dist-ssr
 
 # Netlify directories
 .netlify/
+
+# Vercel directories
+.vercel/
