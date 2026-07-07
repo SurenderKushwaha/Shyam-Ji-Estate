@@ -140,9 +140,9 @@ function PropertyDetailPage() {
           </div>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-3">
+        <div className="grid gap-8 lg:grid-cols-3 min-w-0">
           {/* Main Details and Gallery (Left 2 columns on desktop) */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="lg:col-span-2 space-y-8 min-w-0">
             {/* Gallery Component */}
             <div className="space-y-4 min-w-0">
               <div className="relative aspect-[16/10] w-full overflow-hidden rounded-lg bg-muted shadow-card border">
@@ -183,7 +183,7 @@ function PropertyDetailPage() {
               ];
 
               return (
-                <div className="bg-card rounded-xl border border-border/80 p-6 md:p-8 shadow-card space-y-6">
+                <div className="bg-card rounded-xl border border-border/80 p-5 md:p-8 shadow-card space-y-6">
                   <div className="flex items-center justify-between border-b pb-4 border-border/60">
                     <h2 className="font-display text-xl md:text-2xl font-extrabold text-primary uppercase tracking-wide">
                       Property Overview
@@ -192,25 +192,25 @@ function PropertyDetailPage() {
                       Key Details
                     </span>
                   </div>
-                  <div className="grid gap-4 grid-cols-2 sm:grid-cols-3">
+                  <div className="grid gap-3.5 grid-cols-1 min-[370px]:grid-cols-2 sm:grid-cols-3">
                     {overviewItems.map((item, idx) => {
                       const Icon = getIconForLabel(item.label);
                       return (
                         <div 
                           key={idx} 
-                          className="flex flex-col p-4 rounded-xl border border-border/40 bg-muted/10 hover:bg-muted/30 hover:border-accent/40 hover:-translate-y-0.5 transition-all duration-300 group shadow-[0_2px_8px_-3px_rgba(0,0,0,0.03)] hover:shadow-md"
+                          className="flex items-center gap-3 p-3.5 rounded-xl border border-border/40 bg-muted/10 hover:bg-muted/30 hover:border-accent/40 hover:-translate-y-0.5 transition-all duration-300 group shadow-[0_2px_8px_-3px_rgba(0,0,0,0.03)] hover:shadow-md min-w-0"
                         >
-                          <div className="flex items-center gap-2.5 mb-2.5">
-                            <div className="p-2 rounded-lg bg-accent/5 text-accent group-hover:bg-accent group-hover:text-primary transition-all duration-300">
-                              <Icon className="h-4.5 w-4.5" />
-                            </div>
-                            <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-muted-foreground group-hover:text-primary transition-colors duration-300">
+                          <div className="p-2 rounded-lg bg-accent/5 text-accent group-hover:bg-accent group-hover:text-primary transition-all duration-300 shrink-0">
+                            <Icon className="h-4.5 w-4.5" />
+                          </div>
+                          <div className="min-w-0 flex-1">
+                            <span className="block text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-muted-foreground group-hover:text-primary transition-colors duration-300">
                               {item.label}
                             </span>
+                            <span className="block text-xs sm:text-sm font-semibold text-primary mt-0.5 leading-snug break-words">
+                              {item.value}
+                            </span>
                           </div>
-                          <span className="text-sm font-semibold text-primary mt-auto leading-snug">
-                            {item.value}
-                          </span>
                         </div>
                       );
                     })}
@@ -246,35 +246,26 @@ function PropertyDetailPage() {
 
             {/* Price Breakup Section */}
             {priceBreakup && priceBreakup.length > 0 && (
-              <div className="bg-card rounded-lg border p-6 shadow-sm space-y-4">
+              <div className="bg-card rounded-lg border p-5 md:p-6 shadow-sm space-y-4">
                 <h2 className="font-display text-xl font-bold text-primary uppercase tracking-wide flex items-center gap-2">
                   <IndianRupee className="h-5 w-5 text-accent" /> Price Breakup & Charges
                 </h2>
-                <div className="overflow-x-auto rounded-md border">
-                  <table className="min-w-full divide-y divide-border">
-                    <thead className="bg-muted/50">
-                      <tr>
-                        <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                          Component / Fee Name
-                        </th>
-                        <th className="px-6 py-3 text-right text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                          Amount
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody className="bg-card divide-y divide-border">
-                      {priceBreakup.map((item, idx) => (
-                        <tr key={idx} className={item.isTotal ? "bg-accent/10 font-bold" : ""}>
-                          <td className="px-6 py-4 text-sm text-primary font-medium">
-                            {item.label}
-                          </td>
-                          <td className="px-6 py-4 text-right text-sm font-semibold text-primary">
-                            {item.value}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                <div className="divide-y divide-border rounded-lg border bg-card overflow-hidden">
+                  {priceBreakup.map((item, idx) => (
+                    <div 
+                      key={idx} 
+                      className={`flex justify-between items-center px-4 py-3.5 sm:px-6 sm:py-4 text-xs sm:text-sm ${
+                        item.isTotal ? "bg-accent/10 font-bold border-t border-accent/20" : ""
+                      }`}
+                    >
+                      <span className={item.isTotal ? "text-primary font-bold" : "text-muted-foreground font-medium"}>
+                        {item.label}
+                      </span>
+                      <span className="text-primary font-semibold text-right pl-4">
+                        {item.value}
+                      </span>
+                    </div>
+                  ))}
                 </div>
                 <div className="flex items-start gap-2.5 text-xs text-muted-foreground bg-muted/20 p-3 rounded border">
                   <ShieldCheck className="h-4 w-4 text-accent flex-shrink-0 mt-0.5" />
@@ -299,26 +290,26 @@ function PropertyDetailPage() {
               />
 
               {/* Agent contact info card */}
-              <div className="bg-primary text-primary-foreground rounded-lg p-6 shadow-md space-y-4">
+              <div className="bg-primary text-primary-foreground rounded-lg p-5 md:p-6 shadow-md space-y-4 min-w-0">
                 <h3 className="font-display text-lg font-bold text-accent uppercase tracking-wide">
                   Direct Contact
                 </h3>
-                <p className="text-xs text-primary-foreground/80">
+                <p className="text-xs text-primary-foreground/80 leading-relaxed">
                   Prefer direct calling? Speak to our expert property consultant instantly.
                 </p>
-                <div className="space-y-3 pt-2">
-                  <a href="tel:+918595777428" className="flex items-center gap-3 rounded bg-white/10 p-3 hover:bg-white/15 transition">
-                    <Phone className="h-5 w-5 text-accent" />
-                    <div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3 pt-2">
+                  <a href="tel:+918595777428" className="flex items-center gap-3 rounded bg-white/10 p-3 hover:bg-white/15 transition min-w-0">
+                    <Phone className="h-5 w-5 text-accent shrink-0" />
+                    <div className="min-w-0">
                       <div className="text-[10px] uppercase font-bold text-accent">Call Agent</div>
-                      <div className="text-sm font-bold">+91 8595777428</div>
+                      <div className="text-sm font-bold whitespace-nowrap">+91 8595777428</div>
                     </div>
                   </a>
-                  <a href="tel:+919311510866" className="flex items-center gap-3 rounded bg-white/10 p-3 hover:bg-white/15 transition">
-                    <Phone className="h-5 w-5 text-accent" />
-                    <div>
+                  <a href="tel:+919311510866" className="flex items-center gap-3 rounded bg-white/10 p-3 hover:bg-white/15 transition min-w-0">
+                    <Phone className="h-5 w-5 text-accent shrink-0" />
+                    <div className="min-w-0">
                       <div className="text-[10px] uppercase font-bold text-accent">Office Desk</div>
-                      <div className="text-sm font-bold">+91 9311510866</div>
+                      <div className="text-sm font-bold whitespace-nowrap">+91 9311510866</div>
                     </div>
                   </a>
                 </div>
