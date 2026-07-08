@@ -9,7 +9,10 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TermsConditionsRouteImport } from './routes/terms-conditions'
 import { Route as RentRouteImport } from './routes/rent'
+import { Route as RefundPolicyRouteImport } from './routes/refund-policy'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as PgHostelRouteImport } from './routes/pg-hostel'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CommercialRouteImport } from './routes/commercial'
@@ -21,9 +24,24 @@ import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as PropertiesIdRouteImport } from './routes/properties.$id'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
+const TermsConditionsRoute = TermsConditionsRouteImport.update({
+  id: '/terms-conditions',
+  path: '/terms-conditions',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RentRoute = RentRouteImport.update({
   id: '/rent',
   path: '/rent',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RefundPolicyRoute = RefundPolicyRouteImport.update({
+  id: '/refund-policy',
+  path: '/refund-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PgHostelRoute = PgHostelRouteImport.update({
@@ -85,7 +103,10 @@ export interface FileRoutesByFullPath {
   '/commercial': typeof CommercialRoute
   '/contact': typeof ContactRoute
   '/pg-hostel': typeof PgHostelRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/refund-policy': typeof RefundPolicyRoute
   '/rent': typeof RentRoute
+  '/terms-conditions': typeof TermsConditionsRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/properties/$id': typeof PropertiesIdRoute
   '/blog/': typeof BlogIndexRoute
@@ -97,7 +118,10 @@ export interface FileRoutesByTo {
   '/commercial': typeof CommercialRoute
   '/contact': typeof ContactRoute
   '/pg-hostel': typeof PgHostelRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/refund-policy': typeof RefundPolicyRoute
   '/rent': typeof RentRoute
+  '/terms-conditions': typeof TermsConditionsRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/properties/$id': typeof PropertiesIdRoute
   '/blog': typeof BlogIndexRoute
@@ -111,7 +135,10 @@ export interface FileRoutesById {
   '/commercial': typeof CommercialRoute
   '/contact': typeof ContactRoute
   '/pg-hostel': typeof PgHostelRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/refund-policy': typeof RefundPolicyRoute
   '/rent': typeof RentRoute
+  '/terms-conditions': typeof TermsConditionsRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/properties/$id': typeof PropertiesIdRoute
   '/blog/': typeof BlogIndexRoute
@@ -126,7 +153,10 @@ export interface FileRouteTypes {
     | '/commercial'
     | '/contact'
     | '/pg-hostel'
+    | '/privacy-policy'
+    | '/refund-policy'
     | '/rent'
+    | '/terms-conditions'
     | '/blog/$slug'
     | '/properties/$id'
     | '/blog/'
@@ -138,7 +168,10 @@ export interface FileRouteTypes {
     | '/commercial'
     | '/contact'
     | '/pg-hostel'
+    | '/privacy-policy'
+    | '/refund-policy'
     | '/rent'
+    | '/terms-conditions'
     | '/blog/$slug'
     | '/properties/$id'
     | '/blog'
@@ -151,7 +184,10 @@ export interface FileRouteTypes {
     | '/commercial'
     | '/contact'
     | '/pg-hostel'
+    | '/privacy-policy'
+    | '/refund-policy'
     | '/rent'
+    | '/terms-conditions'
     | '/blog/$slug'
     | '/properties/$id'
     | '/blog/'
@@ -165,17 +201,41 @@ export interface RootRouteChildren {
   CommercialRoute: typeof CommercialRoute
   ContactRoute: typeof ContactRoute
   PgHostelRoute: typeof PgHostelRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  RefundPolicyRoute: typeof RefundPolicyRoute
   RentRoute: typeof RentRoute
+  TermsConditionsRoute: typeof TermsConditionsRoute
   PropertiesIdRoute: typeof PropertiesIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/terms-conditions': {
+      id: '/terms-conditions'
+      path: '/terms-conditions'
+      fullPath: '/terms-conditions'
+      preLoaderRoute: typeof TermsConditionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/rent': {
       id: '/rent'
       path: '/rent'
       fullPath: '/rent'
       preLoaderRoute: typeof RentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/refund-policy': {
+      id: '/refund-policy'
+      path: '/refund-policy'
+      fullPath: '/refund-policy'
+      preLoaderRoute: typeof RefundPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pg-hostel': {
@@ -271,7 +331,10 @@ const rootRouteChildren: RootRouteChildren = {
   CommercialRoute: CommercialRoute,
   ContactRoute: ContactRoute,
   PgHostelRoute: PgHostelRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
+  RefundPolicyRoute: RefundPolicyRoute,
   RentRoute: RentRoute,
+  TermsConditionsRoute: TermsConditionsRoute,
   PropertiesIdRoute: PropertiesIdRoute,
 }
 export const routeTree = rootRouteImport

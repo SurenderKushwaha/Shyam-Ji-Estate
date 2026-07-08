@@ -30,6 +30,12 @@ export function SiteFooter() {
           <Link to="/blog" className="hover:text-accent transition py-1">Blog</Link>
           <span className="text-border/60 hidden sm:inline">|</span>
           <Link to="/about" className="hover:text-accent transition py-1">About</Link>
+          <span className="text-border/60 hidden sm:inline">|</span>
+          <Link to="/privacy-policy" className="hover:text-accent transition py-1">Privacy Policy</Link>
+          <span className="text-border/60 hidden sm:inline">|</span>
+          <Link to="/terms-conditions" className="hover:text-accent transition py-1">Terms & Conditions</Link>
+          <span className="text-border/60 hidden sm:inline">|</span>
+          <Link to="/refund-policy" className="hover:text-accent transition py-1">Refund Policy</Link>
         </nav>
 
         {/* Social Links */}
