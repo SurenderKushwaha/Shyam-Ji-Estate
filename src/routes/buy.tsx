@@ -26,9 +26,11 @@ import armchairImg from "@/assets/armchair.webp";
 export const Route = createFileRoute("/buy")({
   head: () => ({
     meta: [
-      { title: "Buy Property | Shyam Ji Estate" },
-      { name: "description", content: "Find apartments, builder floors, and luxury homes for sale in Old Rajinder Nagar, New Rajinder Nagar, and Karol Bagh." },
-      { property: "og:title", content: "Buy Property | Shyam Ji Estate" },
+      { title: "Builder Floors & Luxury Flats for Sale in Old Rajinder Nagar | Shyam Ji Estate" },
+      { name: "description", content: "Explore premium builder floors, luxury apartments, and flats for sale in Old Rajinder Nagar, New Rajinder Nagar, and Karol Bagh. Verified direct owner listings with clear titles." },
+      { name: "keywords", content: "flats for sale in old rajinder nagar, builder floor in old rajinder nagar, buy flat in old rajinder nagar, property for sale in rajinder nagar, shyam ji estate" },
+      { property: "og:title", content: "Builder Floors & Flats for Sale in Old Rajinder Nagar | Shyam Ji Estate" },
+      { property: "og:description", content: "Buy verified properties with complete assistance. Best inventory of builder floors, apartments, and independent properties in Old Rajinder Nagar." },
       { property: "og:url", content: "/buy" },
     ],
     links: [{ rel: "canonical", href: "/buy" }],

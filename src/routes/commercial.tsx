@@ -24,9 +24,11 @@ import armchairImg from "@/assets/armchair.webp";
 export const Route = createFileRoute("/commercial")({
   head: () => ({
     meta: [
-      { title: "Commercial Properties | Shyam Ji Estate" },
-      { name: "description", content: "Explore commercial shops, offices, and business spaces for sale or rent in Karol Bagh and Old Rajinder Nagar." },
-      { property: "og:title", content: "Commercial Properties | Shyam Ji Estate" },
+      { title: "Commercial Office Space & Shops for Rent in Old Rajinder Nagar | Shyam Ji Estate" },
+      { name: "description", content: "Find prime commercial office spaces, shops, and coaching classrooms for rent on Pusa Road, Old Rajinder Nagar, and Karol Bagh. High visibility, metro-facing locations." },
+      { name: "keywords", content: "commercial space for rent in old rajinder nagar, office space in pusa road, shop for rent in old rajinder nagar, coaching classroom for rent rajinder nagar, shyam ji estate" },
+      { property: "og:title", content: "Commercial Office Space & Shops for Rent on Pusa Road | Shyam Ji Estate" },
+      { property: "og:description", content: "Rent commercial spaces with premium frontage, stilt parking, elevator access, and metro-facing visibility on Pusa Road and Karol Bagh." },
       { property: "og:url", content: "/commercial" },
     ],
     links: [{ rel: "canonical", href: "/commercial" }],

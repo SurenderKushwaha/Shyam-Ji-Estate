@@ -89,8 +89,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@context": "https://schema.org",
           "@type": "RealEstateAgent",
           name: "Shyam Ji Estate",
+          image: "/logo.png",
+          description: "Shyam Ji Estate is the premier real estate agency and property dealer in Old Rajinder Nagar (ORN), Karol Bagh, and New Rajinder Nagar, specializing in premium builder floors, flats, PGs, and commercial spaces.",
           telephone: ["+91-8595777428", "+91-9311510866"],
           email: "info@shyamjiestate.com",
+          url: "https://shyamjiestate.com",
+          priceRange: "$$",
           address: {
             "@type": "PostalAddress",
             streetAddress: "Shop No 56, Near Batra Medical, Old Rajinder Nagar",
@@ -98,7 +102,25 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             postalCode: "110060",
             addressCountry: "IN",
           },
-          areaServed: ["Old Rajinder Nagar", "New Rajinder Nagar", "Karol Bagh"],
+          geo: {
+            "@type": "GeoCoordinates",
+            latitude: "28.6389",
+            longitude: "77.1895"
+          },
+          areaServed: [
+            {
+              "@type": "AdministrativeArea",
+              name: "Old Rajinder Nagar"
+            },
+            {
+              "@type": "AdministrativeArea",
+              name: "New Rajinder Nagar"
+            },
+            {
+              "@type": "AdministrativeArea",
+              name: "Karol Bagh"
+            }
+          ]
         }),
       },
     ],

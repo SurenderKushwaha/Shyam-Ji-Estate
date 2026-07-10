@@ -20,9 +20,11 @@ import { BRAND } from "@/lib/brand";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Us | Shyam Ji Estate" },
-      { name: "description", content: "Learn about Shyam Ji Estate, the leading property experts serving Old Rajinder Nagar, New Rajinder Nagar, and Karol Bagh." },
-      { property: "og:title", content: "About Us | Shyam Ji Estate" },
+      { title: "About Shyam Ji Estate | Top Real Estate Agency in Old Rajinder Nagar" },
+      { name: "description", content: "Serving property owners and seekers since 2008, Shyam Ji Estate is the most trusted property dealer & agent in Old Rajinder Nagar, New Rajinder Nagar, and Karol Bagh." },
+      { name: "keywords", content: "about shyam ji estate, property dealer old rajinder nagar, real estate agent rajinder nagar, top brokers old rajinder nagar, shyam ji estate" },
+      { property: "og:title", content: "About Shyam Ji Estate | Real Estate Experts in Old Rajinder Nagar" },
+      { property: "og:description", content: "Discover the history and commitment of Shyam Ji Estate, providing transparent property advisory services in ORN for over 15 years." },
       { property: "og:url", content: "/about" },
     ],
     links: [{ rel: "canonical", href: "/about" }],

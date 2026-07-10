@@ -25,9 +25,11 @@ import armchairImg from "@/assets/armchair.webp";
 export const Route = createFileRoute("/pg-hostel")({
   head: () => ({
     meta: [
-      { title: "PG & Hostel | Shyam Ji Estate" },
-      { name: "description", content: "Find safe, fully furnished PG and hostel accommodations for girls and boys in Old Rajinder Nagar and Karol Bagh." },
-      { property: "og:title", content: "PG & Hostel | Shyam Ji Estate" },
+      { title: "Best PG in Old Rajinder Nagar for Boys & Girls | Shyam Ji Estate" },
+      { name: "description", content: "Looking for a secure, fully furnished PG in Old Rajinder Nagar (ORN) or Karol Bagh? Explore premium boys and girls PGs with attached washrooms, balconies, high-speed Wi-Fi, and 24x7 security." },
+      { name: "keywords", content: "best pg in old rajinder nagar, girls pg in old rajinder nagar, boys pg in old rajinder nagar, single room pg in old rajinder nagar, student pg in old rajinder nagar, shyam ji estate" },
+      { property: "og:title", content: "Best PG in Old Rajinder Nagar for Boys & Girls | Shyam Ji Estate" },
+      { property: "og:description", content: "Fully furnished premium PG accommodations for girls and boys in Old Rajinder Nagar. Safe, clean, and close to top UPSC coaching institutes." },
       { property: "og:url", content: "/pg-hostel" },
     ],
     links: [{ rel: "canonical", href: "/pg-hostel" }],

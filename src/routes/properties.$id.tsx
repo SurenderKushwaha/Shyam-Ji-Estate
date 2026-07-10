@@ -50,18 +50,26 @@ const getIconForLabel = (label: string) => {
 export const Route = createFileRoute("/properties/$id")({
   head: ({ params }) => {
     const property = properties.find((p) => p.id === params.id);
+    const purpose = property 
+      ? (property.badge.toLowerCase().includes("sale") ? "for Sale" : property.badge.toLowerCase().includes("rent") ? "for Rent" : "PG / Hostel Accommodation")
+      : "Property Details";
     const seoTitle = property
-      ? `${property.title} in ${property.location} | Shyam Ji Estate`
+      ? `${property.title} ${purpose} in ${property.location} | Shyam Ji Estate`
       : "Property Details | Shyam Ji Estate";
     
     const seoDesc = property
-      ? `${property.title} in ${property.location}. Price: ${property.price}. Contact Shyam Ji Estate for details and site visits.`
+      ? `${property.title} ${purpose} in ${property.location}. Features: ${property.features.join(", ")}. Price: ${property.price}. Contact Shyam Ji Estate (best broker in ORN) for immediate visits.`
       : "Detailed overview of the property at Shyam Ji Estate.";
+
+    const seoKeywords = property
+      ? `${property.title.toLowerCase()}, property in ${property.location.toLowerCase()}, ${property.location.toLowerCase()} real estate, shyam ji estate`
+      : "shyam ji estate property details";
 
     return {
       meta: [
         { title: seoTitle },
         { name: "description", content: seoDesc },
+        { name: "keywords", content: seoKeywords },
         { property: "og:title", content: seoTitle },
         { property: "og:description", content: seoDesc },
         { property: "og:url", content: `/properties/${params.id}` },

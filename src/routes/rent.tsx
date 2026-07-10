@@ -25,9 +25,11 @@ import armchairImg from "@/assets/armchair.webp";
 export const Route = createFileRoute("/rent")({
   head: () => ({
     meta: [
-      { title: "Rent Property | Shyam Ji Estate" },
-      { name: "description", content: "Browse premium apartments, flats, and builder floors for rent in Old Rajinder Nagar, New Rajinder Nagar, and Karol Bagh." },
-      { property: "og:title", content: "Rent Property | Shyam Ji Estate" },
+      { title: "Flats & Builder Floors for Rent in Old Rajinder Nagar | Shyam Ji Estate" },
+      { name: "description", content: "Find the best builder floors, flats, and apartments for rent in Old Rajinder Nagar, New Rajinder Nagar, and Karol Bagh. Verified properties ready to move in." },
+      { name: "keywords", content: "flat for rent in old rajinder nagar, builder floor for rent in old rajinder nagar, rent house in old rajinder nagar, apartments for rent in rajinder nagar, shyam ji estate" },
+      { property: "og:title", content: "Premium Flats & Builder Floors for Rent in Old Rajinder Nagar | Shyam Ji Estate" },
+      { property: "og:description", content: "Find verified builder floors, independent rooms, and flats for rent in Old and New Rajinder Nagar. Directly deal with top local property consultants." },
       { property: "og:url", content: "/rent" },
     ],
     links: [{ rel: "canonical", href: "/rent" }],

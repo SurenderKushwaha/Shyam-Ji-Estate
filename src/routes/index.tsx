@@ -11,10 +11,11 @@ import { properties } from "@/data/properties";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Shyam Ji Estate | Buy, Rent, PG & Commercial in Old Rajinder Nagar" },
-      { name: "description", content: "Find residential, commercial and PG properties in Old Rajinder Nagar, New Rajinder Nagar and Karol Bagh with trusted local experts." },
-      { property: "og:title", content: "Shyam Ji Estate | Old Rajinder Nagar Property Experts" },
-      { property: "og:description", content: "Buy, Sell, Rent, PG & Hostel and Commercial property experts in Old Rajinder Nagar." },
+      { title: "Shyam Ji Estate | Best Property Dealer in Old Rajinder Nagar, ORN" },
+      { name: "description", content: "Shyam Ji Estate is the #1 rated real estate agency & property dealer in Old Rajinder Nagar (ORN), New Rajinder Nagar & Karol Bagh. Find premium PGs, flats, builder floors & commercial office spaces." },
+      { name: "keywords", content: "property dealer in old rajinder nagar, real estate agent in old rajinder nagar, best pg in old rajinder nagar, flats for rent in old rajinder nagar, builder floors in old rajinder nagar, shyam ji estate" },
+      { property: "og:title", content: "Shyam Ji Estate | Best Property Dealer & PG Agent in Old Rajinder Nagar" },
+      { property: "og:description", content: "The #1 real estate agent in Old Rajinder Nagar for premium builder floors, apartments, PGs, and commercial spaces. Verified direct owner listings." },
       { property: "og:url", content: "/" },
     ],
     links: [{ rel: "canonical", href: "/" }],

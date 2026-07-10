@@ -45,6 +45,32 @@ import girlsPremium3 from "@/assets/girls-premium-3.png";
 import girlsPremium4 from "@/assets/girls-premium-4.png";
 import girlsPremium5 from "@/assets/girls-premium-5.png";
 
+import boysAttachedBalcony1 from "@/assets/boys-attached-balcony-orn-1.jpg";
+import boysAttachedBalcony2 from "@/assets/boys-attached-balcony-orn-2.jpg";
+import boysAttachedBalcony3 from "@/assets/boys-attached-balcony-orn-3.jpg";
+import boysAttachedBalcony4 from "@/assets/boys-attached-balcony-orn-4.jpg";
+import boysAttachedBalcony5 from "@/assets/boys-attached-balcony-orn-5.jpg";
+
+import officePusaRoad1 from "@/assets/office-pusa-road-1.jpg";
+import officePusaRoad2 from "@/assets/office-pusa-road-2.png";
+import officePusaRoad3 from "@/assets/office-pusa-road-3.png";
+import officePusaRoad4 from "@/assets/office-pusa-road-4.png";
+
+import girlsAttachedBalcony1 from "@/assets/girls-attached-balcony-orn-1.jpg";
+import girlsAttachedBalcony2 from "@/assets/girls-attached-balcony-orn-2.jpg";
+import girlsAttachedBalcony3 from "@/assets/girls-attached-balcony-orn-3.jpg";
+import girlsAttachedBalcony4 from "@/assets/girls-attached-balcony-orn-4.jpg";
+
+import girlsIndependent1 from "@/assets/girls-independent-orn-1.jpg";
+import girlsIndependent2 from "@/assets/girls-independent-orn-2.jpg";
+import girlsIndependent3 from "@/assets/girls-independent-orn-3.jpg";
+import girlsIndependent4 from "@/assets/girls-independent-orn-4.jpg";
+
+import commercialMetroFacing1 from "@/assets/commercial-metro-facing-1.png";
+import commercialMetroFacing2 from "@/assets/commercial-metro-facing-2.png";
+import commercialMetroFacing3 from "@/assets/commercial-metro-facing-3.png";
+import commercialMetroFacing4 from "@/assets/commercial-metro-facing-4.png";
+
 export type PriceBreakupItem = {
   label: string;
   value: string;
@@ -72,6 +98,147 @@ export type Property = {
 };
 
 export const properties: Property[] = [
+  {
+    id: "commercial-metro-facing-250k",
+    title: "Metro Facing Commercial Space on Pusa Road",
+    location: "Pusa Road, Rajinder Nagar",
+    price: "₹2,50,000 / Month",
+    badge: "FOR RENT",
+    category: "commercial",
+    image: commercialMetroFacing1,
+    features: ["1200 Sq.Ft.", "2nd Floor", "Lift & Parking"],
+    description: "Highly premium, newly constructed commercial hall available for rent on Pusa Road, Rajinder Nagar. Spanning 1200 sq. ft. on the second floor, this space directly faces the metro station, offering unparalleled commercial visibility and exposure. The property features dual high-speed elevators, stilt parking slots, false ceilings with LED lights, vitrified tiles, pantry provision, and washrooms. Highly suited for coaching centers, corporate offices, study libraries, gymnasiums, classrooms, or high-end clinics.",
+    gallery: [commercialMetroFacing1, commercialMetroFacing2, commercialMetroFacing3, commercialMetroFacing4],
+    priceBreakup: [
+      { label: "Monthly Rent", value: "₹2,50,000" },
+      { label: "Security Deposit (3 Months)", value: "₹7,50,000" },
+      { label: "Monthly Maintenance Charges", value: "Included" },
+      { label: "Electricity & Water", value: "As per utility usage" },
+      { label: "Total First Month Cost", value: "₹10,00,000", isTotal: true }
+    ],
+    detailedFeatures: [
+      { label: "Super Area", value: "1200 Sq.Ft." },
+      { label: "Floor", value: "2nd Floor" },
+      { label: "Accessibility", value: "Elevator/Lift & Wide Staircase" },
+      { label: "Parking", value: "Stilt Car Parking Available" },
+      { label: "Location Advantage", value: "Directly Facing Metro Station" },
+      { label: "Ideal For", value: "Coaching, Office, Library, Gym, Classrooms" },
+      { label: "Sanitary", value: "Private Washroom & Urinal Ready" }
+    ]
+  },
+  {
+    id: "girls-independent-orn-18k",
+    title: "Independent Girls PG with Attached Washroom & Balcony",
+    location: "Old Rajinder Nagar",
+    price: "₹18,000 / Month",
+    badge: "PG / HOSTEL",
+    category: "pg",
+    image: girlsIndependent1,
+    features: ["Attached Washroom", "Attached Balcony", "Independent"],
+    description: "Highly premium fully independent single occupancy PG room for girls in Old Rajinder Nagar. The room features beautiful turquoise walls, split AC, study desk, double bed, and a spacious wooden wardrobe. It comes with a modern luxury attached washroom with black-and-white marble-style tiling, vanity mirror, wall-hung commode, water geyser, and a private attached balcony. Offers maximum privacy and a quiet environment for students and UPSC aspirants.",
+    gallery: [girlsIndependent1, girlsIndependent2, girlsIndependent3, girlsIndependent4],
+    priceBreakup: [
+      { label: "Monthly Rent (Single Occupancy)", value: "₹18,000" },
+      { label: "Security Deposit (1 Month)", value: "₹18,000" },
+      { label: "Wi-Fi & Housekeeping", value: "Included" },
+      { label: "Water Charges & Maintenance", value: "Included" },
+      { label: "Electricity Charges", value: "As per submeter usage" },
+      { label: "Total First Month Cost", value: "₹36,000", isTotal: true }
+    ],
+    detailedFeatures: [
+      { label: "Room Type", value: "Independent Single Occupancy" },
+      { label: "Washroom", value: "Attached (Marble tiles & geyser)" },
+      { label: "Balcony", value: "Attached Private Balcony" },
+      { label: "Gender Preference", value: "Girls Only" },
+      { label: "Furnishing State", value: "Fully Furnished" },
+      { label: "Safety & Security", value: "Secure Independent Entry" }
+    ]
+  },
+  {
+    id: "girls-attached-balcony-orn-25k",
+    title: "Premium Single Room PG for Girls (Negotiable)",
+    location: "Old Rajinder Nagar",
+    price: "₹25,000 / Month",
+    badge: "PG / HOSTEL",
+    category: "pg",
+    image: girlsAttachedBalcony1,
+    features: ["Attached Washroom", "Attached Balcony"],
+    description: "Beautiful fully furnished single occupancy room PG for girls in the prime, safe locality of Old Rajinder Nagar. The room features high-quality premium wooden cabinetry, spacious cupboards and shelving unit, study desk with executive rolling office chair, split AC, and double bed. It comes with a private attached washroom and a spacious balcony. Standard amenities like high-speed Wi-Fi, daily professional housekeeping/cleaning, and safety facilities are included. Rent is negotiable.",
+    gallery: [girlsAttachedBalcony1, girlsAttachedBalcony2, girlsAttachedBalcony3, girlsAttachedBalcony4],
+    priceBreakup: [
+      { label: "Monthly Rent (Negotiable)", value: "₹25,000" },
+      { label: "Security Deposit (1 Month)", value: "₹25,000" },
+      { label: "Wi-Fi & Housekeeping", value: "Included" },
+      { label: "Water Charges & Maintenance", value: "Included" },
+      { label: "Electricity Charges", value: "As per submeter usage" },
+      { label: "Total First Month Cost", value: "₹50,000", isTotal: true }
+    ],
+    detailedFeatures: [
+      { label: "Room Type", value: "Single Occupancy Room" },
+      { label: "Washroom", value: "Attached (Modern fittings)" },
+      { label: "Balcony", value: "Attached Private Balcony" },
+      { label: "Gender Preference", value: "Girls Only" },
+      { label: "Furnishing State", value: "Fully Furnished" },
+      { label: "Pricing Note", value: "Rent is Negotiable" },
+      { label: "Safety & Security", value: "Secure Entry & Safe Locality" }
+    ]
+  },
+  {
+    id: "office-pusa-road-100k",
+    title: "Premium Commercial Office Space on Pusa Road",
+    location: "Pusa Road, Rajinder Nagar",
+    price: "₹1,00,000 / Month",
+    badge: "FOR RENT",
+    category: "commercial",
+    image: officePusaRoad1,
+    features: ["1000 Sq.Ft.", "1st Floor", "Main Road Facing"],
+    description: "Highly premium commercial office space available for rent on Pusa Road, Rajinder Nagar. Spanning 1000 sq. ft. on the first floor, this property offers excellent visibility and accessibility. Fully furnished with modular glass cabin partition walls, an executive cabin space, a modular pantry area, workstations, and high-quality tile flooring with modern ceiling LED panel lighting. Perfect for corporate offices, IT startups, CA firms, coaching classes, or consulting agencies looking for a prime address.",
+    gallery: [officePusaRoad1, officePusaRoad2, officePusaRoad3, officePusaRoad4],
+    priceBreakup: [
+      { label: "Monthly Rent", value: "₹1,00,000" },
+      { label: "Security Deposit (3 Months)", value: "₹3,00,000" },
+      { label: "Monthly Maintenance Charges", value: "Included" },
+      { label: "Electricity Charges", value: "Commercial Rates" },
+      { label: "Total First Month Cost", value: "₹4,00,000", isTotal: true }
+    ],
+    detailedFeatures: [
+      { label: "Super Area", value: "1000 Sq.Ft." },
+      { label: "Floor", value: "1st Floor" },
+      { label: "Usage", value: "Commercial Office" },
+      { label: "Pantry", value: "Private Pantry Available" },
+      { label: "Cabins & Workstations", value: "Glass Cabins & Workstations Ready" },
+      { label: "Road Access", value: "Main Pusa Road Frontage" },
+      { label: "Power Backup", value: "Provision Available" }
+    ]
+  },
+  {
+    id: "boys-attached-balcony-orn-23k",
+    title: "Boys Room with Attached Washroom & Balcony",
+    location: "Old Rajinder Nagar",
+    price: "₹23,000 / Month",
+    badge: "PG / HOSTEL",
+    category: "pg",
+    image: boysAttachedBalcony1,
+    features: ["Attached Washroom", "Attached Balcony"],
+    description: "Premium fully furnished single occupancy room for boys in the prime location of Old Rajinder Nagar. The room is spacious, equipped with a comfortable bed, study table with office chair, large wooden wardrobe, split AC, and beautiful false ceiling lighting. It features a private attached washroom with modern fixtures, an attached balcony offering good ventilation, and access to all standard PG amenities including high-speed Wi-Fi, daily housekeeping, and professional maintenance. Ideal for UPSC aspirants and students wanting a quiet and premium study space.",
+    gallery: [boysAttachedBalcony1, boysAttachedBalcony2, boysAttachedBalcony3, boysAttachedBalcony4, boysAttachedBalcony5],
+    priceBreakup: [
+      { label: "Monthly Rent (Single Occupancy)", value: "₹23,000" },
+      { label: "Security Deposit (1 Month)", value: "₹23,000" },
+      { label: "Wi-Fi & Housekeeping", value: "Included" },
+      { label: "Water Charges & Maintenance", value: "Included" },
+      { label: "Electricity Charges", value: "As per submeter usage" },
+      { label: "Total First Month Cost", value: "₹46,000", isTotal: true }
+    ],
+    detailedFeatures: [
+      { label: "Room Type", value: "Single Occupancy Room" },
+      { label: "Washroom", value: "Attached (Modern fittings & geyser)" },
+      { label: "Balcony", value: "Attached Private Balcony" },
+      { label: "Gender Preference", value: "Boys Only" },
+      { label: "Furnishing State", value: "Fully Furnished" },
+      { label: "Safety & Security", value: "Secure Entry & Safe Locality" }
+    ]
+  },
   {
     id: "girls-premium-balcony-orn",
     title: "Premium Single Room PG for Girls",

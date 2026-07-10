@@ -16,13 +16,14 @@ import { useState } from "react";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact Us | Shyam Ji Estate" },
+      { title: "Contact Shyam Ji Estate | Phone, Address & Map | Property Dealer ORN" },
       {
         name: "description",
         content:
-          "Get in touch with Shyam Ji Estate for expert real estate guidance and property inquiries in Old Rajinder Nagar.",
+          "Contact Shyam Ji Estate, the #1 property consultant in Old Rajinder Nagar, New Rajinder Nagar, and Karol Bagh. Call us at +91-8595777428 or visit our office near Batra Medical.",
       },
-      { property: "og:title", content: "Contact Us | Shyam Ji Estate" },
+      { name: "keywords", content: "shyam ji estate contact number, property dealer old rajinder nagar office address, real estate agent phone number old rajinder nagar, shyam ji estate" },
+      { property: "og:title", content: "Contact Shyam Ji Estate | Best Real Estate Broker in Old Rajinder Nagar" },
       { property: "og:url", content: "/contact" },
     ],
     links: [{ rel: "canonical", href: "/contact" }],
@@ -122,7 +123,7 @@ function FaqItem({ q, a, index }: { q: string; a: string; index: number }) {
 /* ─── Main Page ───────────────────────────────────── */
 function ContactPage() {
   const mapSrc =
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4614.112801817546!2d77.1848967!3d28.6411729!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d03001c12a76b%3A0x62cd09576b0c535a!2sShree%20Shyam%20Estate!5e1!3m2!1sen!2sin!4v1782491412547!5m2!1sen!2sin";
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4614.112801817546!2d77.1848967!3d28.6411729!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d03001c12a76b%3A0x62cd09576b0c535a!2sShyam%20Ji%20Estate!5e1!3m2!1sen!2sin!4v1782491412547!5m2!1sen!2sin";
 
   const waMessage = waLink("Hi! I'd like to inquire about a property.");
 
