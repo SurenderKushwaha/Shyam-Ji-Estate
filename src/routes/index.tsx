@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Hero } from "@/components/Hero";
-import { PropertySearch, type SearchFilters } from "@/components/PropertySearch";
-import { ServicesGrid } from "@/components/ServicesGrid";
+import { type SearchFilters } from "@/components/PropertySearch";
 import { FeaturedProperties } from "@/components/FeaturedProperties";
+import { VideoSection } from "@/components/VideoSection";
 import { WhyChooseUs } from "@/components/WhyChooseUs";
 import { Testimonials } from "@/components/Testimonials";
 import { useState } from "react";
@@ -123,13 +123,12 @@ function Index() {
 
   return (
     <>
-      <Hero />
-      <PropertySearch
+      <Hero
         filters={filters}
         onChange={handleFilterChange}
         onSearch={handleSearch}
       />
-      <ServicesGrid />
+      <VideoSection />
       <FeaturedProperties
         propertiesList={filteredProperties}
         isSearched={isSearched}

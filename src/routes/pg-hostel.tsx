@@ -19,6 +19,8 @@ import {
 import { useState } from "react";
 import { properties } from "@/data/properties";
 import { InquiryForm } from "@/components/InquiryForm";
+import { PropertySearch } from "@/components/PropertySearch";
+import { CustomSelect } from "@/components/CustomSelect";
 import galleryBedroom from "@/assets/gallery-bedroom.webp";
 import armchairImg from "@/assets/armchair.webp";
 
@@ -89,165 +91,107 @@ function PgPage() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-white py-10 sm:py-14 lg:py-20 border-b border-border/40">
+      <section 
+        className="relative bg-[#0B1528] text-white pt-16 pb-20 sm:pt-20 sm:pb-24 lg:pt-24 lg:pb-28 bg-cover bg-center border-b border-border/10"
+        style={{ backgroundImage: `url(${galleryBedroom})` }}
+      >
+        {/* Dark overlay for contrast */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0B1528]/98 via-[#0B1528]/90 to-[#0B1528]/98 pointer-events-none" />
+
         <div className="container-x grid items-center gap-8 lg:grid-cols-[1.25fr_1fr] relative z-10">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#C49545]">
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#C49545] mb-2">
               Comfortable Stays. Great Living.
             </p>
-            <h1 className="mt-3 font-display text-3xl sm:text-4xl font-extrabold leading-tight text-[#0B1528] md:text-5xl lg:text-6xl">
+            <h1 className="font-display text-4xl sm:text-5xl font-extrabold leading-tight text-white md:text-6xl lg:text-7xl uppercase tracking-wide">
               PG &amp; Hostel<br />
               <span className="text-[#C49545]">In Old Rajinder Nagar</span>
             </h1>
-            <div className="mt-4 sm:mt-5 space-y-1 text-sm text-muted-foreground leading-relaxed font-medium">
+            <div className="mt-4 sm:mt-5 space-y-1 text-xs sm:text-sm text-gray-300 leading-relaxed font-medium">
               <p>Well-furnished PGs &amp; Hostels with all essential amenities.</p>
               <p>Safe, comfortable and affordable living for students and working professionals.</p>
             </div>
 
-            <div className="mt-6 sm:mt-8 flex flex-wrap gap-3 sm:gap-4 items-center text-[#0B1528]">
+            {/* Badges */}
+            <div className="mt-6 sm:mt-8 flex flex-wrap gap-4 items-center">
               <div className="flex items-center gap-2">
-                <div className="grid h-9 w-9 place-items-center rounded-full border border-[#C49545]/20 bg-white text-[#C49545] shadow-sm">
+                <div className="grid h-9 w-9 place-items-center rounded-full border border-[#C49545]/30 bg-white/5 text-[#C49545] shadow-sm backdrop-blur-sm">
                   <ShieldCheck className="h-4.5 w-4.5" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-[#0B1528]">Safe &amp; Secure</span>
-                  <span className="text-[8px] font-medium text-muted-foreground mt-0.5">Verified Properties</span>
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-white">Safe &amp; Secure</span>
+                  <span className="text-[8px] font-medium text-gray-400 mt-0.5">Verified Properties</span>
                 </div>
               </div>
 
-              <span className="hidden sm:block h-6 w-px bg-border/80" />
+              <span className="hidden sm:block h-6 w-px bg-white/10" />
 
               <div className="flex items-center gap-2">
-                <div className="grid h-9 w-9 place-items-center rounded-full border border-[#C49545]/20 bg-white text-[#C49545] shadow-sm">
+                <div className="grid h-9 w-9 place-items-center rounded-full border border-[#C49545]/30 bg-white/5 text-[#C49545] shadow-sm backdrop-blur-sm">
                   <MapPin className="h-4.5 w-4.5" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-[#0B1528]">Prime Location</span>
-                  <span className="text-[8px] font-medium text-muted-foreground mt-0.5">Near Metro &amp; Market</span>
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-white">Prime Location</span>
+                  <span className="text-[8px] font-medium text-gray-400 mt-0.5">Near Metro &amp; Market</span>
                 </div>
               </div>
 
-              <span className="hidden sm:block h-6 w-px bg-border/80" />
+              <span className="hidden sm:block h-6 w-px bg-white/10" />
 
               <div className="flex items-center gap-2">
-                <div className="grid h-9 w-9 place-items-center rounded-full border border-[#C49545]/20 bg-white text-[#C49545] shadow-sm">
+                <div className="grid h-9 w-9 place-items-center rounded-full border border-[#C49545]/30 bg-white/5 text-[#C49545] shadow-sm backdrop-blur-sm">
                   <IndianRupee className="h-4 w-4" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-[#0B1528]">Affordable Prices</span>
-                  <span className="text-[8px] font-medium text-muted-foreground mt-0.5">Best Value for Money</span>
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-white">Affordable Prices</span>
+                  <span className="text-[8px] font-medium text-gray-400 mt-0.5">Best Value for Money</span>
                 </div>
               </div>
 
-              <span className="hidden sm:block h-6 w-px bg-border/80" />
+              <span className="hidden sm:block h-6 w-px bg-white/10" />
 
               <div className="flex items-center gap-2">
-                <div className="grid h-9 w-9 place-items-center rounded-full border border-[#C49545]/20 bg-white text-[#C49545] shadow-sm">
+                <div className="grid h-9 w-9 place-items-center rounded-full border border-[#C49545]/30 bg-white/5 text-[#C49545] shadow-sm backdrop-blur-sm">
                   <Headphones className="h-4.5 w-4.5" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-[#0B1528]">Dedicated Support</span>
-                  <span className="text-[8px] font-medium text-muted-foreground mt-0.5">We're Here to Help</span>
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-white">Dedicated Support</span>
+                  <span className="text-[8px] font-medium text-gray-400 mt-0.5">We're Here to Help</span>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Image - only visible on lg+ where 2-col layout is active */}
-          <div className="hidden lg:block relative h-[400px] rounded-2xl overflow-hidden shadow-luxe border border-[#C49545]/15">
+          {/* Image */}
+          <div className="hidden lg:block relative h-[380px] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-[#C49545]/20 group">
             <img
               src={galleryBedroom}
               alt="Comfortable student room"
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
           </div>
         </div>
       </section>
 
       <section className="container-x py-12 md:py-16">
-        {/* Search Card */}
-        <div className="relative z-30 -mt-10 md:-mt-20 rounded-2xl bg-white p-6 shadow-luxe border border-[#C49545]/10 max-w-5xl mx-auto">
-          <div className="grid gap-4 md:grid-cols-[1fr_1fr_1fr_1fr_auto]">
-            {/* Location Select */}
-            <label className="block">
-              <span className="mb-1.5 block text-[10px] font-extrabold uppercase tracking-wider text-muted-foreground">Location</span>
-              <div className="relative">
-                <MapPin className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#0B1528]/60" />
-                <select
-                  value={location}
-                  onChange={(e) => setLocation(e.target.value)}
-                  className="w-full appearance-none rounded border border-input bg-background pl-9 pr-10 py-3 text-xs font-semibold text-foreground focus:outline-none focus:ring-2 focus:ring-[#C49545] cursor-pointer"
-                >
-                  <option value="">Select Location</option>
-                  <option value="Old Rajinder Nagar">Old Rajinder Nagar</option>
-                  <option value="New Rajinder Nagar">New Rajinder Nagar</option>
-                  <option value="Karol Bagh">Karol Bagh</option>
-                </select>
-                <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#0B1528]/60" />
-              </div>
-            </label>
-
-            {/* PG Type Select */}
-            <label className="block">
-              <span className="mb-1.5 block text-[10px] font-extrabold uppercase tracking-wider text-muted-foreground">PG Type</span>
-              <div className="relative">
-                <Home className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#0B1528]/60" />
-                <select
-                  value={pgType}
-                  onChange={(e) => setPgType(e.target.value)}
-                  className="w-full appearance-none rounded border border-input bg-background pl-9 pr-10 py-3 text-xs font-semibold text-foreground focus:outline-none focus:ring-2 focus:ring-[#C49545] cursor-pointer"
-                >
-                  <option value="">Select PG Type</option>
-                  <option value="Boys">Boys PG</option>
-                  <option value="Girls">Girls PG</option>
-                </select>
-                <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#0B1528]/60" />
-              </div>
-            </label>
-
-            {/* Room Type Select */}
-            <label className="block">
-              <span className="mb-1.5 block text-[10px] font-extrabold uppercase tracking-wider text-muted-foreground">Room Type</span>
-              <div className="relative">
-                <Bed className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#0B1528]/60" />
-                <select
-                  value={roomType}
-                  onChange={(e) => setRoomType(e.target.value)}
-                  className="w-full appearance-none rounded border border-input bg-background pl-9 pr-10 py-3 text-xs font-semibold text-foreground focus:outline-none focus:ring-2 focus:ring-[#C49545] cursor-pointer"
-                >
-                  <option value="">Select Room Type</option>
-                  <option value="Single Room">Single Room</option>
-                  <option value="Twin Sharing">Twin Sharing</option>
-                </select>
-                <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#0B1528]/60" />
-              </div>
-            </label>
-
-            {/* Budget Select */}
-            <label className="block">
-              <span className="mb-1.5 block text-[10px] font-extrabold uppercase tracking-wider text-muted-foreground">Budget</span>
-              <div className="relative">
-                <IndianRupee className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-[#0B1528]/60" />
-                <select
-                  value={budget}
-                  onChange={(e) => setBudget(e.target.value)}
-                  className="w-full appearance-none rounded border border-input bg-background pl-9 pr-10 py-3 text-xs font-semibold text-foreground focus:outline-none focus:ring-2 focus:ring-[#C49545] cursor-pointer"
-                >
-                  <option value="">Select Budget</option>
-                  <option value="Under ₹12k">Under ₹12k</option>
-                  <option value="₹12k - ₹15k">₹12k - ₹15k</option>
-                  <option value="₹15k+">₹15k+</option>
-                </select>
-                <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#0B1528]/60" />
-              </div>
-            </label>
-
-            {/* Search Button */}
-            <div className="self-end h-[42px] flex items-center justify-center bg-[#0B1528] hover:bg-opacity-95 rounded shadow-sm text-white px-6 font-extrabold uppercase tracking-wider text-xs transition cursor-pointer w-full md:w-auto gap-2">
-              Search PG & Hostel <Search className="h-4 w-4" />
-            </div>
-          </div>
+        <div className="relative z-30 -mt-14 md:-mt-24 max-w-5xl mx-auto">
+          <PropertySearch
+            showTabs={false}
+            filters={{
+              location,
+              type: pgType,
+              transaction: "Rent",
+              budget,
+              roomType,
+            }}
+            onChange={(key, val) => {
+              if (key === "location") setLocation(val);
+              else if (key === "type") setPgType(val);
+              else if (key === "budget") setBudget(val);
+              else if (key === "roomType") setRoomType(val);
+            }}
+          />
         </div>
 
         <div className="mt-12 flex flex-wrap items-center justify-between gap-4 pb-4 max-w-5xl mx-auto">
@@ -256,18 +200,17 @@ function PgPage() {
           </div>
           <div className="flex items-center gap-2">
             <span className="text-xs font-bold text-muted-foreground uppercase">Sort by:</span>
-            <div className="relative">
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value)}
-                className="appearance-none rounded border border-input bg-background pl-3 pr-8 py-1.5 text-xs font-semibold text-foreground focus:outline-none focus:ring-1 focus:ring-[#C49545] cursor-pointer"
-              >
-                <option value="latest">Latest First</option>
-                <option value="price-asc">Price: Low to High</option>
-                <option value="price-desc">Price: High to Low</option>
-              </select>
-              <ChevronDown className="pointer-events-none absolute right-2 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
-            </div>
+            <CustomSelect
+              value={sortBy}
+              onChange={(val) => setSortBy(val)}
+              options={[
+                { value: "latest", label: "Latest First" },
+                { value: "price-asc", label: "Price: Low to High" },
+                { value: "price-desc", label: "Price: High to Low" }
+              ]}
+              placeholder="Sort by"
+              className="w-[170px]"
+            />
           </div>
         </div>
 

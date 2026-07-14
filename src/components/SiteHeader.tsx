@@ -15,7 +15,7 @@ const nav = [
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur shadow-sm">
+    <header className="hidden lg:block sticky top-0 z-50 bg-background/95 backdrop-blur shadow-sm">
       {/* Main nav */}
       <div className="container-x flex items-center justify-between py-1 md:py-1.5">
         <Link to="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>

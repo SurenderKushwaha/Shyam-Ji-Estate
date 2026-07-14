@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import type { ReactNode } from "react";
 import { BRAND } from "@/lib/brand";
 import {
@@ -37,6 +37,24 @@ export function InquiryForm({
 
   const [errors, setErrors] = useState<{ phone?: string; name?: string }>({});
   const [submitted, setSubmitted] = useState<"whatsapp" | "email" | null>(null);
+  
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsDropdownOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   useEffect(() => {
     setData((prev) => ({ ...prev, interest: defaultInterest }));
@@ -171,26 +189,45 @@ export function InquiryForm({
           </div>
 
           {/* Custom Select Box */}
-          <div className="relative rounded-xl border border-gray-200 bg-white px-4 py-2 flex flex-col justify-center min-h-[50px] shadow-sm">
+          <div 
+            ref={dropdownRef}
+            className="relative rounded-xl border border-gray-200 bg-white px-4 py-2 flex flex-col justify-center min-h-[50px] shadow-sm cursor-pointer select-none"
+            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+          >
             <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground/70">
               I am looking to
             </span>
             <span className="text-sm font-bold text-[#0B1528] mt-0.5">
               {data.interest}
             </span>
-            <select
-              id="contact-interest"
-              className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-              value={data.interest}
-              onChange={(e) => setData({ ...data, interest: e.target.value })}
-            >
-              {["Buy", "Rent", "PG / Hostel", "Commercial", "Consultancy"].map((o) => (
-                <option key={o} className="text-foreground font-medium">
-                  {o}
-                </option>
-              ))}
-            </select>
-            <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+            <ChevronDown className={`absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
+
+            {/* Dropdown Options */}
+            {isDropdownOpen && (
+              <div className="absolute left-0 top-full mt-2 w-full rounded-xl border border-border/40 bg-white py-1.5 shadow-[0_15px_35px_rgba(11,21,40,0.15)] z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                {["Buy", "Rent", "PG / Hostel", "Commercial", "Consultancy"].map((o) => {
+                  const isSelected = data.interest === o;
+                  return (
+                    <button
+                      key={o}
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setData({ ...data, interest: o });
+                        setIsDropdownOpen(false);
+                      }}
+                      className={`w-full text-left px-4 py-2.5 text-xs sm:text-sm font-semibold transition-colors hover:bg-[#FAF9F6] hover:text-[#C49545] ${
+                        isSelected
+                          ? "text-[#C49545] bg-[#FAF9F6] font-bold border-l-2 border-[#C49545]"
+                          : "text-[#0B1528] border-l-2 border-transparent"
+                      }`}
+                    >
+                      {o}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
           </div>
         </div>
 

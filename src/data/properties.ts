@@ -71,6 +71,18 @@ import commercialMetroFacing2 from "@/assets/commercial-metro-facing-2.png";
 import commercialMetroFacing3 from "@/assets/commercial-metro-facing-3.png";
 import commercialMetroFacing4 from "@/assets/commercial-metro-facing-4.png";
 
+import girlsAggarwal1 from "@/assets/girls-aggarwal-1.jpg";
+import girlsAggarwal2 from "@/assets/girls-aggarwal-2.jpg";
+import girlsAggarwal3 from "@/assets/girls-aggarwal-3.jpg";
+import girlsAggarwal4 from "@/assets/girls-aggarwal-4.jpg";
+import girlsAggarwal5 from "@/assets/girls-aggarwal-5.jpg";
+
+import nrn2bhk1 from "@/assets/2bhk-nrn-1.png";
+import nrn2bhk2 from "@/assets/2bhk-nrn-2.png";
+import nrn2bhk3 from "@/assets/2bhk-nrn-3.jpg";
+import nrn2bhk4 from "@/assets/2bhk-nrn-4.jpg";
+import nrn2bhk5 from "@/assets/2bhk-nrn-5.png";
+
 export type PriceBreakupItem = {
   label: string;
   value: string;
@@ -98,6 +110,104 @@ export type Property = {
 };
 
 export const properties: Property[] = [
+  {
+    id: "2bhk-nrn-45k",
+    title: "Premium 2 BHK Apartment",
+    location: "New Rajinder Nagar",
+    price: "₹45,000 / Month",
+    badge: "FOR RENT",
+    category: "rent",
+    image: nrn2bhk1,
+    features: ["2 BHK", "Furnished", "Attached Washrooms"],
+    description: "Highly premium fully furnished 2 BHK apartment located in New Rajinder Nagar. Features an elegant living space, a modern modular kitchen, and well-designed attached washrooms. Perfect for families or professionals looking for a premium lifestyle.",
+    gallery: [nrn2bhk1, nrn2bhk2, nrn2bhk3, nrn2bhk4, nrn2bhk5],
+    priceBreakup: [
+      { label: "Monthly Rent", value: "₹45,000" },
+      { label: "Security Deposit (2 Months)", value: "₹90,000" },
+      { label: "Total First Month Cost", value: "₹1,35,000", isTotal: true }
+    ],
+    detailedFeatures: [
+      { label: "Configuration", value: "2 BHK" },
+      { label: "Furnishing State", value: "Fully Furnished" },
+      { label: "Washrooms", value: "Modern Washrooms Attached" },
+      { label: "Kitchen", value: "Modular Kitchen" }
+    ]
+  },
+  {
+    id: "girls-independent-single-20k",
+    title: "Independent Single Room for Girls",
+    location: "Old Rajinder Nagar",
+    price: "₹20,000 / Month",
+    badge: "PG / HOSTEL",
+    category: "pg",
+    image: propSingleGirls1,
+    features: ["Single Room", "Attached Washroom", "Attached Balcony"],
+    description: "Highly premium fully independent single occupancy room exclusively for girls. Comes with an attached modern washroom and an attached private balcony. Ideal for students and professionals seeking a peaceful environment.",
+    gallery: [propSingleGirls1, propSingleGirls2, propSingleGirls3, propSingleGirls4, propSingleGirls5],
+    priceBreakup: [
+      { label: "Monthly Rent", value: "₹20,000" },
+      { label: "Security Deposit (1 Month)", value: "₹20,000" },
+      { label: "Total First Month Cost", value: "₹40,000", isTotal: true }
+    ],
+    detailedFeatures: [
+      { label: "Room Type", value: "Independent Single Room" },
+      { label: "Washroom", value: "Attached Washroom" },
+      { label: "Balcony", value: "Attached Balcony" },
+      { label: "Gender Preference", value: "Girls Only" }
+    ]
+  },
+  {
+    id: "girls-room-aggarwal-22k",
+    title: "Room for Girl Near Aggarwal Sweets",
+    location: "Near Aggarwal Sweets, Old Rajinder Nagar",
+    price: "₹22,000 / Month",
+    badge: "PG / HOSTEL",
+    category: "pg",
+    image: girlsAggarwal1,
+    features: ["Single Room", "Attached Washroom", "Attached Balcony"],
+    description: "Premium single occupancy room for girls located near Aggarwal Sweets. The room comes with an attached modern washroom and an attached private balcony.",
+    gallery: [girlsAggarwal1, girlsAggarwal2, girlsAggarwal3, girlsAggarwal4, girlsAggarwal5],
+    priceBreakup: [
+      { label: "Monthly Rent", value: "₹22,000" },
+      { label: "Security Deposit (1 Month)", value: "₹22,000" },
+      { label: "Total First Month Cost", value: "₹44,000", isTotal: true }
+    ],
+    detailedFeatures: [
+      { label: "Room Type", value: "Single Room" },
+      { label: "Washroom", value: "Attached Washroom" },
+      { label: "Balcony", value: "Attached Balcony" },
+      { label: "Gender Preference", value: "Girls Only" }
+    ]
+  },
+  {
+    id: "girls-aggarwal-sweets-22k",
+    title: "Premium Girls PG Near Aggarwal Sweets",
+    location: "Near Aggarwal Sweets, Old Rajinder Nagar",
+    price: "₹22,000 / Month",
+    badge: "PG / HOSTEL",
+    category: "pg",
+    image: girlsAggarwal4,
+    features: ["Attached Washroom", "Attached Balcony", "Near Metro"],
+    description: "Highly premium single occupancy PG room for girls located in the prime locality of Old Rajinder Nagar near Aggarwal Sweets. The room is fully furnished with modern study desks, executive rolling chairs, wall-mounted AC, modular storage, and a comfy double bed. It comes with a modern luxury attached washroom with premium geyser, vanity basin cabinet, and an attached balcony with safety netting. A modular shared kitchen with wooden cabinets and water purifier is also available.",
+    gallery: [girlsAggarwal4, girlsAggarwal1, girlsAggarwal2, girlsAggarwal3, girlsAggarwal5],
+    priceBreakup: [
+      { label: "Monthly Rent", value: "₹22,000" },
+      { label: "Security Deposit (1 Month)", value: "₹22,000" },
+      { label: "Wi-Fi & Housekeeping", value: "Included" },
+      { label: "Water Charges & Maintenance", value: "Included" },
+      { label: "Electricity Charges", value: "As per submeter usage" },
+      { label: "Total First Month Cost", value: "₹44,000", isTotal: true }
+    ],
+    detailedFeatures: [
+      { label: "Room Type", value: "Single Occupancy Room" },
+      { label: "Washroom", value: "Attached Washroom (Modern fittings & geyser)" },
+      { label: "Balcony", value: "Attached Private Balcony (Safety Netting)" },
+      { label: "Location Advantage", value: "Near Aggarwal Sweets (Old Rajinder Nagar)" },
+      { label: "Kitchen", value: "Modular Kitchen Access" },
+      { label: "Gender Preference", value: "Girls Only" },
+      { label: "Furnishing State", value: "Fully Furnished" }
+    ]
+  },
   {
     id: "commercial-metro-facing-250k",
     title: "Metro Facing Commercial Space on Pusa Road",

@@ -14,6 +14,7 @@ import { SiteHeader } from "../components/SiteHeader";
 import { SiteFooter } from "../components/SiteFooter";
 import { WhatsAppFab } from "../components/WhatsAppFab";
 import { PageLoader } from "../components/PageLoader";
+import { BottomNav } from "../components/BottomNav";
 
 function NotFoundComponent() {
   return (
@@ -151,11 +152,12 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <PageLoader />
       <SiteHeader />
-      <main>
+      <main className="pb-16 lg:pb-0">
         <Outlet />
       </main>
       <SiteFooter />
       <WhatsAppFab />
+      <BottomNav />
     </QueryClientProvider>
   );
 }
