@@ -6,7 +6,7 @@ const fs = require("fs");
 const path = require("path");
 
 const APIFY_TOKEN = process.env.APIFY_TOKEN;
-const INSTAGRAM_USERNAME = "shyamjiestate";
+const INSTAGRAM_USERNAME = "shyamji_estate";
 const OUTPUT_FILE = path.join(__dirname, "../public/reels.json");
 
 if (!APIFY_TOKEN) {
