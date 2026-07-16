@@ -2,13 +2,20 @@ import { useState, useEffect } from "react";
 import { Play, Instagram, X } from "lucide-react";
 import { BRAND } from "@/lib/brand";
 
+// Local fallback thumbnails (Instagram CDN is CORS-blocked)
+import livingRoomImg from "@/assets/gallery-living.webp";
+import girlsPgImg from "@/assets/girls-premium-1.png";
+import commercialImg from "@/assets/commercial-metro-facing-1.png";
+import officeImg from "@/assets/office-pusa-road-1.jpg";
+
 interface Reel {
   id: string;
   title: string;
   location: string;
   views: string;
   category: string;
-  thumbnail: string;
+  type: string;
+  thumbnail?: string;
 }
 
 const DEFAULT_REELS: Reel[] = [
@@ -18,7 +25,7 @@ const DEFAULT_REELS: Reel[] = [
     location: "Old Rajinder Nagar",
     views: "",
     category: "Buy / Rent",
-    thumbnail: "",
+    type: "living",
   },
   {
     id: "DG0fTJDJagC",
@@ -26,7 +33,7 @@ const DEFAULT_REELS: Reel[] = [
     location: "Old Rajinder Nagar",
     views: "",
     category: "PG / Hostel",
-    thumbnail: "",
+    type: "girls",
   },
   {
     id: "DGw2yeQprZJ",
@@ -34,7 +41,7 @@ const DEFAULT_REELS: Reel[] = [
     location: "Karol Bagh",
     views: "",
     category: "Commercial",
-    thumbnail: "",
+    type: "commercial",
   },
   {
     id: "DGpE_UOzw-s",
@@ -42,72 +49,16 @@ const DEFAULT_REELS: Reel[] = [
     location: "New Rajinder Nagar",
     views: "",
     category: "Buy / Rent",
-    thumbnail: "",
+    type: "living",
   },
 ];
 
-function ReelCard({
-  reel,
-  onClick,
-}: {
-  reel: Reel;
-  onClick: (id: string, title: string) => void;
-}) {
-  const thumbnailUrl = `https://www.instagram.com/p/${reel.id}/media/?size=l`;
-
-  return (
-    <button
-      key={reel.id}
-      onClick={() => onClick(reel.id, reel.title)}
-      className="group relative flex flex-col w-[220px] sm:w-[250px] shrink-0 snap-start overflow-hidden rounded-2xl border border-border/80 bg-card shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:shadow-luxe text-left cursor-pointer"
-    >
-      {/* Aspect Ratio 9/16 Card */}
-      <div className="relative aspect-[9/16] w-full overflow-hidden bg-muted">
-        <img
-          src={reel.thumbnail || thumbnailUrl}
-          alt={reel.title}
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-          onError={(e) => {
-            // Fallback to oEmbed thumbnail if direct media fails
-            const target = e.currentTarget;
-            if (!target.dataset.fallback) {
-              target.dataset.fallback = "1";
-              target.src = `https://ws.audioscrobbler.com/2.0/`; // trigger next fallback
-            }
-          }}
-        />
-
-        {/* Gradient wash */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/20" />
-
-        {/* Category Badge (top right) */}
-        {reel.category && (
-          <div className="absolute right-3 top-3 rounded bg-[#C49545] px-2.5 py-1 text-[9px] font-extrabold uppercase tracking-wider text-white">
-            {reel.category}
-          </div>
-        )}
-
-        {/* Play Button Overlay */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white border border-white/30 transition-all duration-300 group-hover:bg-[#C49545] group-hover:border-[#C49545] group-hover:scale-110 shadow-md">
-            <Play className="h-5 w-5 fill-current translate-x-0.5" />
-          </div>
-        </div>
-
-        {/* Title & Location details */}
-        <div className="absolute bottom-4 left-3 right-3 text-left">
-          {reel.location && (
-            <span className="text-[9px] font-bold uppercase tracking-wider text-[#C49545]">
-              {reel.location}
-            </span>
-          )}
-          <h3 className="text-xs font-bold text-white mt-1 leading-snug line-clamp-2 group-hover:text-[#C49545] transition-colors duration-200">
-            {reel.title}
-          </h3>
-        </div>
-      </div>
-    </button>
-  );
+function getThumb(type: string, thumbnail?: string): string {
+  if (thumbnail) return thumbnail;
+  if (type === "girls") return girlsPgImg;
+  if (type === "commercial") return commercialImg;
+  if (type === "office") return officeImg;
+  return livingRoomImg;
 }
 
 export function VideoSection() {
@@ -130,7 +81,8 @@ export function VideoSection() {
               location: String(item.location ?? ""),
               views: String(item.views ?? ""),
               category: String(item.category ?? ""),
-              thumbnail: String(item.thumbnail ?? ""),
+              type: String(item.type ?? "living"),
+              thumbnail: item.thumbnail ? String(item.thumbnail) : undefined,
             })
           );
           setReels(mapped);
@@ -167,21 +119,63 @@ export function VideoSection() {
           </p>
         </div>
 
-        {/* Reels Horizontal Scrollable Carousel */}
-        <div className="flex gap-5 overflow-x-auto pb-6 snap-x snap-mandatory max-w-full no-scrollbar justify-center">
+        {/* Reels Grid — max 4 cards, centered */}
+        <div className="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory no-scrollbar justify-center flex-wrap md:flex-nowrap">
           {reels.map((reel) => (
-            <ReelCard
+            <button
               key={reel.id}
-              reel={reel}
-              onClick={(id, title) => {
-                setActiveReelId(id);
-                setActiveReelTitle(title);
+              onClick={() => {
+                setActiveReelId(reel.id);
+                setActiveReelTitle(reel.title);
               }}
-            />
+              className="group relative flex flex-col w-[220px] sm:w-[240px] shrink-0 snap-start overflow-hidden rounded-2xl border border-border/80 bg-card shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:shadow-luxe text-left cursor-pointer"
+            >
+              <div className="relative aspect-[9/16] w-full overflow-hidden bg-muted">
+                <img
+                  src={getThumb(reel.type, reel.thumbnail)}
+                  alt={reel.title}
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+
+                {/* Gradient wash */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/20" />
+
+                {/* Instagram Reels icon top-left */}
+                <div className="absolute left-3 top-3 flex items-center gap-1">
+                  <Instagram className="h-4 w-4 text-white drop-shadow" />
+                </div>
+
+                {/* Category Badge top-right */}
+                {reel.category && (
+                  <div className="absolute right-3 top-3 rounded bg-[#C49545] px-2.5 py-1 text-[9px] font-extrabold uppercase tracking-wider text-white">
+                    {reel.category}
+                  </div>
+                )}
+
+                {/* Play Button */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white border border-white/30 transition-all duration-300 group-hover:bg-[#C49545] group-hover:border-[#C49545] group-hover:scale-110 shadow-md">
+                    <Play className="h-6 w-6 fill-current translate-x-0.5" />
+                  </div>
+                </div>
+
+                {/* Location + Title */}
+                <div className="absolute bottom-4 left-3 right-3 text-left">
+                  {reel.location && (
+                    <span className="text-[9px] font-bold uppercase tracking-wider text-[#C49545]">
+                      {reel.location}
+                    </span>
+                  )}
+                  <h3 className="text-xs font-bold text-white mt-1 leading-snug line-clamp-2 group-hover:text-[#C49545] transition-colors duration-200">
+                    {reel.title}
+                  </h3>
+                </div>
+              </div>
+            </button>
           ))}
         </div>
 
-        {/* Social CTA Button */}
+        {/* View All on Instagram CTA */}
         <div className="mt-8 md:mt-12 text-center">
           <a
             href={BRAND.socials.instagram}
@@ -194,18 +188,17 @@ export function VideoSection() {
         </div>
       </div>
 
-      {/* Lightbox Video Player Modal */}
+      {/* Lightbox — real Instagram reel embed */}
       {activeReelId && (
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
           onClick={() => setActiveReelId(null)}
         >
-          {/* Modal Container */}
           <div
             className="relative w-full max-w-[360px] aspect-[9/16] bg-black rounded-3xl overflow-hidden shadow-2xl border border-white/10 flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close Button */}
+            {/* Close */}
             <button
               onClick={() => setActiveReelId(null)}
               className="absolute top-4 right-4 z-[110] flex h-10 w-10 items-center justify-center rounded-full bg-black/60 text-white hover:bg-[#C49545] border border-white/10 transition-colors cursor-pointer"
@@ -214,20 +207,18 @@ export function VideoSection() {
               <X className="h-5 w-5" />
             </button>
 
-            {/* Embedded Instagram Reel Iframe */}
-            <div className="flex-1 w-full h-full relative">
-              <iframe
-                src={`https://www.instagram.com/reel/${activeReelId}/embed/`}
-                className="w-full h-full border-none"
-                frameBorder="0"
-                scrolling="no"
-                allowFullScreen
-                title={activeReelTitle}
-              />
-            </div>
+            {/* Real Instagram Reel embed */}
+            <iframe
+              src={`https://www.instagram.com/reel/${activeReelId}/embed/`}
+              className="w-full h-full border-none"
+              frameBorder="0"
+              scrolling="no"
+              allowFullScreen
+              title={activeReelTitle}
+            />
 
-            {/* Bottom Redirect Action */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-[110] w-[90%] text-center">
+            {/* Watch on Instagram */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-[110] w-[90%]">
               <a
                 href={`https://www.instagram.com/reel/${activeReelId}`}
                 target="_blank"

@@ -30,5 +30,21 @@
     "views": "",
     "category": "Buy / Rent",
     "type": "living"
+  },
+  {
+    "id": "DGkwy39p0y9",
+    "title": "Property Tour",
+    "location": "Old Rajinder Nagar",
+    "views": "",
+    "category": "PG / Hostel",
+    "type": "girls"
+  },
+  {
+    "id": "DGf8hCnTAt8",
+    "title": "Property Tour",
+    "location": "Karol Bagh",
+    "views": "",
+    "category": "Commercial",
+    "type": "office"
   }
 ]
