@@ -19,38 +19,30 @@ interface Reel {
 }
 
 const DEFAULT_REELS: Reel[] = [
-  {
-    id: "DawcuL8voQY",
-    title: "Property Tour",
-    location: "Old Rajinder Nagar",
-    views: "1.7K",
-    category: "Buy / Rent",
-    type: "living",
-  },
-  {
-    id: "DauHx32vobY",
-    title: "Property Tour",
-    location: "Old Rajinder Nagar",
-    views: "495",
-    category: "PG / Hostel",
-    type: "girls",
-  },
-  {
-    id: "DarKGrMP6y-",
-    title: "Property Tour",
-    location: "Karol Bagh",
-    views: "1.3K",
-    category: "Commercial",
-    type: "commercial",
-  },
-  {
-    id: "DanCQo5vGr6",
-    title: "Property Tour",
-    location: "New Rajinder Nagar",
-    views: "232",
-    category: "Buy / Rent",
-    type: "living",
-  },
+  { id: "DawcuL8voQY", title: "Property Tour", location: "Old Rajinder Nagar", views: "1.7K", category: "Buy / Rent", type: "living" },
+  { id: "DZ_yNPYPd6V", title: "Property Tour", location: "Old Rajinder Nagar", views: "1.6K", category: "Buy / Rent", type: "living" },
+  { id: "DZ96F8NMF46", title: "Property Tour", location: "New Rajinder Nagar", views: "1.4K", category: "Buy / Rent", type: "living" },
+  { id: "DZ8_tRBvxZW", title: "Property Tour", location: "Karol Bagh", views: "1.5K", category: "Commercial", type: "commercial" },
+  { id: "DZzVju7vdhh", title: "Property Tour", location: "Old Rajinder Nagar", views: "1.4K", category: "Buy / Rent", type: "living" },
+  { id: "DZz-H9hP_tH", title: "Property Tour", location: "Karol Bagh", views: "1.4K", category: "PG / Hostel", type: "girls" },
+  { id: "DZ_wwabvpEB", title: "Property Tour", location: "New Rajinder Nagar", views: "1.4K", category: "Buy / Rent", type: "living" },
+  { id: "DarKGrMP6y-", title: "Property Tour", location: "Pusa Road", views: "1.3K", category: "Commercial", type: "commercial" },
+  { id: "DaJ57Fev3ag", title: "Property Tour", location: "Old Rajinder Nagar", views: "1.3K", category: "Buy / Rent", type: "living" },
+  { id: "DaaPh6Av0R4", title: "Property Tour", location: "Karol Bagh", views: "1.3K", category: "Commercial", type: "office" },
+  { id: "DY4dTU9P2Xj", title: "Property Tour", location: "New Rajinder Nagar", views: "1.4K", category: "Buy / Rent", type: "living" },
+  { id: "DYy8dchPndt", title: "Property Tour", location: "Old Rajinder Nagar", views: "1.2K", category: "PG / Hostel", type: "girls" },
+  { id: "DauHx32vobY", title: "Property Tour", location: "Old Rajinder Nagar", views: "495", category: "PG / Hostel", type: "girls" },
+  { id: "DaeYz2yPwbE", title: "Property Tour", location: "Karol Bagh", views: "680", category: "Commercial", type: "commercial" },
+  { id: "DaChV6tvzf6", title: "Property Tour", location: "New Rajinder Nagar", views: "541", category: "Buy / Rent", type: "living" },
+  { id: "DY8gMDzPOCl", title: "Property Tour", location: "Old Rajinder Nagar", views: "508", category: "Buy / Rent", type: "living" },
+  { id: "DacIeioPU_v", title: "Property Tour", location: "Karol Bagh", views: "376", category: "PG / Hostel", type: "girls" },
+  { id: "DaCggL1v1i2", title: "Property Tour", location: "Old Rajinder Nagar", views: "352", category: "Buy / Rent", type: "living" },
+  { id: "DahjR8mPrKN", title: "Property Tour", location: "New Rajinder Nagar", views: "331", category: "Commercial", type: "commercial" },
+  { id: "Day9BN0PDee", title: "Property Tour", location: "Old Rajinder Nagar", views: "298", category: "Buy / Rent", type: "living" },
+  { id: "DanCQo5vGr6", title: "Property Tour", location: "Karol Bagh", views: "232", category: "PG / Hostel", type: "girls" },
+  { id: "Da0LxiQv880", title: "Property Tour", location: "Old Rajinder Nagar", views: "218", category: "Buy / Rent", type: "living" },
+  { id: "DY6IG6NPCKu", title: "Property Tour", location: "New Rajinder Nagar", views: "391", category: "Buy / Rent", type: "living" },
+  { id: "DY0xUOGPvvM", title: "Property Tour", location: "Karol Bagh", views: "435", category: "Commercial", type: "office" },
 ];
 
 function getThumb(type: string, thumbnail?: string): string {
@@ -74,7 +66,7 @@ export function VideoSection() {
       })
       .then((data) => {
         if (Array.isArray(data) && data.length > 0) {
-          const mapped: Reel[] = data.slice(0, 4).map(
+          const mapped: Reel[] = data.map(
             (item: Record<string, unknown>) => ({
               id: String(item.id ?? ""),
               title: String(item.title ?? "Property Tour"),
@@ -119,8 +111,8 @@ export function VideoSection() {
           </p>
         </div>
 
-        {/* Reels Grid — max 4 cards, centered */}
-        <div className="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory no-scrollbar justify-center flex-wrap md:flex-nowrap">
+        {/* All Reels — horizontally scrollable carousel */}
+        <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory no-scrollbar">
           {reels.map((reel) => (
             <button
               key={reel.id}
