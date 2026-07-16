@@ -1,54 +1,117 @@
 import { useState, useEffect } from "react";
-import { Play, Instagram, X, Eye } from "lucide-react";
+import { Play, Instagram, X } from "lucide-react";
 import { BRAND } from "@/lib/brand";
 
-// Local image thumbnails for the property reels
-import livingRoomImg from "@/assets/gallery-living.webp";
-import girlsPgImg from "@/assets/girls-premium-1.png";
-import commercialImg from "@/assets/commercial-metro-facing-1.png";
-import officeImg from "@/assets/office-pusa-road-1.jpg";
+interface Reel {
+  id: string;
+  title: string;
+  location: string;
+  views: string;
+  category: string;
+  thumbnail: string;
+}
 
-const DEFAULT_REELS = [
+const DEFAULT_REELS: Reel[] = [
   {
-    id: "DawcuL8voQY",
-    title: "Luxury 3BHK Builder Floor Walkthrough Tour",
+    id: "DHAvBGhpa4A",
+    title: "Property Tour",
     location: "Old Rajinder Nagar",
-    views: "12.4K",
+    views: "",
     category: "Buy / Rent",
-    thumbnail: livingRoomImg,
-    type: "living",
+    thumbnail: "",
   },
   {
-    id: "DauHx32vobY",
-    title: "Premium Girls PG & Hostel Accommodation Room Tour",
-    location: "Near Karol Bagh Metro",
-    views: "8.2K",
+    id: "DG0fTJDJagC",
+    title: "Property Tour",
+    location: "Old Rajinder Nagar",
+    views: "",
     category: "PG / Hostel",
-    thumbnail: girlsPgImg,
-    type: "girls",
+    thumbnail: "",
   },
   {
-    id: "DarKGrMP6y-",
-    title: "Metro Facing Premium Commercial Space for Rent",
-    location: "Pusa Road",
-    views: "5.7K",
+    id: "DGw2yeQprZJ",
+    title: "Property Tour",
+    location: "Karol Bagh",
+    views: "",
     category: "Commercial",
-    thumbnail: commercialImg,
-    type: "commercial",
+    thumbnail: "",
   },
   {
-    id: "DanCQo5vGr6",
-    title: "Premium Corporate Office Space Tour",
-    location: "Karol Bagh Desk",
-    views: "9.1K",
-    category: "Commercial",
-    thumbnail: officeImg,
-    type: "office",
+    id: "DGpE_UOzw-s",
+    title: "Property Tour",
+    location: "New Rajinder Nagar",
+    views: "",
+    category: "Buy / Rent",
+    thumbnail: "",
   },
-] as const;
+];
+
+function ReelCard({
+  reel,
+  onClick,
+}: {
+  reel: Reel;
+  onClick: (id: string, title: string) => void;
+}) {
+  const thumbnailUrl = `https://www.instagram.com/p/${reel.id}/media/?size=l`;
+
+  return (
+    <button
+      key={reel.id}
+      onClick={() => onClick(reel.id, reel.title)}
+      className="group relative flex flex-col w-[220px] sm:w-[250px] shrink-0 snap-start overflow-hidden rounded-2xl border border-border/80 bg-card shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:shadow-luxe text-left cursor-pointer"
+    >
+      {/* Aspect Ratio 9/16 Card */}
+      <div className="relative aspect-[9/16] w-full overflow-hidden bg-muted">
+        <img
+          src={reel.thumbnail || thumbnailUrl}
+          alt={reel.title}
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          onError={(e) => {
+            // Fallback to oEmbed thumbnail if direct media fails
+            const target = e.currentTarget;
+            if (!target.dataset.fallback) {
+              target.dataset.fallback = "1";
+              target.src = `https://ws.audioscrobbler.com/2.0/`; // trigger next fallback
+            }
+          }}
+        />
+
+        {/* Gradient wash */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/20" />
+
+        {/* Category Badge (top right) */}
+        {reel.category && (
+          <div className="absolute right-3 top-3 rounded bg-[#C49545] px-2.5 py-1 text-[9px] font-extrabold uppercase tracking-wider text-white">
+            {reel.category}
+          </div>
+        )}
+
+        {/* Play Button Overlay */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white border border-white/30 transition-all duration-300 group-hover:bg-[#C49545] group-hover:border-[#C49545] group-hover:scale-110 shadow-md">
+            <Play className="h-5 w-5 fill-current translate-x-0.5" />
+          </div>
+        </div>
+
+        {/* Title & Location details */}
+        <div className="absolute bottom-4 left-3 right-3 text-left">
+          {reel.location && (
+            <span className="text-[9px] font-bold uppercase tracking-wider text-[#C49545]">
+              {reel.location}
+            </span>
+          )}
+          <h3 className="text-xs font-bold text-white mt-1 leading-snug line-clamp-2 group-hover:text-[#C49545] transition-colors duration-200">
+            {reel.title}
+          </h3>
+        </div>
+      </div>
+    </button>
+  );
+}
 
 export function VideoSection() {
-  const [reels, setReels] = useState<Record<string, unknown>[]>(DEFAULT_REELS as unknown as Record<string, unknown>[]);
+  const [reels, setReels] = useState<Reel[]>(DEFAULT_REELS);
   const [activeReelId, setActiveReelId] = useState<string | null>(null);
   const [activeReelTitle, setActiveReelTitle] = useState("");
 
@@ -60,21 +123,21 @@ export function VideoSection() {
       })
       .then((data) => {
         if (Array.isArray(data) && data.length > 0) {
-          const mapped = data.slice(0, 4).map((item: Record<string, unknown>) => {
-            let thumbnail = livingRoomImg;
-            if (item.type === "girls") thumbnail = girlsPgImg;
-            else if (item.type === "commercial") thumbnail = commercialImg;
-            else if (item.type === "office") thumbnail = officeImg;
-            return {
-              ...item,
-              thumbnail,
-            };
-          });
+          const mapped: Reel[] = data.slice(0, 4).map(
+            (item: Record<string, unknown>) => ({
+              id: String(item.id ?? ""),
+              title: String(item.title ?? "Property Tour"),
+              location: String(item.location ?? ""),
+              views: String(item.views ?? ""),
+              category: String(item.category ?? ""),
+              thumbnail: String(item.thumbnail ?? ""),
+            })
+          );
           setReels(mapped);
         }
       })
       .catch((err) => {
-        console.warn("Could not auto-sync reels from reels.json, using local fallback:", err);
+        console.warn("Could not load reels.json, using defaults:", err);
       });
   }, []);
 
@@ -99,71 +162,22 @@ export function VideoSection() {
             <span className="h-0.5 w-12 bg-[#C49545]/40" />
           </div>
           <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed font-medium">
-            Watch high-definition walkthrough tours and Reels of our latest flats, PGs, and
-            commercial spaces. Click on any card below to play the video.
+            Watch high-definition walkthrough tours and Reels of our latest
+            flats, PGs, and commercial spaces. Click on any card below to play.
           </p>
         </div>
 
         {/* Reels Horizontal Scrollable Carousel */}
-        <div className="flex gap-5 overflow-x-auto pb-6 scrollbar-thin snap-x snap-mandatory max-w-full no-scrollbar">
+        <div className="flex gap-5 overflow-x-auto pb-6 snap-x snap-mandatory max-w-full no-scrollbar justify-center">
           {reels.map((reel) => (
-            <button
+            <ReelCard
               key={reel.id}
-              onClick={() => {
-                setActiveReelId(reel.id);
-                setActiveReelTitle(reel.title);
+              reel={reel}
+              onClick={(id, title) => {
+                setActiveReelId(id);
+                setActiveReelTitle(title);
               }}
-              className="group relative flex flex-col w-[220px] sm:w-[250px] shrink-0 snap-start overflow-hidden rounded-2xl border border-border/80 bg-card shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:shadow-luxe text-left cursor-pointer"
-            >
-              {/* Aspect Ratio 9/16 Card */}
-              <div className="relative aspect-[9/16] w-full overflow-hidden bg-muted">
-                <img
-                  src={
-                    reel.thumbnail ||
-                    (reel.type === "girls"
-                      ? girlsPgImg
-                      : reel.type === "commercial"
-                        ? commercialImg
-                        : reel.type === "office"
-                          ? officeImg
-                          : livingRoomImg)
-                  }
-                  alt={reel.title}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-
-                {/* Gradient wash */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/20" />
-
-                {/* Views Counter (top left) */}
-                <div className="absolute left-3 top-3 flex items-center gap-1 rounded-full bg-black/60 px-2.5 py-1 text-[9px] font-extrabold uppercase tracking-wide text-white border border-white/10">
-                  <Eye className="h-3 w-3 text-[#C49545]" />
-                  <span>{reel.views} Views</span>
-                </div>
-
-                {/* Category Badge (top right) */}
-                <div className="absolute right-3 top-3 rounded bg-[#C49545] px-2.5 py-1 text-[9px] font-extrabold uppercase tracking-wider text-white">
-                  {reel.category}
-                </div>
-
-                {/* Play Button Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white border border-white/30 transition-all duration-300 group-hover:bg-[#C49545] group-hover:border-[#C49545] group-hover:scale-110 shadow-md">
-                    <Play className="h-5 w-5 fill-current translate-x-0.5" />
-                  </div>
-                </div>
-
-                {/* Title & Location details */}
-                <div className="absolute bottom-4 left-3 right-3 text-left">
-                  <span className="text-[9px] font-bold uppercase tracking-wider text-[#C49545]">
-                    {reel.location}
-                  </span>
-                  <h3 className="text-xs font-bold text-white mt-1 leading-snug line-clamp-2 group-hover:text-[#C49545] transition-colors duration-200">
-                    {reel.title}
-                  </h3>
-                </div>
-              </div>
-            </button>
+            />
           ))}
         </div>
 
@@ -189,7 +203,7 @@ export function VideoSection() {
           {/* Modal Container */}
           <div
             className="relative w-full max-w-[360px] aspect-[9/16] bg-black rounded-3xl overflow-hidden shadow-2xl border border-white/10 flex flex-col"
-            onClick={(e) => e.stopPropagation()} // Prevent close on modal click
+            onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
@@ -203,7 +217,7 @@ export function VideoSection() {
             {/* Embedded Instagram Reel Iframe */}
             <div className="flex-1 w-full h-full relative">
               <iframe
-                src={`https://www.instagram.com/p/${activeReelId}/embed/`}
+                src={`https://www.instagram.com/reel/${activeReelId}/embed/`}
                 className="w-full h-full border-none"
                 frameBorder="0"
                 scrolling="no"
