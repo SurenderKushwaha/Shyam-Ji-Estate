@@ -1,4 +1,5 @@
-name: Sync Instagram Reels
+
+              name: Sync Instagram Reels
 
 on:
   schedule:
