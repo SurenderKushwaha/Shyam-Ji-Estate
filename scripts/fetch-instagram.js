@@ -90,7 +90,8 @@ async function main() {
     `https://api.apify.com/v2/acts/apify~instagram-reel-scraper/runs?token=${APIFY_TOKEN}`,
     { method: "POST", headers: { "Content-Type": "application/json" } },
     {
-      directUrls: [`https://www.instagram.com/${INSTAGRAM_USERNAME}/reels/`],
+      username: [INSTAGRAM_USERNAME],
+      resultsType: "reels",
       resultsLimit: 30,
       proxy: { useApifyProxy: true, apifyProxyGroups: ["RESIDENTIAL"] },
     }
