@@ -1,132 +1,165 @@
-import fs from "fs";
-import path from "path";
-import https from "https";
-import { fileURLToPath } from "url";
+// scripts/fetch-instagram.js
+// Fetches latest reels from @shyamjiestate via Apify and updates public/reels.json
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const https = require("https");
+const fs = require("fs");
+const path = require("path");
 
 const APIFY_TOKEN = process.env.APIFY_TOKEN;
-const IG_USERNAME = "shyamji_estate";
-const REELS_JSON_PATH = path.join(__dirname, "../public/reels.json");
-const ASSETS_DIR = path.join(__dirname, "../public/ig-assets");
+const INSTAGRAM_USERNAME = "shyamjiestate";
+const OUTPUT_FILE = path.join(__dirname, "../public/reels.json");
 
-// Ensure assets directory exists
-if (!fs.existsSync(ASSETS_DIR)) {
-  fs.mkdirSync(ASSETS_DIR, { recursive: true });
+if (!APIFY_TOKEN) {
+  console.error("❌ APIFY_TOKEN environment variable is not set!");
+  process.exit(1);
 }
 
-// Utility to download an image
-const downloadImage = (url, filepath) => {
+// ── Helper: make HTTPS request ──────────────────────────────────────────────
+function httpsRequest(url, options = {}, body = null) {
   return new Promise((resolve, reject) => {
-    https
-      .get(url, (res) => {
-        if (res.statusCode === 200) {
-          res
-            .pipe(fs.createWriteStream(filepath))
-            .on("error", reject)
-            .once("close", () => resolve(filepath));
-        } else {
-          res.resume();
-          reject(new Error(`Request Failed With a Status Code: ${res.statusCode}`));
+    const req = https.request(url, options, (res) => {
+      let data = "";
+      res.on("data", (chunk) => (data += chunk));
+      res.on("end", () => {
+        try {
+          resolve({ status: res.statusCode, body: JSON.parse(data) });
+        } catch {
+          resolve({ status: res.statusCode, body: data });
         }
-      })
-      .on("error", reject);
+      });
+    });
+    req.on("error", reject);
+    if (body) req.write(JSON.stringify(body));
+    req.end();
   });
-};
+}
 
-// Utility to format numbers (e.g., 12400 -> 12.4K)
-const formatViews = (views) => {
-  if (views >= 1000000) return (views / 1000000).toFixed(1) + "M";
-  if (views >= 1000) return (views / 1000).toFixed(1) + "K";
-  return views.toString();
-};
+// ── Helper: sleep ────────────────────────────────────────────────────────────
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
-async function fetchInstagramReels() {
-  if (!APIFY_TOKEN) {
-    console.warn("⚠️ APIFY_TOKEN is not set. Skipping Instagram fetch.");
-    console.log(
-      "Please create a free account on Apify, get your API token, and add it to your GitHub Repository Secrets as APIFY_TOKEN.",
-    );
-    return;
-  }
+async function main() {
+  console.log(`🔍 Starting Instagram reel fetch for @${INSTAGRAM_USERNAME}...`);
 
-  console.log(`Fetching latest reels for @${IG_USERNAME}...`);
-
-  try {
-    // We use the apify/instagram-profile-scraper actor
-    const apifyUrl = `https://api.apify.com/v2/acts/apify~instagram-profile-scraper/run-sync-get-dataset-items?token=${APIFY_TOKEN}`;
-
-    const response = await fetch(apifyUrl, {
+  // 1. Start Apify actor run
+  console.log("🚀 Starting Apify actor...");
+  const startRes = await httpsRequest(
+    `https://api.apify.com/v2/acts/apify~instagram-reel-scraper/runs?token=${APIFY_TOKEN}`,
+    {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        usernames: [IG_USERNAME],
-        resultsLimit: 6, // We only need the latest 4, fetching 6 just in case
-      }),
+    },
+    {
+      directUrls: [`https://www.instagram.com/${INSTAGRAM_USERNAME}/reels/`],
+      resultsLimit: 12,
+      proxy: { useApifyProxy: true, apifyProxyGroups: ["RESIDENTIAL"] },
+    }
+  );
+
+  if (startRes.status !== 201) {
+    console.error("❌ Failed to start actor:", JSON.stringify(startRes.body));
+    process.exit(1);
+  }
+
+  const runId = startRes.body?.data?.id;
+  const datasetId = startRes.body?.data?.defaultDatasetId;
+  console.log(`✅ Actor run started. Run ID: ${runId}`);
+
+  // 2. Poll until finished (max 8 minutes)
+  console.log("⏳ Waiting for actor to finish...");
+  let status = "RUNNING";
+  for (let i = 0; i < 48; i++) {
+    await sleep(10000); // wait 10 seconds between polls
+    const pollRes = await httpsRequest(
+      `https://api.apify.com/v2/actor-runs/${runId}?token=${APIFY_TOKEN}`
+    );
+    status = pollRes.body?.data?.status;
+    console.log(`   Status: ${status}`);
+    if (status === "SUCCEEDED" || status === "FAILED" || status === "ABORTED") {
+      break;
+    }
+  }
+
+  if (status !== "SUCCEEDED") {
+    console.error(`❌ Actor run ended with status: ${status}`);
+    process.exit(1);
+  }
+
+  // 3. Fetch results from dataset
+  console.log("📦 Fetching results from dataset...");
+  const dataRes = await httpsRequest(
+    `https://api.apify.com/v2/datasets/${datasetId}/items?token=${APIFY_TOKEN}&clean=true`
+  );
+
+  const items = Array.isArray(dataRes.body) ? dataRes.body : [];
+  if (items.length === 0) {
+    console.warn("⚠️ No items returned. Keeping existing reels.json.");
+    process.exit(0);
+  }
+
+  console.log(`✅ Got ${items.length} items from Apify.`);
+
+  // 4. Filter ONLY reels (not photo posts)
+  const reels = items
+    .filter((item) => item.type === "Reel" || item.url?.includes("/reel/"))
+    .slice(0, 8)
+    .map((item) => {
+      // Extract shortcode from URL like https://www.instagram.com/reel/ABC123/
+      const urlMatch = item.url?.match(/\/reel\/([A-Za-z0-9_-]+)/);
+      const shortcode = urlMatch ? urlMatch[1] : item.shortCode || item.id;
+
+      return {
+        id: shortcode,
+        title: item.caption?.split("\n")[0]?.substring(0, 80) || "Property Tour",
+        location: extractLocation(item.caption || "") || "Old Rajinder Nagar",
+        views: formatViews(item.videoViewCount || item.playsCount || 0),
+        category: detectCategory(item.caption || ""),
+        thumbnail: item.displayUrl || item.thumbnailUrl || "",
+      };
     });
 
-    if (!response.ok) {
-      throw new Error(`Apify API Error: ${response.statusText}`);
-    }
-
-    const data = await response.json();
-    if (!data || data.length === 0 || !data[0].latestPosts) {
-      console.log("No posts found or rate limited.");
-      return;
-    }
-
-    // Filter only video posts (Reels)
-    const videoPosts = data[0].latestPosts.filter((post) => post.type === "Video").slice(0, 4);
-
-    const formattedReels = [];
-
-    for (const post of videoPosts) {
-      const id = post.shortCode;
-      const imageUrl = post.displayUrl;
-      const filename = `${id}.jpg`;
-      const localImagePath = path.join(ASSETS_DIR, filename);
-
-      console.log(`Downloading thumbnail for ${id}...`);
-      try {
-        await downloadImage(imageUrl, localImagePath);
-      } catch (err) {
-        console.error(`Failed to download image for ${id}:`, err.message);
-      }
-
-      // Determine category based on keywords in caption (optional)
-      const caption = post.caption || "";
-      const lowerCaption = caption.toLowerCase();
-      let category = "Buy / Rent";
-      if (lowerCaption.includes("pg") || lowerCaption.includes("hostel")) category = "PG / Hostel";
-      if (
-        lowerCaption.includes("commercial") ||
-        lowerCaption.includes("office") ||
-        lowerCaption.includes("shop")
-      )
-        category = "Commercial";
-
-      formattedReels.push({
-        id: id,
-        title: caption.split("\n")[0].slice(0, 60) + (caption.length > 60 ? "..." : ""),
-        location: data[0].fullName || "Old Rajinder Nagar", // Fallback location
-        views: formatViews(post.videoViewCount || 0),
-        category: category,
-        thumbnail: `/ig-assets/${filename}`,
-        type: "dynamic",
-      });
-    }
-
-    if (formattedReels.length > 0) {
-      fs.writeFileSync(REELS_JSON_PATH, JSON.stringify(formattedReels, null, 2));
-      console.log("✅ Successfully updated reels.json!");
-    } else {
-      console.log("No video reels found to update.");
-    }
-  } catch (error) {
-    console.error("❌ Failed to fetch Instagram reels:", error);
-    process.exit(1); // Exit with error so GitHub Action knows it failed
+  if (reels.length === 0) {
+    console.warn("⚠️ No reels found in results. Keeping existing reels.json.");
+    process.exit(0);
   }
+
+  // 5. Write to public/reels.json
+  fs.writeFileSync(OUTPUT_FILE, JSON.stringify(reels, null, 2));
+  console.log(`✅ Saved ${reels.length} reels to public/reels.json`);
+  reels.forEach((r, i) => console.log(`  ${i + 1}. [${r.id}] ${r.title}`));
 }
 
-fetchInstagramReels();
+// ── Helpers ──────────────────────────────────────────────────────────────────
+function formatViews(count) {
+  if (!count || count === 0) return "";
+  if (count >= 1000000) return `${(count / 1000000).toFixed(1)}M`;
+  if (count >= 1000) return `${(count / 1000).toFixed(1)}K`;
+  return String(count);
+}
+
+function extractLocation(caption) {
+  const lower = caption.toLowerCase();
+  if (lower.includes("old rajinder nagar") || lower.includes("old rn"))
+    return "Old Rajinder Nagar";
+  if (lower.includes("new rajinder nagar") || lower.includes("new rn"))
+    return "New Rajinder Nagar";
+  if (lower.includes("karol bagh")) return "Karol Bagh";
+  if (lower.includes("pusa road")) return "Pusa Road";
+  return "";
+}
+
+function detectCategory(caption) {
+  const lower = caption.toLowerCase();
+  if (lower.includes("pg") || lower.includes("hostel") || lower.includes("girls"))
+    return "PG / Hostel";
+  if (lower.includes("office") || lower.includes("commercial") || lower.includes("shop"))
+    return "Commercial";
+  if (lower.includes("rent")) return "Rent";
+  return "Buy / Rent";
+}
+
+main().catch((err) => {
+  console.error("❌ Fatal error:", err);
+  process.exit(1);
+});
