@@ -8,6 +8,7 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { type ReactNode } from "react";
+import { Analytics } from "@vercel/analytics/react";
 
 import appCss from "../styles.css?url";
 import { SiteHeader } from "../components/SiteHeader";
@@ -167,6 +168,7 @@ function RootComponent() {
       <SiteFooter />
       <WhatsAppFab />
       <BottomNav />
+      <Analytics />
     </QueryClientProvider>
   );
 }
