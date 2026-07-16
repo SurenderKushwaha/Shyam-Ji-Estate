@@ -12,7 +12,7 @@ export function Hero({
   onSearch: () => void;
 }) {
   return (
-    <section 
+    <section
       className="relative bg-[#0B1528] text-white pb-24 pt-16 sm:pb-28 sm:pt-20 lg:pb-32 lg:pt-24 bg-cover bg-center"
       style={{ backgroundImage: `url(${heroBuilding})` }}
     >
@@ -20,10 +20,8 @@ export function Hero({
       <div className="absolute inset-0 bg-gradient-to-b from-[#0B1528]/95 via-[#0B1528]/85 to-[#0B1528]/95 pointer-events-none" />
 
       <div className="container-x relative z-10">
-        
         {/* Left-aligned Content Column */}
         <div className="max-w-4xl text-left">
-          
           {/* Pill Tag */}
           <div className="inline-flex items-center gap-1.5 rounded-full border border-[#C49545]/40 bg-[#C49545]/10 px-3 py-1.5 text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[#C49545] mb-5">
             <Key className="h-3.5 w-3.5 text-[#C49545]" /> Real Estate Reimagined
@@ -36,20 +34,16 @@ export function Hero({
 
           {/* Subheading / Description */}
           <p className="mt-4 text-xs sm:text-sm md:text-base leading-relaxed text-gray-300 max-w-2xl font-medium">
-            Premium flats, builder floors, PGs, and commercial spaces in Old Rajinder Nagar, New Rajinder Nagar & Karol Bagh. Find your ideal home with Old Rajinder Nagar's most trusted real estate agency.
+            Premium flats, builder floors, PGs, and commercial spaces in Old Rajinder Nagar, New
+            Rajinder Nagar & Karol Bagh. Find your ideal home with Old Rajinder Nagar's most trusted
+            real estate agency.
           </p>
 
           {/* Integrated Search Widget */}
           <div className="mt-8 sm:mt-10 max-w-4xl w-full">
-            <PropertySearch
-              filters={filters}
-              onChange={onChange}
-              onSearch={onSearch}
-            />
+            <PropertySearch filters={filters} onChange={onChange} onSearch={onSearch} />
           </div>
-
         </div>
-
       </div>
 
       {/* Serving Areas Pill */}

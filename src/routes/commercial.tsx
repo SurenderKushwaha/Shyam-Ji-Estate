@@ -1,19 +1,19 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { 
-  ShieldCheck, 
-  MapPin, 
-  IndianRupee, 
-  Headphones, 
-  Search, 
-  ArrowRight, 
-  Home, 
-  Heart, 
+import {
+  ShieldCheck,
+  MapPin,
+  IndianRupee,
+  Headphones,
+  Search,
+  ArrowRight,
+  Home,
+  Heart,
   Briefcase,
   ChevronDown,
   TrendingUp,
   Star,
   Building2,
-  Phone
+  Phone,
 } from "lucide-react";
 import { useState } from "react";
 import { properties } from "@/data/properties";
@@ -27,10 +27,25 @@ export const Route = createFileRoute("/commercial")({
   head: () => ({
     meta: [
       { title: "Commercial Office Space & Shops for Rent in Old Rajinder Nagar | Shyam Ji Estate" },
-      { name: "description", content: "Find prime commercial office spaces, shops, and coaching classrooms for rent on Pusa Road, Old Rajinder Nagar, and Karol Bagh. High visibility, metro-facing locations." },
-      { name: "keywords", content: "commercial space for rent in old rajinder nagar, office space in pusa road, shop for rent in old rajinder nagar, coaching classroom for rent rajinder nagar, shyam ji estate" },
-      { property: "og:title", content: "Commercial Office Space & Shops for Rent on Pusa Road | Shyam Ji Estate" },
-      { property: "og:description", content: "Rent commercial spaces with premium frontage, stilt parking, elevator access, and metro-facing visibility on Pusa Road and Karol Bagh." },
+      {
+        name: "description",
+        content:
+          "Find prime commercial office spaces, shops, and coaching classrooms for rent on Pusa Road, Old Rajinder Nagar, and Karol Bagh. High visibility, metro-facing locations.",
+      },
+      {
+        name: "keywords",
+        content:
+          "commercial space for rent in old rajinder nagar, office space in pusa road, shop for rent in old rajinder nagar, coaching classroom for rent rajinder nagar, shyam ji estate",
+      },
+      {
+        property: "og:title",
+        content: "Commercial Office Space & Shops for Rent on Pusa Road | Shyam Ji Estate",
+      },
+      {
+        property: "og:description",
+        content:
+          "Rent commercial spaces with premium frontage, stilt parking, elevator access, and metro-facing visibility on Pusa Road and Karol Bagh.",
+      },
       { property: "og:url", content: "/commercial" },
     ],
     links: [{ rel: "canonical", href: "/commercial" }],
@@ -64,9 +79,21 @@ function CommercialPage() {
         if (type === "Office" && !titleLower.includes("office")) return false;
       }
       if (use) {
-        const usageFeat = p.detailedFeatures?.find(f => f.label.toLowerCase() === "usage")?.value.toLowerCase() || "";
-        if (use === "Retail" && !usageFeat.includes("retail") && !p.title.toLowerCase().includes("shop")) return false;
-        if (use === "Office" && !usageFeat.includes("office") && !p.title.toLowerCase().includes("office")) return false;
+        const usageFeat =
+          p.detailedFeatures?.find((f) => f.label.toLowerCase() === "usage")?.value.toLowerCase() ||
+          "";
+        if (
+          use === "Retail" &&
+          !usageFeat.includes("retail") &&
+          !p.title.toLowerCase().includes("shop")
+        )
+          return false;
+        if (
+          use === "Office" &&
+          !usageFeat.includes("office") &&
+          !p.title.toLowerCase().includes("office")
+        )
+          return false;
       }
       if (budget) {
         const amount = getPropertyNumericPrice(p.price);
@@ -91,7 +118,7 @@ function CommercialPage() {
 
   return (
     <>
-      <section 
+      <section
         className="relative bg-[#0B1528] text-white pt-16 pb-20 sm:pt-20 sm:pb-24 lg:pt-24 lg:pb-28 bg-cover bg-center border-b border-border/10"
         style={{ backgroundImage: `url(${propShop})` }}
       >
@@ -104,7 +131,8 @@ function CommercialPage() {
               Premium Spaces. Prime Locations.
             </p>
             <h1 className="font-display text-4xl sm:text-5xl font-extrabold leading-tight text-white md:text-6xl lg:text-7xl uppercase tracking-wide">
-              Commercial Spaces<br />
+              Commercial Spaces
+              <br />
               <span className="text-[#C49545]">For Your Business Growth</span>
             </h1>
             <div className="mt-4 sm:mt-5 space-y-1 text-xs sm:text-sm text-gray-300 leading-relaxed font-medium">
@@ -119,7 +147,9 @@ function CommercialPage() {
                   <ShieldCheck className="h-4.5 w-4.5" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-white">Verified</span>
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-white">
+                    Verified
+                  </span>
                   <span className="text-[8px] font-medium text-gray-400 mt-0.5">Properties</span>
                 </div>
               </div>
@@ -131,7 +161,9 @@ function CommercialPage() {
                   <MapPin className="h-4.5 w-4.5" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-white">Prime</span>
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-white">
+                    Prime
+                  </span>
                   <span className="text-[8px] font-medium text-gray-400 mt-0.5">Locations</span>
                 </div>
               </div>
@@ -143,7 +175,9 @@ function CommercialPage() {
                   <IndianRupee className="h-4 w-4" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-white">Best Value</span>
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-white">
+                    Best Value
+                  </span>
                   <span className="text-[8px] font-medium text-gray-400 mt-0.5">Deals</span>
                 </div>
               </div>
@@ -155,7 +189,9 @@ function CommercialPage() {
                   <Headphones className="h-4.5 w-4.5" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-white">Dedicated</span>
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-white">
+                    Dedicated
+                  </span>
                   <span className="text-[8px] font-medium text-gray-400 mt-0.5">Support</span>
                 </div>
               </div>
@@ -204,7 +240,7 @@ function CommercialPage() {
               options={[
                 { value: "latest", label: "Latest First" },
                 { value: "price-asc", label: "Price: Low to High" },
-                { value: "price-desc", label: "Price: High to Low" }
+                { value: "price-desc", label: "Price: High to Low" },
               ]}
               placeholder="Sort by"
               className="w-[170px]"
@@ -215,8 +251,15 @@ function CommercialPage() {
         <div className="mt-8 grid gap-6 grid-cols-1 lg:grid-cols-2 max-w-5xl mx-auto">
           {sortedList.length > 0 ? (
             sortedList.map((p) => (
-              <article key={p.id} className="group overflow-hidden rounded-2xl bg-white border border-[#C49545]/15 shadow-[0_8px_30px_rgba(0,0,0,0.02)] transition-all duration-300 hover:-translate-y-1 hover:shadow-luxe flex flex-col md:flex-row h-full min-h-[220px]">
-                <Link to="/properties/$id" params={{ id: p.id }} className="relative w-full md:w-[40%] aspect-[4/3] md:aspect-auto md:h-full min-h-[200px] overflow-hidden block">
+              <article
+                key={p.id}
+                className="group overflow-hidden rounded-2xl bg-white border border-[#C49545]/15 shadow-[0_8px_30px_rgba(0,0,0,0.02)] transition-all duration-300 hover:-translate-y-1 hover:shadow-luxe flex flex-col md:flex-row h-full min-h-[220px]"
+              >
+                <Link
+                  to="/properties/$id"
+                  params={{ id: p.id }}
+                  className="relative w-full md:w-[40%] aspect-[4/3] md:aspect-auto md:h-full min-h-[200px] overflow-hidden block"
+                >
                   <img
                     src={p.image}
                     alt={p.title}
@@ -233,7 +276,11 @@ function CommercialPage() {
 
                 <div className="p-6 flex flex-col justify-between flex-grow md:w-[60%]">
                   <div>
-                    <Link to="/properties/$id" params={{ id: p.id }} className="hover:text-[#C49545] transition block">
+                    <Link
+                      to="/properties/$id"
+                      params={{ id: p.id }}
+                      className="hover:text-[#C49545] transition block"
+                    >
                       <h3 className="font-display text-lg md:text-xl font-extrabold text-[#0B1528] leading-tight">
                         {p.title}
                       </h3>
@@ -270,9 +317,16 @@ function CommercialPage() {
             ))
           ) : (
             <div className="col-span-full text-center py-12 bg-white rounded-2xl border border-dashed border-border/60">
-              <p className="text-sm font-bold text-muted-foreground uppercase">No commercial spaces match your filter criteria.</p>
+              <p className="text-sm font-bold text-muted-foreground uppercase">
+                No commercial spaces match your filter criteria.
+              </p>
               <button
-                onClick={() => { setLocation(""); setType(""); setUse(""); setBudget(""); }}
+                onClick={() => {
+                  setLocation("");
+                  setType("");
+                  setUse("");
+                  setBudget("");
+                }}
                 className="mt-4 inline-flex items-center gap-1 text-xs font-bold uppercase text-[#C49545] hover:underline"
               >
                 Reset Filters
@@ -280,7 +334,6 @@ function CommercialPage() {
             </div>
           )}
         </div>
-
       </section>
 
       {/* Requirement Form Section - Restyled full width */}
@@ -293,35 +346,38 @@ function CommercialPage() {
               </p>
               <div className="w-8 h-0.5 bg-[#C49545] mt-2"></div>
               <h2 className="mt-6 font-display text-4xl md:text-5xl font-extrabold text-[#0B1528] leading-tight">
-                Find Your Perfect<br />
+                Find Your Perfect
+                <br />
                 <span className="text-[#C49545]">Commercial Space</span>
               </h2>
               <p className="mt-4 text-sm md:text-base text-muted-foreground leading-relaxed max-w-md">
-                High-footfall shops and offices in the heart of <strong className="text-[#0B1528]">Old Rajinder Nagar</strong> and <strong className="text-[#0B1528]">Karol Bagh</strong>.
+                High-footfall shops and offices in the heart of{" "}
+                <strong className="text-[#0B1528]">Old Rajinder Nagar</strong> and{" "}
+                <strong className="text-[#0B1528]">Karol Bagh</strong>.
               </p>
-              
+
               {/* Pillars row */}
               <div className="mt-8 grid grid-cols-4 divide-x divide-gray-200 border-t border-gray-100 py-8 text-center max-w-2xl">
                 {[
                   {
                     icon: <MapPin className="h-5 w-5 text-[#C49545]" />,
                     title: "Prime Locations",
-                    desc: "Strategic locations in Old Rajinder Nagar and Karol Bagh."
+                    desc: "Strategic locations in Old Rajinder Nagar and Karol Bagh.",
                   },
                   {
                     icon: <TrendingUp className="h-5 w-5 text-[#C49545]" />,
                     title: "High Footfall",
-                    desc: "Excellent visibility and high footfall areas."
+                    desc: "Excellent visibility and high footfall areas.",
                   },
                   {
                     icon: <Star className="h-5 w-5 text-[#C49545]" />,
                     title: "Best Deals",
-                    desc: "Competitive prices and the best available options."
+                    desc: "Competitive prices and the best available options.",
                   },
                   {
                     icon: <ShieldCheck className="h-5 w-5 text-[#C49545]" />,
                     title: "Safe & Secure",
-                    desc: "Transparent deals and hassle-free transactions."
+                    desc: "Transparent deals and hassle-free transactions.",
                   },
                 ].map(({ icon, title, desc }) => (
                   <div key={title} className="flex flex-col items-center px-2">
@@ -338,7 +394,7 @@ function CommercialPage() {
                 ))}
               </div>
             </div>
-            
+
             {/* Need expert advice? Banner */}
             <div className="mt-8 flex items-center justify-between rounded-xl bg-[#F5EFE6]/50 border border-[#C49545]/15 p-5 max-w-xl">
               <div className="flex items-center gap-4">

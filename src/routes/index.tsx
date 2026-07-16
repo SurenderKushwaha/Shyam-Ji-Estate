@@ -12,10 +12,25 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Shyam Ji Estate | Best Property Dealer in Old Rajinder Nagar, ORN" },
-      { name: "description", content: "Shyam Ji Estate is the #1 rated real estate agency & property dealer in Old Rajinder Nagar (ORN), New Rajinder Nagar & Karol Bagh. Find premium PGs, flats, builder floors & commercial office spaces." },
-      { name: "keywords", content: "property dealer in old rajinder nagar, real estate agent in old rajinder nagar, best pg in old rajinder nagar, flats for rent in old rajinder nagar, builder floors in old rajinder nagar, shyam ji estate" },
-      { property: "og:title", content: "Shyam Ji Estate | Best Property Dealer & PG Agent in Old Rajinder Nagar" },
-      { property: "og:description", content: "The #1 real estate agent in Old Rajinder Nagar for premium builder floors, apartments, PGs, and commercial spaces. Verified direct owner listings." },
+      {
+        name: "description",
+        content:
+          "Shyam Ji Estate is the #1 rated real estate agency & property dealer in Old Rajinder Nagar (ORN), New Rajinder Nagar & Karol Bagh. Find premium PGs, flats, builder floors & commercial office spaces.",
+      },
+      {
+        name: "keywords",
+        content:
+          "property dealer in old rajinder nagar, real estate agent in old rajinder nagar, best pg in old rajinder nagar, flats for rent in old rajinder nagar, builder floors in old rajinder nagar, shyam ji estate",
+      },
+      {
+        property: "og:title",
+        content: "Shyam Ji Estate | Best Property Dealer & PG Agent in Old Rajinder Nagar",
+      },
+      {
+        property: "og:description",
+        content:
+          "The #1 real estate agent in Old Rajinder Nagar for premium builder floors, apartments, PGs, and commercial spaces. Verified direct owner listings.",
+      },
       { property: "og:url", content: "/" },
     ],
     links: [{ rel: "canonical", href: "/" }],
@@ -54,7 +69,7 @@ function Index() {
 
   const handleSearch = () => {
     const hasActiveFilters = Object.values(filters).some((val) => val !== "");
-    
+
     if (!hasActiveFilters) {
       setFilteredProperties(properties.slice(0, 4));
       setIsSearched(false);
@@ -90,7 +105,8 @@ function Index() {
         if (txLower === "buy" || txLower === "sell") {
           if (p.category !== "buy") return false;
         } else if (txLower === "rent") {
-          if (p.category !== "rent" && p.category !== "pg" && p.category !== "commercial") return false;
+          if (p.category !== "rent" && p.category !== "pg" && p.category !== "commercial")
+            return false;
         }
       }
 
@@ -123,11 +139,7 @@ function Index() {
 
   return (
     <>
-      <Hero
-        filters={filters}
-        onChange={handleFilterChange}
-        onSearch={handleSearch}
-      />
+      <Hero filters={filters} onChange={handleFilterChange} onSearch={handleSearch} />
       <VideoSection />
       <FeaturedProperties
         propertiesList={filteredProperties}

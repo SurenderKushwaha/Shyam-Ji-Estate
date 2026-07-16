@@ -1,22 +1,52 @@
-import { Home, Handshake, BedDouble, Store, Headphones, ArrowRight, ShieldCheck, MapPin, IndianRupee } from "lucide-react";
+import {
+  Home,
+  Handshake,
+  BedDouble,
+  Store,
+  Headphones,
+  ArrowRight,
+  ShieldCheck,
+  MapPin,
+  IndianRupee,
+} from "lucide-react";
 
 const services = [
-  { Icon: Home, title: "Buy Property", desc: "Find your dream home in Old Rajinder Nagar with the best deals." },
-  { Icon: Handshake, title: "Rent Property", desc: "Wide range of rental properties for families and professionals." },
-  { Icon: BedDouble, title: "PG & Hostel", desc: "Comfortable and safe PG accommodations for students & working professionals." },
-  { Icon: Store, title: "Commercial", desc: "Shops, offices and commercial spaces for your business growth." },
-  { Icon: Headphones, title: "Property Consultancy", desc: "Get expert advice and assistance for all your property needs." },
+  {
+    Icon: Home,
+    title: "Buy Property",
+    desc: "Find your dream home in Old Rajinder Nagar with the best deals.",
+  },
+  {
+    Icon: Handshake,
+    title: "Rent Property",
+    desc: "Wide range of rental properties for families and professionals.",
+  },
+  {
+    Icon: BedDouble,
+    title: "PG & Hostel",
+    desc: "Comfortable and safe PG accommodations for students & working professionals.",
+  },
+  {
+    Icon: Store,
+    title: "Commercial",
+    desc: "Shops, offices and commercial spaces for your business growth.",
+  },
+  {
+    Icon: Headphones,
+    title: "Property Consultancy",
+    desc: "Get expert advice and assistance for all your property needs.",
+  },
 ];
 
 export function ServicesGrid() {
   return (
     <section className="bg-[#FAF9F6] py-16 md:py-20 border-t border-border/40">
       <div className="container-x">
-        
         {/* Title */}
         <div className="text-center mb-10 sm:mb-12">
           <h2 className="font-display text-xl sm:text-2xl md:text-3xl font-extrabold uppercase tracking-widest text-[#0B1528] flex items-center justify-center gap-3 sm:gap-4">
-            <span className="text-[#C49545] font-semibold">—</span> Our Services <span className="text-[#C49545] font-semibold">—</span>
+            <span className="text-[#C49545] font-semibold">—</span> Our Services{" "}
+            <span className="text-[#C49545] font-semibold">—</span>
           </h2>
           <div className="mx-auto mt-3 flex items-center justify-center gap-3">
             <span className="h-0.5 w-16 bg-[#C49545]/40" />
@@ -49,9 +79,7 @@ export function ServicesGrid() {
                 <h3 className="mt-5 font-display text-xs md:text-sm font-extrabold uppercase tracking-wider text-[#0B1528] leading-tight">
                   {title}
                 </h3>
-                <p className="mt-3 text-xs text-muted-foreground leading-relaxed">
-                  {desc}
-                </p>
+                <p className="mt-3 text-xs text-muted-foreground leading-relaxed">{desc}</p>
               </div>
 
               <div className="mt-6 inline-flex items-center justify-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#C49545] cursor-pointer hover:underline">
@@ -69,7 +97,9 @@ export function ServicesGrid() {
               <ShieldCheck className="h-5 w-5 text-[#C49545]" />
             </div>
             <div>
-              <div className="text-[11px] font-extrabold uppercase tracking-wide text-[#0B1528]">100% Trusted</div>
+              <div className="text-[11px] font-extrabold uppercase tracking-wide text-[#0B1528]">
+                100% Trusted
+              </div>
               <div className="text-[10px] text-muted-foreground leading-tight">Local Experts</div>
             </div>
           </div>
@@ -82,8 +112,12 @@ export function ServicesGrid() {
               <MapPin className="h-5 w-5 text-white" />
             </div>
             <div>
-              <div className="text-[11px] font-extrabold uppercase tracking-wide text-[#0B1528]">Prime Locations</div>
-              <div className="text-[10px] text-muted-foreground leading-tight">Best Connectivity</div>
+              <div className="text-[11px] font-extrabold uppercase tracking-wide text-[#0B1528]">
+                Prime Locations
+              </div>
+              <div className="text-[10px] text-muted-foreground leading-tight">
+                Best Connectivity
+              </div>
             </div>
           </div>
 
@@ -95,7 +129,9 @@ export function ServicesGrid() {
               <IndianRupee className="h-4 w-4 text-[#C49545]" />
             </div>
             <div>
-              <div className="text-[11px] font-extrabold uppercase tracking-wide text-[#0B1528]">Best Value</div>
+              <div className="text-[11px] font-extrabold uppercase tracking-wide text-[#0B1528]">
+                Best Value
+              </div>
               <div className="text-[10px] text-muted-foreground leading-tight">For Money</div>
             </div>
           </div>
@@ -108,12 +144,13 @@ export function ServicesGrid() {
               <Headphones className="h-5 w-5 text-[#0B1528]" />
             </div>
             <div>
-              <div className="text-[11px] font-extrabold uppercase tracking-wide text-[#0B1528]">Dedicated Support</div>
+              <div className="text-[11px] font-extrabold uppercase tracking-wide text-[#0B1528]">
+                Dedicated Support
+              </div>
               <div className="text-[10px] text-muted-foreground leading-tight">Always With You</div>
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );

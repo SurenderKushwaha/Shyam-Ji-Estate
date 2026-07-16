@@ -105,10 +105,13 @@ export function Testimonials() {
         <SectionHeading first="WHAT OUR" accent="CLIENTS SAY" />
         <div className="mt-10 mx-auto max-w-3xl text-center relative px-10 sm:px-12">
           <Quote className="mx-auto h-8 w-8 text-accent opacity-60" />
-          
+
           <div className="mt-4 flex items-center justify-center gap-1">
             {Array.from({ length: t.stars }).map((_, starIdx) => (
-              <Star key={starIdx} className="h-4 w-4 sm:h-5 sm:w-5 fill-yellow-400 text-yellow-400" />
+              <Star
+                key={starIdx}
+                className="h-4 w-4 sm:h-5 sm:w-5 fill-yellow-400 text-yellow-400"
+              />
             ))}
           </div>
 
@@ -116,7 +119,9 @@ export function Testimonials() {
             "{t.quote}"
           </p>
           <div className="mt-5 font-bold text-accent">{t.name}</div>
-          <div className="text-xs uppercase tracking-wider text-muted-foreground mt-1">{t.role}</div>
+          <div className="text-xs uppercase tracking-wider text-muted-foreground mt-1">
+            {t.role}
+          </div>
 
           <button
             aria-label="Previous"

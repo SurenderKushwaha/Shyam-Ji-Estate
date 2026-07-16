@@ -1,21 +1,21 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { 
-  ShieldCheck, 
-  MapPin, 
-  IndianRupee, 
-  Headphones, 
-  Search, 
-  ArrowRight, 
-  Home, 
-  Heart, 
-  Bed, 
-  Maximize, 
+import {
+  ShieldCheck,
+  MapPin,
+  IndianRupee,
+  Headphones,
+  Search,
+  ArrowRight,
+  Home,
+  Heart,
+  Bed,
+  Maximize,
   Bath,
   ChevronDown,
   Users,
   Target,
   Handshake,
-  Phone
+  Phone,
 } from "lucide-react";
 import { useState } from "react";
 import { properties } from "@/data/properties";
@@ -29,10 +29,25 @@ export const Route = createFileRoute("/buy")({
   head: () => ({
     meta: [
       { title: "Builder Floors & Luxury Flats for Sale in Old Rajinder Nagar | Shyam Ji Estate" },
-      { name: "description", content: "Explore premium builder floors, luxury apartments, and flats for sale in Old Rajinder Nagar, New Rajinder Nagar, and Karol Bagh. Verified direct owner listings with clear titles." },
-      { name: "keywords", content: "flats for sale in old rajinder nagar, builder floor in old rajinder nagar, buy flat in old rajinder nagar, property for sale in rajinder nagar, shyam ji estate" },
-      { property: "og:title", content: "Builder Floors & Flats for Sale in Old Rajinder Nagar | Shyam Ji Estate" },
-      { property: "og:description", content: "Buy verified properties with complete assistance. Best inventory of builder floors, apartments, and independent properties in Old Rajinder Nagar." },
+      {
+        name: "description",
+        content:
+          "Explore premium builder floors, luxury apartments, and flats for sale in Old Rajinder Nagar, New Rajinder Nagar, and Karol Bagh. Verified direct owner listings with clear titles.",
+      },
+      {
+        name: "keywords",
+        content:
+          "flats for sale in old rajinder nagar, builder floor in old rajinder nagar, buy flat in old rajinder nagar, property for sale in rajinder nagar, shyam ji estate",
+      },
+      {
+        property: "og:title",
+        content: "Builder Floors & Flats for Sale in Old Rajinder Nagar | Shyam Ji Estate",
+      },
+      {
+        property: "og:description",
+        content:
+          "Buy verified properties with complete assistance. Best inventory of builder floors, apartments, and independent properties in Old Rajinder Nagar.",
+      },
       { property: "og:url", content: "/buy" },
     ],
     links: [{ rel: "canonical", href: "/buy" }],
@@ -98,7 +113,7 @@ function BuyPage() {
 
   return (
     <>
-      <section 
+      <section
         className="relative bg-[#0B1528] text-white pt-16 pb-20 sm:pt-20 sm:pb-24 lg:pt-24 lg:pb-28 bg-cover bg-center border-b border-border/10"
         style={{ backgroundImage: `url(${galleryLiving})` }}
       >
@@ -106,14 +121,14 @@ function BuyPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-[#0B1528]/98 via-[#0B1528]/90 to-[#0B1528]/98 pointer-events-none" />
 
         <div className="container-x grid items-center gap-8 lg:grid-cols-[1.25fr_1fr] relative z-10">
-          
           {/* Left Text */}
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#C49545] mb-2">
               Find Your Dream Property
             </p>
             <h1 className="font-display text-4xl sm:text-5xl font-extrabold leading-tight text-white md:text-6xl lg:text-7xl uppercase tracking-wide">
-              Buy Property in<br />
+              Buy Property in
+              <br />
               <span className="text-[#C49545]">Old Rajinder Nagar</span>
             </h1>
             <div className="mt-4 sm:mt-5 space-y-1 text-xs sm:text-sm text-gray-300 leading-relaxed font-medium">
@@ -128,7 +143,9 @@ function BuyPage() {
                   <ShieldCheck className="h-4.5 w-4.5" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-white">Verified</span>
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-white">
+                    Verified
+                  </span>
                   <span className="text-[8px] font-medium text-gray-400 mt-0.5">Properties</span>
                 </div>
               </div>
@@ -140,7 +157,9 @@ function BuyPage() {
                   <MapPin className="h-4.5 w-4.5" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-white">Prime</span>
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-white">
+                    Prime
+                  </span>
                   <span className="text-[8px] font-medium text-gray-400 mt-0.5">Locations</span>
                 </div>
               </div>
@@ -152,7 +171,9 @@ function BuyPage() {
                   <IndianRupee className="h-4 w-4" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-white">Best Value</span>
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-white">
+                    Best Value
+                  </span>
                   <span className="text-[8px] font-medium text-gray-400 mt-0.5">For Money</span>
                 </div>
               </div>
@@ -164,7 +185,9 @@ function BuyPage() {
                   <Headphones className="h-4.5 w-4.5" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-white">Expert</span>
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-white">
+                    Expert
+                  </span>
                   <span className="text-[8px] font-medium text-gray-400 mt-0.5">Support</span>
                 </div>
               </div>
@@ -185,7 +208,6 @@ function BuyPage() {
 
       {/* Main content body */}
       <section className="container-x py-12 md:py-16">
-        
         <div className="relative z-30 -mt-14 md:-mt-24 max-w-5xl mx-auto">
           <PropertySearch
             showTabs={false}
@@ -216,7 +238,7 @@ function BuyPage() {
               options={[
                 { value: "latest", label: "Latest First" },
                 { value: "price-asc", label: "Price: Low to High" },
-                { value: "price-desc", label: "Price: High to Low" }
+                { value: "price-desc", label: "Price: High to Low" },
               ]}
               placeholder="Sort by"
               className="w-[170px]"
@@ -228,9 +250,16 @@ function BuyPage() {
         <div className="mt-8 grid gap-6 grid-cols-1 lg:grid-cols-2 max-w-5xl mx-auto">
           {sortedList.length > 0 ? (
             sortedList.map((p) => (
-              <article key={p.id} className="group overflow-hidden rounded-2xl bg-white border border-[#C49545]/15 shadow-[0_8px_30px_rgba(0,0,0,0.02)] transition-all duration-300 hover:-translate-y-1 hover:shadow-luxe flex flex-col md:flex-row h-full min-h-[220px]">
+              <article
+                key={p.id}
+                className="group overflow-hidden rounded-2xl bg-white border border-[#C49545]/15 shadow-[0_8px_30px_rgba(0,0,0,0.02)] transition-all duration-300 hover:-translate-y-1 hover:shadow-luxe flex flex-col md:flex-row h-full min-h-[220px]"
+              >
                 {/* Left image */}
-                <Link to="/properties/$id" params={{ id: p.id }} className="relative w-full md:w-[40%] aspect-[4/3] md:aspect-auto md:h-full min-h-[200px] overflow-hidden block">
+                <Link
+                  to="/properties/$id"
+                  params={{ id: p.id }}
+                  className="relative w-full md:w-[40%] aspect-[4/3] md:aspect-auto md:h-full min-h-[200px] overflow-hidden block"
+                >
                   <img
                     src={p.image}
                     alt={p.title}
@@ -248,7 +277,11 @@ function BuyPage() {
                 {/* Right content */}
                 <div className="p-6 flex flex-col justify-between flex-grow md:w-[60%]">
                   <div>
-                    <Link to="/properties/$id" params={{ id: p.id }} className="hover:text-[#C49545] transition block">
+                    <Link
+                      to="/properties/$id"
+                      params={{ id: p.id }}
+                      className="hover:text-[#C49545] transition block"
+                    >
                       <h3 className="font-display text-lg md:text-xl font-extrabold text-[#0B1528] leading-tight">
                         {p.title}
                       </h3>
@@ -292,9 +325,15 @@ function BuyPage() {
             ))
           ) : (
             <div className="col-span-full text-center py-12 bg-white rounded-2xl border border-dashed border-border/60">
-              <p className="text-sm font-bold text-muted-foreground uppercase">No properties match your filter criteria.</p>
+              <p className="text-sm font-bold text-muted-foreground uppercase">
+                No properties match your filter criteria.
+              </p>
               <button
-                onClick={() => { setLocation(""); setType(""); setBudget(""); }}
+                onClick={() => {
+                  setLocation("");
+                  setType("");
+                  setBudget("");
+                }}
                 className="mt-4 inline-flex items-center gap-1 text-xs font-bold uppercase text-[#C49545] hover:underline"
               >
                 Reset Filters
@@ -302,7 +341,6 @@ function BuyPage() {
             </div>
           )}
         </div>
-
       </section>
 
       {/* Requirement Form Section - Restyled full width */}
@@ -319,31 +357,32 @@ function BuyPage() {
                 <span className="text-[#C49545]">Specific Property?</span>
               </h2>
               <p className="mt-4 text-sm md:text-base text-muted-foreground leading-relaxed max-w-md">
-                Share your requirements and our local experts will match you with the best deals in <strong className="text-[#0B1528]">Old Rajinder Nagar</strong>.
+                Share your requirements and our local experts will match you with the best deals in{" "}
+                <strong className="text-[#0B1528]">Old Rajinder Nagar</strong>.
               </p>
-              
+
               {/* Pillars row */}
               <div className="mt-8 grid grid-cols-4 divide-x divide-gray-200 border-t border-gray-100 py-8 text-center max-w-2xl">
                 {[
                   {
                     icon: <Users className="h-5 w-5 text-[#C49545]" />,
                     title: "Expert Consultation",
-                    desc: "Get professional guidance from our local property experts."
+                    desc: "Get professional guidance from our local property experts.",
                   },
                   {
                     icon: <Target className="h-5 w-5 text-[#C49545]" />,
                     title: "Best Matches",
-                    desc: "Tailored property listings curated for your requirements."
+                    desc: "Tailored property listings curated for your requirements.",
                   },
                   {
                     icon: <Handshake className="h-5 w-5 text-[#C49545]" />,
                     title: "Trusted Local Experts",
-                    desc: "Experienced agents with deep knowledge of local market."
+                    desc: "Experienced agents with deep knowledge of local market.",
                   },
                   {
                     icon: <ShieldCheck className="h-5 w-5 text-[#C49545]" />,
                     title: "Safe & Secure Deals",
-                    desc: "Fully verified titles and transparent transaction processes."
+                    desc: "Fully verified titles and transparent transaction processes.",
                   },
                 ].map(({ icon, title, desc }) => (
                   <div key={title} className="flex flex-col items-center px-2">
@@ -360,7 +399,7 @@ function BuyPage() {
                 ))}
               </div>
             </div>
-            
+
             {/* Need expert advice? Banner */}
             <div className="mt-8 flex items-center justify-between rounded-xl bg-[#F5EFE6]/50 border border-[#C49545]/15 p-5 max-w-xl">
               <div className="flex items-center gap-4">

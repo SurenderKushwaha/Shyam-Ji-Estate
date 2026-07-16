@@ -32,7 +32,6 @@ function BlogListingPage() {
 
       <section className="py-12 sm:py-16 md:py-20 bg-[#FAF8F5]/30">
         <div className="container-x">
-
           {/* Features Bar */}
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-5xl mx-auto mb-10 sm:mb-14">
             {[
@@ -65,8 +64,12 @@ function BlogListingPage() {
                   {f.icon}
                 </div>
                 <div>
-                  <h4 className="text-xs font-extrabold text-[#0B1528] tracking-tight">{f.title}</h4>
-                  <p className="text-[10px] text-muted-foreground mt-0.5 leading-snug font-medium">{f.desc}</p>
+                  <h4 className="text-xs font-extrabold text-[#0B1528] tracking-tight">
+                    {f.title}
+                  </h4>
+                  <p className="text-[10px] text-muted-foreground mt-0.5 leading-snug font-medium">
+                    {f.desc}
+                  </p>
                 </div>
               </div>
             ))}
@@ -157,7 +160,6 @@ function BlogListingPage() {
               </p>
             </div>
           </div>
-
         </div>
       </section>
     </>

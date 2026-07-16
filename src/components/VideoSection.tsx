@@ -48,7 +48,7 @@ const DEFAULT_REELS = [
 ] as const;
 
 export function VideoSection() {
-  const [reels, setReels] = useState<any[]>(DEFAULT_REELS);
+  const [reels, setReels] = useState<Record<string, unknown>[]>(DEFAULT_REELS as unknown as Record<string, unknown>[]);
   const [activeReelId, setActiveReelId] = useState<string | null>(null);
   const [activeReelTitle, setActiveReelTitle] = useState("");
 
@@ -60,7 +60,7 @@ export function VideoSection() {
       })
       .then((data) => {
         if (Array.isArray(data) && data.length > 0) {
-          const mapped = data.map((item: any) => {
+          const mapped = data.slice(0, 4).map((item: Record<string, unknown>) => {
             let thumbnail = livingRoomImg;
             if (item.type === "girls") thumbnail = girlsPgImg;
             else if (item.type === "commercial") thumbnail = commercialImg;
@@ -85,7 +85,6 @@ export function VideoSection() {
       <div className="absolute bottom-1/3 right-1/4 w-96 h-96 rounded-full bg-[#0B1528]/5 blur-3xl -z-10 pointer-events-none" />
 
       <div className="container-x">
-        
         {/* Section Header */}
         <div className="text-center mb-10 md:mb-12 max-w-2xl mx-auto">
           <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#C49545] mb-3 flex items-center justify-center gap-1.5">
@@ -100,10 +99,11 @@ export function VideoSection() {
             <span className="h-0.5 w-12 bg-[#C49545]/40" />
           </div>
           <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed font-medium">
-            Watch high-definition walkthrough tours and Reels of our latest flats, PGs, and commercial spaces. Click on any card below to play the video.
+            Watch high-definition walkthrough tours and Reels of our latest flats, PGs, and
+            commercial spaces. Click on any card below to play the video.
           </p>
         </div>
-        
+
         {/* Reels Horizontal Scrollable Carousel */}
         <div className="flex gap-5 overflow-x-auto pb-6 scrollbar-thin snap-x snap-mandatory max-w-full no-scrollbar">
           {reels.map((reel) => (
@@ -119,19 +119,22 @@ export function VideoSection() {
               <div className="relative aspect-[9/16] w-full overflow-hidden bg-muted">
                 <img
                   src={
-                    reel.thumbnail || 
-                    (reel.type === 'girls' ? girlsPgImg : 
-                     reel.type === 'commercial' ? commercialImg : 
-                     reel.type === 'office' ? officeImg : 
-                     livingRoomImg)
+                    reel.thumbnail ||
+                    (reel.type === "girls"
+                      ? girlsPgImg
+                      : reel.type === "commercial"
+                        ? commercialImg
+                        : reel.type === "office"
+                          ? officeImg
+                          : livingRoomImg)
                   }
                   alt={reel.title}
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                
+
                 {/* Gradient wash */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/20" />
-                
+
                 {/* Views Counter (top left) */}
                 <div className="absolute left-3 top-3 flex items-center gap-1 rounded-full bg-black/60 px-2.5 py-1 text-[9px] font-extrabold uppercase tracking-wide text-white border border-white/10">
                   <Eye className="h-3 w-3 text-[#C49545]" />
@@ -152,7 +155,9 @@ export function VideoSection() {
 
                 {/* Title & Location details */}
                 <div className="absolute bottom-4 left-3 right-3 text-left">
-                  <span className="text-[9px] font-bold uppercase tracking-wider text-[#C49545]">{reel.location}</span>
+                  <span className="text-[9px] font-bold uppercase tracking-wider text-[#C49545]">
+                    {reel.location}
+                  </span>
                   <h3 className="text-xs font-bold text-white mt-1 leading-snug line-clamp-2 group-hover:text-[#C49545] transition-colors duration-200">
                     {reel.title}
                   </h3>
@@ -173,17 +178,16 @@ export function VideoSection() {
             <Instagram className="h-4 w-4" /> Visit Our Instagram
           </a>
         </div>
-
       </div>
 
       {/* Lightbox Video Player Modal */}
       {activeReelId && (
-        <div 
+        <div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
           onClick={() => setActiveReelId(null)}
         >
           {/* Modal Container */}
-          <div 
+          <div
             className="relative w-full max-w-[360px] aspect-[9/16] bg-black rounded-3xl overflow-hidden shadow-2xl border border-white/10 flex flex-col"
             onClick={(e) => e.stopPropagation()} // Prevent close on modal click
           >

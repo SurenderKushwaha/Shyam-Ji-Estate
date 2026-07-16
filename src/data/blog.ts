@@ -8,11 +8,6 @@ import blogPgVsFlat from "@/assets/blog-pg-vs-flat.png";
 import blogBuyingGuideOldRn from "@/assets/blog-buying-guide-old-rn.png";
 import blogPropertyPricesOldRn from "@/assets/blog-property-prices-old-rn.png";
 
-
-
-
-
-
 /* ─── Shared scoped CSS for all blog article pages ───────── */
 export const BLOG_ARTICLE_CSS = `
 .blog-article{font-family:'Inter', system-ui, sans-serif;color:#333;line-height:1.75;font-size:16px}
@@ -124,8 +119,10 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "old-rajinder-nagar",
     title: "Properties in Old Rajinder Nagar – Complete Guide 2025",
-    seoTitle: "Properties in Old Rajinder Nagar – Complete Buyer & Renter Guide 2025 | Shyam Ji Estate",
-    seoDescription: "Looking for properties in Old Rajinder Nagar? Complete guide on flats, builder floors, and rental homes. Pricing, best streets, and tips from local experts.",
+    seoTitle:
+      "Properties in Old Rajinder Nagar – Complete Buyer & Renter Guide 2025 | Shyam Ji Estate",
+    seoDescription:
+      "Looking for properties in Old Rajinder Nagar? Complete guide on flats, builder floors, and rental homes. Pricing, best streets, and tips from local experts.",
     category: "Buyer & Renter Guide",
     categoryBg: "#FAF5EC",
     categoryColor: "#C49545",
@@ -134,13 +131,30 @@ export const BLOG_POSTS: BlogPost[] = [
     location: "Old Rajinder Nagar, Delhi",
     readTime: "12 min read",
     date: "June 2025",
-    excerpt: "Old Rajinder Nagar is one of Delhi's most sought-after localities, beloved by UPSC aspirants, professionals, and families. This guide covers property prices, best streets, and expert tips.",
+    excerpt:
+      "Old Rajinder Nagar is one of Delhi's most sought-after localities, beloved by UPSC aspirants, professionals, and families. This guide covers property prices, best streets, and expert tips.",
     image: blogOldRajinderNagar,
     highlights: [
-      { icon: "graduation-cap", title: "UPSC Hub", desc: "Close to top coaching institutes and libraries." },
-      { icon: "map-pin", title: "Prime Location", desc: "Excellent connectivity to Metro, markets & hospitals." },
-      { icon: "users", title: "Diverse Community", desc: "A mix of students, professionals & families." },
-      { icon: "leaf", title: "Peaceful Living", desc: "Wide streets, parks & a well-developed locality." }
+      {
+        icon: "graduation-cap",
+        title: "UPSC Hub",
+        desc: "Close to top coaching institutes and libraries.",
+      },
+      {
+        icon: "map-pin",
+        title: "Prime Location",
+        desc: "Excellent connectivity to Metro, markets & hospitals.",
+      },
+      {
+        icon: "users",
+        title: "Diverse Community",
+        desc: "A mix of students, professionals & families.",
+      },
+      {
+        icon: "leaf",
+        title: "Peaceful Living",
+        desc: "Wide streets, parks & a well-developed locality.",
+      },
     ],
     heroHtml: `
       <div class="breadcrumb"><a href="/">Home</a> › <a href="/blog">Guides</a> › <span>Properties in Old Rajinder Nagar</span></div>
@@ -263,7 +277,8 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "new-rajinder-nagar",
     title: "Properties in New Rajinder Nagar – Buy, Sell & Rent Guide 2025",
     seoTitle: "Properties in New Rajinder Nagar – Buy, Sell & Rent Guide 2025 | Shyam Ji Estate",
-    seoDescription: "Complete guide to buying and renting property in New Rajinder Nagar, Delhi. Builder floors, family flats, rental prices, and expert advice from local brokers.",
+    seoDescription:
+      "Complete guide to buying and renting property in New Rajinder Nagar, Delhi. Builder floors, family flats, rental prices, and expert advice from local brokers.",
     category: "Buyer & Renter Guide",
     categoryBg: "#FAF5EC",
     categoryColor: "#C49545",
@@ -272,13 +287,30 @@ export const BLOG_POSTS: BlogPost[] = [
     location: "New Rajinder Nagar, Delhi",
     readTime: "10 min read",
     date: "June 2025",
-    excerpt: "New Rajinder Nagar offers spacious builder floors, strong connectivity, and a calm neighbourhood, at prices more accessible than Old Rajinder Nagar. Here's everything you need to know before buying or renting.",
+    excerpt:
+      "New Rajinder Nagar offers spacious builder floors, strong connectivity, and a calm neighbourhood, at prices more accessible than Old Rajinder Nagar. Here's everything you need to know before buying or renting.",
     image: blogNewRajinderNagar,
     highlights: [
-      { icon: "home", title: "Family Friendly", desc: "Quiet residential blocks with green parks." },
-      { icon: "map-pin", title: "Wider Roads", desc: "Spacious layouts and easier parking options." },
-      { icon: "briefcase", title: "Prime Proximity", desc: "Minutes away from Karol Bagh & Patel Nagar." },
-      { icon: "wallet", title: "Premium Value", desc: "More affordable builder floors than Old RN." }
+      {
+        icon: "home",
+        title: "Family Friendly",
+        desc: "Quiet residential blocks with green parks.",
+      },
+      {
+        icon: "map-pin",
+        title: "Wider Roads",
+        desc: "Spacious layouts and easier parking options.",
+      },
+      {
+        icon: "briefcase",
+        title: "Prime Proximity",
+        desc: "Minutes away from Karol Bagh & Patel Nagar.",
+      },
+      {
+        icon: "wallet",
+        title: "Premium Value",
+        desc: "More affordable builder floors than Old RN.",
+      },
     ],
     heroHtml: `
       <div class="breadcrumb"><a href="/">Home</a> › <a href="/blog">Guides</a> › <span>Properties in New Rajinder Nagar</span></div>
@@ -408,7 +440,8 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "karol-bagh",
     title: "Properties in Karol Bagh – Complete Buy & Rent Guide 2025",
     seoTitle: "Properties in Karol Bagh – Buy, Sell, Rent Guide 2025 | Shyam Ji Estate",
-    seoDescription: "Looking for property in Karol Bagh, Delhi? Buy flats, commercial shops, offices, or showrooms. Full guide on prices, best streets, and investment potential.",
+    seoDescription:
+      "Looking for property in Karol Bagh, Delhi? Buy flats, commercial shops, offices, or showrooms. Full guide on prices, best streets, and investment potential.",
     category: "Commercial & Residential",
     categoryBg: "#EBF1FA",
     categoryColor: "#0B1528",
@@ -417,13 +450,30 @@ export const BLOG_POSTS: BlogPost[] = [
     location: "Karol Bagh, New Delhi",
     readTime: "11 min read",
     date: "June 2025",
-    excerpt: "Karol Bagh is Delhi's most commercially active locality, a hub for shops, showrooms, offices, and dense residential living. This guide covers every property type, current prices, and the micro-markets you must know.",
+    excerpt:
+      "Karol Bagh is Delhi's most commercially active locality, a hub for shops, showrooms, offices, and dense residential living. This guide covers every property type, current prices, and the micro-markets you must know.",
     image: blogKarolBagh,
     highlights: [
-      { icon: "shopping-bag", title: "Retail Hub", desc: "Delhi's premier shopping and jewelry market." },
-      { icon: "map-pin", title: "Metro Connected", desc: "Easy transit access via Karol Bagh station." },
-      { icon: "trending-up", title: "High Footfall", desc: "Huge customer volume for commercial spaces." },
-      { icon: "building", title: "Diverse Spaces", desc: "Shops, showrooms, offices, and residential." }
+      {
+        icon: "shopping-bag",
+        title: "Retail Hub",
+        desc: "Delhi's premier shopping and jewelry market.",
+      },
+      {
+        icon: "map-pin",
+        title: "Metro Connected",
+        desc: "Easy transit access via Karol Bagh station.",
+      },
+      {
+        icon: "trending-up",
+        title: "High Footfall",
+        desc: "Huge customer volume for commercial spaces.",
+      },
+      {
+        icon: "building",
+        title: "Diverse Spaces",
+        desc: "Shops, showrooms, offices, and residential.",
+      },
     ],
     heroHtml: `
       <div class="breadcrumb"><a href="/">Home</a> › <a href="/blog">Guides</a> › <span>Properties in Karol Bagh</span></div>
@@ -531,7 +581,8 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "pg-old-rajinder-nagar",
     title: "PG in Old Rajinder Nagar – Best Paying Guest Guide 2025",
     seoTitle: "PG in Old Rajinder Nagar – Best Paying Guest Accommodation 2025 | Shyam Ji Estate",
-    seoDescription: "Looking for a PG in Old Rajinder Nagar? Best paying guest accommodation for UPSC aspirants, students, and working professionals. Prices, tips, and verified listings.",
+    seoDescription:
+      "Looking for a PG in Old Rajinder Nagar? Best paying guest accommodation for UPSC aspirants, students, and working professionals. Prices, tips, and verified listings.",
     category: "PG & Hostel Guide",
     categoryBg: "#F5F3FF",
     categoryColor: "#6D28D9",
@@ -540,13 +591,22 @@ export const BLOG_POSTS: BlogPost[] = [
     location: "Old Rajinder Nagar, Delhi",
     readTime: "9 min read",
     date: "June 2025",
-    excerpt: "Old Rajinder Nagar is India's most famous UPSC PG hub. This guide covers PG types, price ranges, the best streets, coaching institute proximity, and red flags to avoid when booking.",
+    excerpt:
+      "Old Rajinder Nagar is India's most famous UPSC PG hub. This guide covers PG types, price ranges, the best streets, coaching institute proximity, and red flags to avoid when booking.",
     image: blogPgOldRajinderNagar,
     highlights: [
       { icon: "clock", title: "Walk to Coaching", desc: "Save 1-2 hours of daily travel time." },
-      { icon: "clipboard-list", title: "All Inclusive", desc: "Meals, laundry, Wi-Fi, and cleaning covered." },
-      { icon: "graduation-cap", title: "Academic Vibe", desc: "Stay motivated with fellow UPSC aspirants." },
-      { icon: "shield", title: "Gated Security", desc: "Ladies-only and gated options available." }
+      {
+        icon: "clipboard-list",
+        title: "All Inclusive",
+        desc: "Meals, laundry, Wi-Fi, and cleaning covered.",
+      },
+      {
+        icon: "graduation-cap",
+        title: "Academic Vibe",
+        desc: "Stay motivated with fellow UPSC aspirants.",
+      },
+      { icon: "shield", title: "Gated Security", desc: "Ladies-only and gated options available." },
     ],
     heroHtml: `
       <div class="breadcrumb"><a href="/">Home</a> › <a href="/blog">Guides</a> › <span>PG in Old Rajinder Nagar</span></div>
@@ -684,8 +744,10 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "why-old-rajinder-nagar-is-the-first-choice-for-upsc-aspirants",
     title: "Why Old Rajinder Nagar is the First Choice for UPSC Aspirants in 2025",
-    seoTitle: "Why Old Rajinder Nagar is the First Choice for UPSC Aspirants in 2025 | Complete Guide",
-    seoDescription: "Discover why Old Rajinder Nagar is the first choice for UPSC aspirants in 2025. Explore coaching institutes, study environment, accommodation, connectivity, and everything you need to know before moving.",
+    seoTitle:
+      "Why Old Rajinder Nagar is the First Choice for UPSC Aspirants in 2025 | Complete Guide",
+    seoDescription:
+      "Discover why Old Rajinder Nagar is the first choice for UPSC aspirants in 2025. Explore coaching institutes, study environment, accommodation, connectivity, and everything you need to know before moving.",
     category: "Aspirant Guide",
     categoryBg: "#F5F3FF",
     categoryColor: "#6D28D9",
@@ -694,13 +756,30 @@ export const BLOG_POSTS: BlogPost[] = [
     location: "Old Rajinder Nagar, Delhi",
     readTime: "8 min read",
     date: "July 2025",
-    excerpt: "Every year, thousands of UPSC aspirants move to Delhi. Old Rajinder Nagar remains the preferred destination. From coaching institutes to libraries, study cafés, and affordable PGs, here is why ORN is their first choice.",
+    excerpt:
+      "Every year, thousands of UPSC aspirants move to Delhi. Old Rajinder Nagar remains the preferred destination. From coaching institutes to libraries, study cafés, and affordable PGs, here is why ORN is their first choice.",
     image: blogUpscAspirants,
     highlights: [
-      { icon: "graduation-cap", title: "Coaching Hub", desc: "Walking distance to India's top UPSC academies." },
-      { icon: "clipboard-list", title: "Study Culture", desc: "Private libraries, 24/7 reading halls, and study cafés." },
-      { icon: "users", title: "Peer Support", desc: "Be surrounded by thousands of like-minded aspirants." },
-      { icon: "wallet", title: "Budget Living", desc: "Wide range of PGs, flat shares, and food options." }
+      {
+        icon: "graduation-cap",
+        title: "Coaching Hub",
+        desc: "Walking distance to India's top UPSC academies.",
+      },
+      {
+        icon: "clipboard-list",
+        title: "Study Culture",
+        desc: "Private libraries, 24/7 reading halls, and study cafés.",
+      },
+      {
+        icon: "users",
+        title: "Peer Support",
+        desc: "Be surrounded by thousands of like-minded aspirants.",
+      },
+      {
+        icon: "wallet",
+        title: "Budget Living",
+        desc: "Wide range of PGs, flat shares, and food options.",
+      },
     ],
     heroHtml: `
       <div class="breadcrumb"><a href="/">Home</a> › <a href="/blog">Guides</a> › <span>Why Old Rajinder Nagar is the First Choice for UPSC Aspirants</span></div>
@@ -1009,7 +1088,8 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "best-areas-to-rent-a-flat-in-old-rajinder-nagar",
     title: "Best Areas to Rent a Flat in Old Rajinder Nagar for UPSC Aspirants (2025 Guide)",
     seoTitle: "Best Areas to Rent a Flat in Old Rajinder Nagar for UPSC Aspirants (2025 Guide)",
-    seoDescription: "Looking for the best areas to rent a flat in Old Rajinder Nagar? Explore the top locations, rental prices, amenities, and expert tips for UPSC aspirants in this complete 2025 guide.",
+    seoDescription:
+      "Looking for the best areas to rent a flat in Old Rajinder Nagar? Explore the top locations, rental prices, amenities, and expert tips for UPSC aspirants in this complete 2025 guide.",
     category: "Buyer & Renter Guide",
     categoryBg: "#FAF5EC",
     categoryColor: "#C49545",
@@ -1018,13 +1098,30 @@ export const BLOG_POSTS: BlogPost[] = [
     location: "Old Rajinder Nagar, Delhi",
     readTime: "10 min read",
     date: "July 2025",
-    excerpt: "Finding the right flat to rent in Old Rajinder Nagar is key for UPSC preparation. This guide explores the best areas, rental price trends, and expert renting tips.",
+    excerpt:
+      "Finding the right flat to rent in Old Rajinder Nagar is key for UPSC preparation. This guide explores the best areas, rental price trends, and expert renting tips.",
     image: blogRentFlatOldRn,
     highlights: [
-      { icon: "home", title: "Prime Locations", desc: "Top blocks & sub-localities in Old Rajinder Nagar." },
-      { icon: "wallet", title: "Rent Estimates", desc: "Average monthly rents for 1 RK, 1 BHK, and 2 BHK." },
-      { icon: "clipboard-list", title: "Amenities Check", desc: "Key features to confirm before signing the lease." },
-      { icon: "shield", title: "Renting Tips", desc: "How to avoid common renting mistakes in ORN." }
+      {
+        icon: "home",
+        title: "Prime Locations",
+        desc: "Top blocks & sub-localities in Old Rajinder Nagar.",
+      },
+      {
+        icon: "wallet",
+        title: "Rent Estimates",
+        desc: "Average monthly rents for 1 RK, 1 BHK, and 2 BHK.",
+      },
+      {
+        icon: "clipboard-list",
+        title: "Amenities Check",
+        desc: "Key features to confirm before signing the lease.",
+      },
+      {
+        icon: "shield",
+        title: "Renting Tips",
+        desc: "How to avoid common renting mistakes in ORN.",
+      },
     ],
     heroHtml: `
       <div class="breadcrumb"><a href="/">Home</a> › <a href="/blog">Guides</a> › <span>Best Areas to Rent a Flat in Old Rajinder Nagar</span></div>
@@ -1306,7 +1403,8 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "pg-vs-flat-in-old-rajinder-nagar",
     title: "PG vs Flat in Old Rajinder Nagar: Which is Better for UPSC Aspirants in 2025?",
     seoTitle: "PG vs Flat in Old Rajinder Nagar: Which is Better for UPSC Aspirants in 2025?",
-    seoDescription: "Confused between a PG and a flat in Old Rajinder Nagar? Compare costs, facilities, privacy, food, study environment, and lifestyle to choose the best accommodation for UPSC preparation in 2025.",
+    seoDescription:
+      "Confused between a PG and a flat in Old Rajinder Nagar? Compare costs, facilities, privacy, food, study environment, and lifestyle to choose the best accommodation for UPSC preparation in 2025.",
     category: "PG & Hostel Guide",
     categoryBg: "#F5F3FF",
     categoryColor: "#6D28D9",
@@ -1315,13 +1413,30 @@ export const BLOG_POSTS: BlogPost[] = [
     location: "Old Rajinder Nagar, Delhi",
     readTime: "9 min read",
     date: "July 2025",
-    excerpt: "Should you rent a flat or stay in a PG in Old Rajinder Nagar? Compare cost, privacy, study environment, food, and convenience to make the best choice.",
+    excerpt:
+      "Should you rent a flat or stay in a PG in Old Rajinder Nagar? Compare cost, privacy, study environment, food, and convenience to make the best choice.",
     image: blogPgVsFlat,
     highlights: [
-      { icon: "wallet", title: "Cost Check", desc: "Compare rent, utilities, food, and deposit requirements." },
-      { icon: "shield", title: "Privacy & Focus", desc: "Evaluate noise levels and dedicated study spaces." },
-      { icon: "clock", title: "Convenience", desc: "Weigh daily cooking and cleaning tasks against fully-managed rooms." },
-      { icon: "users", title: "Peer Vibe", desc: "Understand networking opportunities versus individual freedom." }
+      {
+        icon: "wallet",
+        title: "Cost Check",
+        desc: "Compare rent, utilities, food, and deposit requirements.",
+      },
+      {
+        icon: "shield",
+        title: "Privacy & Focus",
+        desc: "Evaluate noise levels and dedicated study spaces.",
+      },
+      {
+        icon: "clock",
+        title: "Convenience",
+        desc: "Weigh daily cooking and cleaning tasks against fully-managed rooms.",
+      },
+      {
+        icon: "users",
+        title: "Peer Vibe",
+        desc: "Understand networking opportunities versus individual freedom.",
+      },
     ],
     heroHtml: `
       <div class="breadcrumb"><a href="/">Home</a> › <a href="/blog">Guides</a> › <span>PG vs Flat in Old Rajinder Nagar</span></div>
@@ -1564,8 +1679,10 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "properties-in-old-rajinder-nagar-buying-guide-2025",
     title: "Properties in Old Rajinder Nagar: Complete Buying Guide 2025",
-    seoTitle: "Properties in Old Rajinder Nagar: Complete Buying Guide 2025 | Prices, Investment & Legal Checklist",
-    seoDescription: "Planning to buy properties in Old Rajinder Nagar? Explore property prices, investment opportunities, legal verification, financing, and expert buying tips in this comprehensive 2025 guide.",
+    seoTitle:
+      "Properties in Old Rajinder Nagar: Complete Buying Guide 2025 | Prices, Investment & Legal Checklist",
+    seoDescription:
+      "Planning to buy properties in Old Rajinder Nagar? Explore property prices, investment opportunities, legal verification, financing, and expert buying tips in this comprehensive 2025 guide.",
     category: "Buyer & Renter Guide",
     categoryBg: "#FAF5EC",
     categoryColor: "#C49545",
@@ -1574,13 +1691,30 @@ export const BLOG_POSTS: BlogPost[] = [
     location: "Old Rajinder Nagar, Delhi",
     readTime: "12 min read",
     date: "July 2025",
-    excerpt: "Planning to buy property in Old Rajinder Nagar? Explore average sale prices, legal due diligence tips, home loans, and expert investment analysis.",
+    excerpt:
+      "Planning to buy property in Old Rajinder Nagar? Explore average sale prices, legal due diligence tips, home loans, and expert investment analysis.",
     image: blogBuyingGuideOldRn,
     highlights: [
-      { icon: "building", title: "Property Types", desc: "Builder floors, studio apartments, and independent houses." },
-      { icon: "wallet", title: "Price Trends", desc: "Indicative sale prices for 1 BHK, 2 BHK, 3 BHK, and floors." },
-      { icon: "clipboard-list", title: "Legal Checks", desc: "Essential documents chain of title checklist." },
-      { icon: "trending-up", title: "Investment Yield", desc: "Rental yield potential and capital appreciation trends." }
+      {
+        icon: "building",
+        title: "Property Types",
+        desc: "Builder floors, studio apartments, and independent houses.",
+      },
+      {
+        icon: "wallet",
+        title: "Price Trends",
+        desc: "Indicative sale prices for 1 BHK, 2 BHK, 3 BHK, and floors.",
+      },
+      {
+        icon: "clipboard-list",
+        title: "Legal Checks",
+        desc: "Essential documents chain of title checklist.",
+      },
+      {
+        icon: "trending-up",
+        title: "Investment Yield",
+        desc: "Rental yield potential and capital appreciation trends.",
+      },
     ],
     heroHtml: `
       <div class="breadcrumb"><a href="/">Home</a> › <a href="/blog">Guides</a> › <span>Properties in Old Rajinder Nagar Complete Buying Guide</span></div>
@@ -1783,8 +1917,10 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "property-prices-in-old-rajinder-nagar-2025",
     title: "Property Prices in Old Rajinder Nagar: Market Trends & Investment Guide 2025",
-    seoTitle: "Property Prices in Old Rajinder Nagar 2025: Market Trends, Investment Guide & Future Growth",
-    seoDescription: "Explore the latest property prices in Old Rajinder Nagar, Delhi. Learn about market trends, price per sq. ft., rental yields, investment opportunities, and expert buying tips for 2025.",
+    seoTitle:
+      "Property Prices in Old Rajinder Nagar 2025: Market Trends, Investment Guide & Future Growth",
+    seoDescription:
+      "Explore the latest property prices in Old Rajinder Nagar, Delhi. Learn about market trends, price per sq. ft., rental yields, investment opportunities, and expert buying tips for 2025.",
     category: "Buyer & Renter Guide",
     categoryBg: "#FAF5EC",
     categoryColor: "#C49545",
@@ -1793,13 +1929,30 @@ export const BLOG_POSTS: BlogPost[] = [
     location: "Old Rajinder Nagar, Delhi",
     readTime: "11 min read",
     date: "July 2025",
-    excerpt: "Want to know property prices in Old Rajinder Nagar? Read our comprehensive 2025 guide on price per sq ft, rental yields, appreciation, and market trends.",
+    excerpt:
+      "Want to know property prices in Old Rajinder Nagar? Read our comprehensive 2025 guide on price per sq ft, rental yields, appreciation, and market trends.",
     image: blogPropertyPricesOldRn,
     highlights: [
-      { icon: "trending-up", title: "Price/Sq Ft", desc: "Average price per sq. ft. ranging from ₹20,000 to ₹35,000." },
-      { icon: "wallet", title: "Renting Returns", desc: "Attractive rental yields generated from UPSC student accommodation." },
-      { icon: "building", title: "Property Options", desc: "Price ranges for 1 RK, 1 BHK, 2 BHK, and builder floors." },
-      { icon: "clipboard-list", title: "Market Drivers", desc: "Location premium, road width, parking, and construction age." }
+      {
+        icon: "trending-up",
+        title: "Price/Sq Ft",
+        desc: "Average price per sq. ft. ranging from ₹20,000 to ₹35,000.",
+      },
+      {
+        icon: "wallet",
+        title: "Renting Returns",
+        desc: "Attractive rental yields generated from UPSC student accommodation.",
+      },
+      {
+        icon: "building",
+        title: "Property Options",
+        desc: "Price ranges for 1 RK, 1 BHK, 2 BHK, and builder floors.",
+      },
+      {
+        icon: "clipboard-list",
+        title: "Market Drivers",
+        desc: "Location premium, road width, parking, and construction age.",
+      },
     ],
     heroHtml: `
       <div class="breadcrumb"><a href="/">Home</a> › <a href="/blog">Guides</a> › <span>Property Prices in Old Rajinder Nagar</span></div>

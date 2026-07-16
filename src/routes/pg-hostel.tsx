@@ -1,20 +1,20 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { 
-  ShieldCheck, 
-  MapPin, 
-  IndianRupee, 
-  Headphones, 
-  Search, 
-  ArrowRight, 
-  Home, 
-  Heart, 
+import {
+  ShieldCheck,
+  MapPin,
+  IndianRupee,
+  Headphones,
+  Search,
+  ArrowRight,
+  Home,
+  Heart,
   Bed,
   ChevronDown,
   Clock,
   Users,
   UtensilsCrossed,
   BedDouble,
-  Phone
+  Phone,
 } from "lucide-react";
 import { useState } from "react";
 import { properties } from "@/data/properties";
@@ -28,10 +28,25 @@ export const Route = createFileRoute("/pg-hostel")({
   head: () => ({
     meta: [
       { title: "Best PG in Old Rajinder Nagar for Boys & Girls | Shyam Ji Estate" },
-      { name: "description", content: "Looking for a secure, fully furnished PG in Old Rajinder Nagar (ORN) or Karol Bagh? Explore premium boys and girls PGs with attached washrooms, balconies, high-speed Wi-Fi, and 24x7 security." },
-      { name: "keywords", content: "best pg in old rajinder nagar, girls pg in old rajinder nagar, boys pg in old rajinder nagar, single room pg in old rajinder nagar, student pg in old rajinder nagar, shyam ji estate" },
-      { property: "og:title", content: "Best PG in Old Rajinder Nagar for Boys & Girls | Shyam Ji Estate" },
-      { property: "og:description", content: "Fully furnished premium PG accommodations for girls and boys in Old Rajinder Nagar. Safe, clean, and close to top UPSC coaching institutes." },
+      {
+        name: "description",
+        content:
+          "Looking for a secure, fully furnished PG in Old Rajinder Nagar (ORN) or Karol Bagh? Explore premium boys and girls PGs with attached washrooms, balconies, high-speed Wi-Fi, and 24x7 security.",
+      },
+      {
+        name: "keywords",
+        content:
+          "best pg in old rajinder nagar, girls pg in old rajinder nagar, boys pg in old rajinder nagar, single room pg in old rajinder nagar, student pg in old rajinder nagar, shyam ji estate",
+      },
+      {
+        property: "og:title",
+        content: "Best PG in Old Rajinder Nagar for Boys & Girls | Shyam Ji Estate",
+      },
+      {
+        property: "og:description",
+        content:
+          "Fully furnished premium PG accommodations for girls and boys in Old Rajinder Nagar. Safe, clean, and close to top UPSC coaching institutes.",
+      },
       { property: "og:url", content: "/pg-hostel" },
     ],
     links: [{ rel: "canonical", href: "/pg-hostel" }],
@@ -65,7 +80,7 @@ function PgPage() {
         if (pgType === "Girls" && !titleLower.includes("girls")) return false;
       }
       if (roomType) {
-        const hasRoomType = p.features.some(f => f.toLowerCase() === roomType.toLowerCase());
+        const hasRoomType = p.features.some((f) => f.toLowerCase() === roomType.toLowerCase());
         if (!hasRoomType) return false;
       }
       if (budget) {
@@ -91,7 +106,7 @@ function PgPage() {
 
   return (
     <>
-      <section 
+      <section
         className="relative bg-[#0B1528] text-white pt-16 pb-20 sm:pt-20 sm:pb-24 lg:pt-24 lg:pb-28 bg-cover bg-center border-b border-border/10"
         style={{ backgroundImage: `url(${galleryBedroom})` }}
       >
@@ -104,7 +119,8 @@ function PgPage() {
               Comfortable Stays. Great Living.
             </p>
             <h1 className="font-display text-4xl sm:text-5xl font-extrabold leading-tight text-white md:text-6xl lg:text-7xl uppercase tracking-wide">
-              PG &amp; Hostel<br />
+              PG &amp; Hostel
+              <br />
               <span className="text-[#C49545]">In Old Rajinder Nagar</span>
             </h1>
             <div className="mt-4 sm:mt-5 space-y-1 text-xs sm:text-sm text-gray-300 leading-relaxed font-medium">
@@ -119,8 +135,12 @@ function PgPage() {
                   <ShieldCheck className="h-4.5 w-4.5" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-white">Safe &amp; Secure</span>
-                  <span className="text-[8px] font-medium text-gray-400 mt-0.5">Verified Properties</span>
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-white">
+                    Safe &amp; Secure
+                  </span>
+                  <span className="text-[8px] font-medium text-gray-400 mt-0.5">
+                    Verified Properties
+                  </span>
                 </div>
               </div>
 
@@ -131,8 +151,12 @@ function PgPage() {
                   <MapPin className="h-4.5 w-4.5" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-white">Prime Location</span>
-                  <span className="text-[8px] font-medium text-gray-400 mt-0.5">Near Metro &amp; Market</span>
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-white">
+                    Prime Location
+                  </span>
+                  <span className="text-[8px] font-medium text-gray-400 mt-0.5">
+                    Near Metro &amp; Market
+                  </span>
                 </div>
               </div>
 
@@ -143,8 +167,12 @@ function PgPage() {
                   <IndianRupee className="h-4 w-4" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-white">Affordable Prices</span>
-                  <span className="text-[8px] font-medium text-gray-400 mt-0.5">Best Value for Money</span>
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-white">
+                    Affordable Prices
+                  </span>
+                  <span className="text-[8px] font-medium text-gray-400 mt-0.5">
+                    Best Value for Money
+                  </span>
                 </div>
               </div>
 
@@ -155,8 +183,12 @@ function PgPage() {
                   <Headphones className="h-4.5 w-4.5" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-white">Dedicated Support</span>
-                  <span className="text-[8px] font-medium text-gray-400 mt-0.5">We're Here to Help</span>
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-white">
+                    Dedicated Support
+                  </span>
+                  <span className="text-[8px] font-medium text-gray-400 mt-0.5">
+                    We're Here to Help
+                  </span>
                 </div>
               </div>
             </div>
@@ -206,7 +238,7 @@ function PgPage() {
               options={[
                 { value: "latest", label: "Latest First" },
                 { value: "price-asc", label: "Price: Low to High" },
-                { value: "price-desc", label: "Price: High to Low" }
+                { value: "price-desc", label: "Price: High to Low" },
               ]}
               placeholder="Sort by"
               className="w-[170px]"
@@ -217,8 +249,15 @@ function PgPage() {
         <div className="mt-8 grid gap-6 grid-cols-1 lg:grid-cols-2 max-w-5xl mx-auto">
           {sortedList.length > 0 ? (
             sortedList.map((p) => (
-              <article key={p.id} className="group overflow-hidden rounded-2xl bg-white border border-[#C49545]/15 shadow-[0_8px_30px_rgba(0,0,0,0.02)] transition-all duration-300 hover:-translate-y-1 hover:shadow-luxe flex flex-col md:flex-row h-full min-h-[220px]">
-                <Link to="/properties/$id" params={{ id: p.id }} className="relative w-full md:w-[40%] aspect-[4/3] md:aspect-auto md:h-full min-h-[200px] overflow-hidden block">
+              <article
+                key={p.id}
+                className="group overflow-hidden rounded-2xl bg-white border border-[#C49545]/15 shadow-[0_8px_30px_rgba(0,0,0,0.02)] transition-all duration-300 hover:-translate-y-1 hover:shadow-luxe flex flex-col md:flex-row h-full min-h-[220px]"
+              >
+                <Link
+                  to="/properties/$id"
+                  params={{ id: p.id }}
+                  className="relative w-full md:w-[40%] aspect-[4/3] md:aspect-auto md:h-full min-h-[200px] overflow-hidden block"
+                >
                   <img
                     src={p.image}
                     alt={p.title}
@@ -235,7 +274,11 @@ function PgPage() {
 
                 <div className="p-6 flex flex-col justify-between flex-grow md:w-[60%]">
                   <div>
-                    <Link to="/properties/$id" params={{ id: p.id }} className="hover:text-[#C49545] transition block">
+                    <Link
+                      to="/properties/$id"
+                      params={{ id: p.id }}
+                      className="hover:text-[#C49545] transition block"
+                    >
                       <h3 className="font-display text-lg md:text-xl font-extrabold text-[#0B1528] leading-tight">
                         {p.title}
                       </h3>
@@ -272,9 +315,16 @@ function PgPage() {
             ))
           ) : (
             <div className="col-span-full text-center py-12 bg-white rounded-2xl border border-dashed border-border/60">
-              <p className="text-sm font-bold text-muted-foreground uppercase">No PG accommodations match your filter criteria.</p>
+              <p className="text-sm font-bold text-muted-foreground uppercase">
+                No PG accommodations match your filter criteria.
+              </p>
               <button
-                onClick={() => { setLocation(""); setPgType(""); setRoomType(""); setBudget(""); }}
+                onClick={() => {
+                  setLocation("");
+                  setPgType("");
+                  setRoomType("");
+                  setBudget("");
+                }}
                 className="mt-4 inline-flex items-center gap-1 text-xs font-bold uppercase text-[#C49545] hover:underline"
               >
                 Reset Filters
@@ -282,7 +332,6 @@ function PgPage() {
             </div>
           )}
         </div>
-
       </section>
 
       {/* Requirement Form Section - Restyled full width */}
@@ -299,31 +348,32 @@ function PgPage() {
                 <span className="text-[#C49545]">PG?</span>
               </h2>
               <p className="mt-4 text-sm md:text-base text-muted-foreground leading-relaxed max-w-md">
-                Share your preferences (boys / girls, sharing, food) and we'll arrange visits the same day.
+                Share your preferences (boys / girls, sharing, food) and we'll arrange visits the
+                same day.
               </p>
-              
+
               {/* Pillars row */}
               <div className="mt-8 grid grid-cols-4 divide-x divide-gray-200 border-t border-gray-100 py-8 text-center max-w-2xl">
                 {[
                   {
                     icon: <Clock className="h-5 w-5 text-[#C49545]" />,
                     title: "Same Day Visits",
-                    desc: "Quick and hassle-free site visits scheduled on the same day."
+                    desc: "Quick and hassle-free site visits scheduled on the same day.",
                   },
                   {
                     icon: <Users className="h-5 w-5 text-[#C49545]" />,
                     title: "Verified Properties",
-                    desc: "Every PG and hostel room is physically verified by our team."
+                    desc: "Every PG and hostel room is physically verified by our team.",
                   },
                   {
                     icon: <UtensilsCrossed className="h-5 w-5 text-[#C49545]" />,
                     title: "Food Options",
-                    desc: "Nutritious, hygienic, and home-style meal plans available."
+                    desc: "Nutritious, hygienic, and home-style meal plans available.",
                   },
                   {
                     icon: <ShieldCheck className="h-5 w-5 text-[#C49545]" />,
                     title: "Safe & Secure",
-                    desc: "Safe locations with modern security measures and CCTV."
+                    desc: "Safe locations with modern security measures and CCTV.",
                   },
                 ].map(({ icon, title, desc }) => (
                   <div key={title} className="flex flex-col items-center px-2">
@@ -340,7 +390,7 @@ function PgPage() {
                 ))}
               </div>
             </div>
-            
+
             {/* Need expert advice? Banner */}
             <div className="mt-8 flex items-center justify-between rounded-xl bg-[#F5EFE6]/50 border border-[#C49545]/15 p-5 max-w-xl">
               <div className="flex items-center gap-4">

@@ -42,7 +42,11 @@ export function PropertySearch({
     if (filters.transaction === "Rent") {
       if (filters.type === "PG") {
         activeTab = "PG & Hostel";
-      } else if (filters.type === "Commercial Shop" || filters.type === "Office" || filters.type === "Commercial") {
+      } else if (
+        filters.type === "Commercial Shop" ||
+        filters.type === "Office" ||
+        filters.type === "Commercial"
+      ) {
         activeTab = "Commercial";
       } else {
         activeTab = "Rent";
@@ -57,12 +61,20 @@ export function PropertySearch({
       // In-place filtering on homepage
       if (tab === "Buy") {
         onChange("transaction", "Buy");
-        if (filters.type === "PG" || filters.type === "Commercial Shop" || filters.type === "Office") {
+        if (
+          filters.type === "PG" ||
+          filters.type === "Commercial Shop" ||
+          filters.type === "Office"
+        ) {
           onChange("type", "");
         }
       } else if (tab === "Rent") {
         onChange("transaction", "Rent");
-        if (filters.type === "PG" || filters.type === "Commercial Shop" || filters.type === "Office") {
+        if (
+          filters.type === "PG" ||
+          filters.type === "Commercial Shop" ||
+          filters.type === "Office"
+        ) {
           onChange("type", "");
         }
       } else if (tab === "PG & Hostel") {
@@ -103,7 +115,6 @@ export function PropertySearch({
   return (
     <div className="w-full text-left">
       <div className="rounded-3xl bg-white p-5 sm:p-6 shadow-[0_15px_40px_rgba(0,0,0,0.15)] border border-border/40">
-        
         {/* Tab Pills */}
         {showTabs && (
           <div className="inline-flex bg-[#FAF9F6] p-1 rounded-full mb-5 gap-1 overflow-x-auto max-w-full no-scrollbar">
@@ -129,7 +140,6 @@ export function PropertySearch({
 
         {/* Inputs Stack */}
         <div className="flex flex-col md:flex-row md:flex-wrap items-center gap-3.5 md:gap-4">
-          
           {/* Location Input */}
           <CustomSelect
             value={filters.location}
@@ -156,8 +166,14 @@ export function PropertySearch({
               {/* Room Type Dropdown */}
               <CustomSelect
                 value={filters.roomType || ""}
-                onChange={(val) => onChange("roomType" as any, val)}
-                options={["Single Room", "Double Sharing", "Independent", "Attached Washroom", "Attached Balcony"]}
+                onChange={(val) => onChange("roomType", val)}
+                options={[
+                  "Single Room",
+                  "Double Sharing",
+                  "Independent",
+                  "Attached Washroom",
+                  "Attached Balcony",
+                ]}
                 placeholder="Select Room Type"
                 icon={<BedDouble className="h-4.5 w-4.5" />}
                 className="w-full md:flex-1 md:min-w-[160px]"
@@ -196,7 +212,6 @@ export function PropertySearch({
             Search
           </button>
         </div>
-
       </div>
     </div>
   );

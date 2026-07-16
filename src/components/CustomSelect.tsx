@@ -39,10 +39,7 @@ export function CustomSelect({
   // Close dropdown when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (
-        containerRef.current &&
-        !containerRef.current.contains(event.target as Node)
-      ) {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
         setIsOpen(false);
       }
     }
@@ -58,7 +55,7 @@ export function CustomSelect({
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className={`w-full inline-flex items-center justify-between rounded-xl sm:rounded-2xl border border-border/80 bg-background ${icon ? 'pl-11' : 'pl-4'} pr-4 py-2 text-xs sm:text-sm font-semibold text-foreground focus:outline-none focus:ring-2 focus:ring-[#C49545] cursor-pointer shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-all ${className.includes('h-') ? '' : 'h-[46px] md:h-[48px]'}`}
+        className={`w-full inline-flex items-center justify-between rounded-xl sm:rounded-2xl border border-border/80 bg-background ${icon ? "pl-11" : "pl-4"} pr-4 py-2 text-xs sm:text-sm font-semibold text-foreground focus:outline-none focus:ring-2 focus:ring-[#C49545] cursor-pointer shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-all ${className.includes("h-") ? "" : "h-[46px] md:h-[48px]"}`}
       >
         <span className="flex items-center gap-2 truncate">
           {icon && (

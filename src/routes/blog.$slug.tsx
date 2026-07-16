@@ -18,7 +18,7 @@ import {
   Building,
   ClipboardList,
   Shield,
-  FileText
+  FileText,
 } from "lucide-react";
 
 export const Route = createFileRoute("/blog/$slug")({
@@ -45,20 +45,20 @@ export const Route = createFileRoute("/blog/$slug")({
   component: BlogPostPage,
 });
 
-const iconMap: Record<string, React.ComponentType<any>> = {
+const iconMap: Record<string, React.ElementType> = {
   "graduation-cap": GraduationCap,
   "map-pin": MapPin,
-  "users": Users,
-  "leaf": Leaf,
-  "home": Home,
-  "briefcase": Briefcase,
-  "wallet": Wallet,
+  users: Users,
+  leaf: Leaf,
+  home: Home,
+  briefcase: Briefcase,
+  wallet: Wallet,
   "shopping-bag": ShoppingBag,
   "trending-up": TrendingUp,
-  "building": Building,
-  "clock": Clock,
+  building: Building,
+  clock: Clock,
   "clipboard-list": ClipboardList,
-  "shield": Shield,
+  shield: Shield,
 };
 
 // Helper to extract headings for the table of contents
@@ -96,7 +96,7 @@ const splitContentHtml = (htmlWithIds: string) => {
 
   return {
     firstSection: htmlWithIds.substring(0, secondH2Index),
-    restSection: htmlWithIds.substring(secondH2Index)
+    restSection: htmlWithIds.substring(secondH2Index),
   };
 };
 
@@ -115,7 +115,9 @@ function TableOfContents({ headings }: { headings: { text: string; id: string }[
               className="group flex items-start gap-3.5 text-xs font-semibold text-[#4A5568] hover:text-[#C49545] transition-colors leading-relaxed"
               onClick={(e) => {
                 e.preventDefault();
-                document.getElementById(h.id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+                document
+                  .getElementById(h.id)
+                  ?.scrollIntoView({ behavior: "smooth", block: "start" });
               }}
             >
               <span className="flex h-5.5 w-5.5 shrink-0 items-center justify-center rounded-full border border-[#C49545]/30 bg-[#FAF6F0] text-[10px] font-bold text-[#C49545] group-hover:bg-[#C49545] group-hover:text-white group-hover:border-[#C49545] transition-all">
@@ -154,14 +156,15 @@ function BlogPostPage() {
             Back to Guides
           </Link>
           <div className="flex items-center gap-2 text-xs text-muted-foreground/60 uppercase tracking-wider">
-            <Link to="/" className="hover:text-[#C49545] transition-colors">Home</Link>
+            <Link to="/" className="hover:text-[#C49545] transition-colors">
+              Home
+            </Link>
             <ChevronRight className="h-3 w-3" />
-            <Link to="/blog" className="hover:text-[#C49545] transition-colors">Blog</Link>
+            <Link to="/blog" className="hover:text-[#C49545] transition-colors">
+              Blog
+            </Link>
             <ChevronRight className="h-3 w-3" />
-            <span
-              className="font-semibold"
-              style={{ color: post.categoryColor }}
-            >
+            <span className="font-semibold" style={{ color: post.categoryColor }}>
               {post.category}
             </span>
           </div>
@@ -174,11 +177,7 @@ function BlogPostPage() {
         <section className="bg-[#FAF8F5] py-12 lg:py-0 border-b border-border/40 overflow-hidden relative min-h-[440px] flex items-center z-0">
           {/* Right side full-bleed image (only visible on lg and above) */}
           <div className="hidden lg:block absolute top-0 right-0 bottom-0 w-[45%] h-full z-0 overflow-hidden">
-            <img
-              src={post.image}
-              alt={post.title}
-              className="h-full w-full object-cover"
-            />
+            <img src={post.image} alt={post.title} className="h-full w-full object-cover" />
             {/* S-curve overlay on the left edge of the image */}
             <svg
               className="absolute left-0 top-0 h-full w-24 text-[#FAF8F5] fill-current pointer-events-none z-10"
@@ -186,12 +185,7 @@ function BlogPostPage() {
               preserveAspectRatio="none"
             >
               <path d="M 0,0 C 70,25 30,75 0,100 Z" />
-              <path
-                d="M 0,0 C 70,25 30,75 0,100"
-                fill="none"
-                stroke="#C49545"
-                strokeWidth="1.5"
-              />
+              <path d="M 0,0 C 70,25 30,75 0,100" fill="none" stroke="#C49545" strokeWidth="1.5" />
             </svg>
           </div>
 
@@ -215,11 +209,13 @@ function BlogPostPage() {
                 <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-[#0B1528] mb-5">
                   {post.title.includes(" – ") ? (
                     <>
-                      {post.title.split(" – ")[0]} – <span className="text-[#C49545]">{post.title.split(" – ")[1]}</span>
+                      {post.title.split(" – ")[0]} –{" "}
+                      <span className="text-[#C49545]">{post.title.split(" – ")[1]}</span>
                     </>
                   ) : post.title.includes(" - ") ? (
                     <>
-                      {post.title.split(" - ")[0]} - <span className="text-[#C49545]">{post.title.split(" - ")[1]}</span>
+                      {post.title.split(" - ")[0]} -{" "}
+                      <span className="text-[#C49545]">{post.title.split(" - ")[1]}</span>
                     </>
                   ) : (
                     post.title
@@ -255,7 +251,9 @@ function BlogPostPage() {
                     className="absolute left-0 top-0 bottom-0 w-1.5 rounded-l-2xl"
                     style={{ backgroundColor: post.categoryColor }}
                   />
-                  <div className="text-4xl font-serif text-[#C49545] leading-none shrink-0 select-none">“</div>
+                  <div className="text-4xl font-serif text-[#C49545] leading-none shrink-0 select-none">
+                    “
+                  </div>
                   <p className="text-sm md:text-base font-medium text-[#4A5568] leading-relaxed">
                     {post.excerpt}
                   </p>
@@ -273,11 +271,7 @@ function BlogPostPage() {
 
                 {/* Image container */}
                 <div className="relative h-full w-full rounded-2xl overflow-hidden shadow-luxe border border-[#C49545]/10 z-10 bg-white">
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    className="h-full w-full object-cover"
-                  />
+                  <img src={post.image} alt={post.title} className="h-full w-full object-cover" />
 
                   {/* S-curve overlay */}
                   <svg
@@ -314,10 +308,7 @@ function BlogPostPage() {
             {/* Left Column (Content + Highlights + CTA Banner) */}
             <div className="min-w-0">
               {/* Section 1 Content */}
-              <div
-                className="content-section"
-                dangerouslySetInnerHTML={{ __html: firstSection }}
-              />
+              <div className="content-section" dangerouslySetInnerHTML={{ __html: firstSection }} />
 
               {/* Highlights cards grid */}
               {post.highlights && post.highlights.length > 0 && (
@@ -402,9 +393,7 @@ function RelatedPosts({ currentSlug }: { currentSlug: string }) {
         <p className="text-[#C49545] text-xs font-bold uppercase tracking-[0.2em] mb-2">
           Continue Reading
         </p>
-        <h2 className="font-display text-xl font-bold text-[#0B1528] mb-8">
-          More Property Guides
-        </h2>
+        <h2 className="font-display text-xl font-bold text-[#0B1528] mb-8">More Property Guides</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {related.map((post) => (
             <Link

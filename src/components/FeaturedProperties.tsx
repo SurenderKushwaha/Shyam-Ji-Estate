@@ -43,7 +43,10 @@ export function FeaturedProperties({
                 <RefreshCw className="h-3.5 w-3.5" /> Clear Filters
               </button>
             ) : (
-              <Link to="/buy" className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wide text-accent hover:underline">
+              <Link
+                to="/buy"
+                className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wide text-accent hover:underline"
+              >
                 View All Properties <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             )}
@@ -59,7 +62,9 @@ export function FeaturedProperties({
         ) : (
           <div className="mt-12 rounded-lg border-2 border-dashed border-border bg-card p-10 text-center">
             <XCircle className="mx-auto h-12 w-12 text-muted-foreground/60" />
-            <h3 className="mt-4 font-display text-lg font-bold text-primary">No Properties Found</h3>
+            <h3 className="mt-4 font-display text-lg font-bold text-primary">
+              No Properties Found
+            </h3>
             <p className="mt-2 text-sm text-muted-foreground">
               We couldn't find any properties matching your exact search criteria.
             </p>

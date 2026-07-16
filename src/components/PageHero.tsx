@@ -31,7 +31,9 @@ export function PageHero({
       <div className="container-x relative z-10 py-10 sm:py-14 md:py-16">
         {/* Breadcrumb */}
         <div className="flex items-center justify-center gap-2 text-[10px] sm:text-xs uppercase tracking-wider text-white/50 mb-4">
-          <Link to="/" className="hover:text-[#C49545] transition-colors">Home</Link>
+          <Link to="/" className="hover:text-[#C49545] transition-colors">
+            Home
+          </Link>
           <ChevronRight className="h-3 w-3 text-[#C49545]/60" />
           <span className="text-[#C49545] font-semibold">{crumb}</span>
         </div>
@@ -58,4 +60,3 @@ export function PageHero({
     </section>
   );
 }
-

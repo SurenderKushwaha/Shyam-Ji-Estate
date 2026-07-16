@@ -6,8 +6,7 @@ export const BRAND = {
   whatsapps: ["918595777428", "919311510866"],
   email: "info@shyamjiestate.com",
   website: "shyamjiestate.com",
-  address:
-    "Shop No 56, Near Batra Medical, Old Rajinder Nagar, New Delhi - 110060",
+  address: "Shop No 56, Near Batra Medical, Old Rajinder Nagar, New Delhi - 110060",
   socials: {
     facebook: "https://facebook.com",
     instagram: "https://www.instagram.com/shyamji_estate",

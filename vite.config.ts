@@ -11,8 +11,8 @@ export default defineConfig({
       server: { entry: "server" },
       prerender: {
         autoStaticPathsDiscovery: true,
-        crawlLinks: true
-      }
+        crawlLinks: true,
+      },
     }),
     nitro(),
     react(),
@@ -24,6 +24,6 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
-    }
+    },
   },
 });

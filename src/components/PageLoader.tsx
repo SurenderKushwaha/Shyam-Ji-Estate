@@ -16,7 +16,7 @@ export function PageLoader() {
       finishLoading();
     } else {
       window.addEventListener("load", finishLoading);
-      
+
       // Safety fallback: if network takes too long, hide loader after 8s max
       const fallbackTimer = setTimeout(finishLoading, 8000);
 

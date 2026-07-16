@@ -3,13 +3,13 @@ import { properties } from "@/data/properties";
 import { useState } from "react";
 
 import { InquiryForm } from "@/components/InquiryForm";
-import { 
-  MapPin, 
-  IndianRupee, 
-  ShieldCheck, 
-  Phone, 
-  ArrowLeft, 
-  CheckCircle2, 
+import {
+  MapPin,
+  IndianRupee,
+  ShieldCheck,
+  Phone,
+  ArrowLeft,
+  CheckCircle2,
   Building2,
   Percent,
   Bed,
@@ -23,7 +23,7 @@ import {
   Hammer,
   Sparkles,
   Zap,
-  Lock
+  Lock,
 } from "lucide-react";
 
 const getIconForLabel = (label: string) => {
@@ -31,18 +31,47 @@ const getIconForLabel = (label: string) => {
   if (lowercase.includes("price") || lowercase.includes("rent")) return IndianRupee;
   if (lowercase.includes("location") || lowercase.includes("address")) return MapPin;
   if (lowercase.includes("brokerage")) return Percent;
-  if (lowercase.includes("room") || lowercase.includes("occupancy") || lowercase.includes("sharing")) return Bed;
-  if (lowercase.includes("washroom") || lowercase.includes("bathroom") || lowercase.includes("toilet")) return Bath;
+  if (
+    lowercase.includes("room") ||
+    lowercase.includes("occupancy") ||
+    lowercase.includes("sharing")
+  )
+    return Bed;
+  if (
+    lowercase.includes("washroom") ||
+    lowercase.includes("bathroom") ||
+    lowercase.includes("toilet")
+  )
+    return Bath;
   if (lowercase.includes("balcony")) return Compass;
-  if (lowercase.includes("gender") || lowercase.includes("boys") || lowercase.includes("girls") || lowercase.includes("preferred")) return UserCheck;
+  if (
+    lowercase.includes("gender") ||
+    lowercase.includes("boys") ||
+    lowercase.includes("girls") ||
+    lowercase.includes("preferred")
+  )
+    return UserCheck;
   if (lowercase.includes("floor")) return Layers;
   if (lowercase.includes("maintenance")) return Wrench;
   if (lowercase.includes("kitchen")) return Utensils;
-  if (lowercase.includes("furnish") || lowercase.includes("bedding") || lowercase.includes("sofa")) return Armchair;
-  if (lowercase.includes("construction") || lowercase.includes("status") || lowercase.includes("age")) return Hammer;
+  if (lowercase.includes("furnish") || lowercase.includes("bedding") || lowercase.includes("sofa"))
+    return Armchair;
+  if (
+    lowercase.includes("construction") ||
+    lowercase.includes("status") ||
+    lowercase.includes("age")
+  )
+    return Hammer;
   if (lowercase.includes("inclusion") || lowercase.includes("amenit")) return Sparkles;
-  if (lowercase.includes("safety") || lowercase.includes("security") || lowercase.includes("safe")) return ShieldCheck;
-  if (lowercase.includes("water") || lowercase.includes("electricity") || lowercase.includes("power") || lowercase.includes("utility")) return Zap;
+  if (lowercase.includes("safety") || lowercase.includes("security") || lowercase.includes("safe"))
+    return ShieldCheck;
+  if (
+    lowercase.includes("water") ||
+    lowercase.includes("electricity") ||
+    lowercase.includes("power") ||
+    lowercase.includes("utility")
+  )
+    return Zap;
   if (lowercase.includes("independent") || lowercase.includes("independence")) return Lock;
   return Building2;
 };
@@ -50,13 +79,17 @@ const getIconForLabel = (label: string) => {
 export const Route = createFileRoute("/properties/$id")({
   head: ({ params }) => {
     const property = properties.find((p) => p.id === params.id);
-    const purpose = property 
-      ? (property.badge.toLowerCase().includes("sale") ? "for Sale" : property.badge.toLowerCase().includes("rent") ? "for Rent" : "PG / Hostel Accommodation")
+    const purpose = property
+      ? property.badge.toLowerCase().includes("sale")
+        ? "for Sale"
+        : property.badge.toLowerCase().includes("rent")
+          ? "for Rent"
+          : "PG / Hostel Accommodation"
       : "Property Details";
     const seoTitle = property
       ? `${property.title} ${purpose} in ${property.location} | Shyam Ji Estate`
       : "Property Details | Shyam Ji Estate";
-    
+
     const seoDesc = property
       ? `${property.title} ${purpose} in ${property.location}. Features: ${property.features.join(", ")}. Price: ${property.price}. Contact Shyam Ji Estate (best broker in ORN) for immediate visits.`
       : "Detailed overview of the property at Shyam Ji Estate.";
@@ -83,23 +116,29 @@ function PropertyDetailPage() {
   const { id } = Route.useParams();
   const property = properties.find((p) => p.id === id);
 
+  const [activeImage, setActiveImage] = useState(property?.gallery?.[0] || property?.image || "");
+
   if (!property) {
     return (
       <div className="container-x py-20 text-center">
         <h1 className="text-3xl font-bold text-primary">Property Not Found</h1>
-        <p className="mt-4 text-muted-foreground">The property you are looking for does not exist or has been removed.</p>
-        <Link to="/" className="mt-6 inline-flex items-center gap-2 rounded bg-accent px-6 py-3 text-sm font-bold uppercase text-accent-foreground">
+        <p className="mt-4 text-muted-foreground">
+          The property you are looking for does not exist or has been removed.
+        </p>
+        <Link
+          to="/"
+          className="mt-6 inline-flex items-center gap-2 rounded bg-accent px-6 py-3 text-sm font-bold uppercase text-accent-foreground"
+        >
           <ArrowLeft className="h-4 w-4" /> Go back home
         </Link>
       </div>
     );
   }
 
-  const galleryImages = property.gallery && property.gallery.length > 0
-    ? property.gallery
-    : [property.image];
+  const galleryImages =
+    property.gallery && property.gallery.length > 0 ? property.gallery : [property.image];
 
-  const [activeImage, setActiveImage] = useState(galleryImages[0]);
+
 
   const categoryInterestMap: Record<string, string> = {
     buy: "Buy",
@@ -111,9 +150,11 @@ function PropertyDetailPage() {
 
   const priceBreakup = [...(property.priceBreakup || [])];
   if (property.category === "pg" || property.category === "rent") {
-    const hasBrokerage = priceBreakup.some(item => item.label.toLowerCase().includes("brokerage"));
+    const hasBrokerage = priceBreakup.some((item) =>
+      item.label.toLowerCase().includes("brokerage"),
+    );
     if (!hasBrokerage) {
-      const totalIdx = priceBreakup.findIndex(item => item.isTotal);
+      const totalIdx = priceBreakup.findIndex((item) => item.isTotal);
       const brokerageItem = { label: "Brokerage Fee", value: "21 Days Rent" };
       if (totalIdx !== -1) {
         priceBreakup.splice(totalIdx, 0, brokerageItem);
@@ -126,7 +167,10 @@ function PropertyDetailPage() {
   return (
     <>
       <section className="container-x py-12">
-        <Link to="/" className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-accent mb-6 transition">
+        <Link
+          to="/"
+          className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-accent mb-6 transition"
+        >
           <ArrowLeft className="h-4 w-4" /> Back to all properties
         </Link>
 
@@ -163,7 +207,7 @@ function PropertyDetailPage() {
                   {property.badge}
                 </span>
               </div>
-              
+
               {galleryImages.length > 1 && (
                 <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-thin">
                   {galleryImages.map((img, i) => (
@@ -171,10 +215,16 @@ function PropertyDetailPage() {
                       key={i}
                       onClick={() => setActiveImage(img)}
                       className={`relative aspect-[4/3] w-24 flex-shrink-0 overflow-hidden rounded-md border-2 transition ${
-                        activeImage === img ? "border-accent scale-95 shadow-md" : "border-border hover:border-accent/50"
+                        activeImage === img
+                          ? "border-accent scale-95 shadow-md"
+                          : "border-border hover:border-accent/50"
                       }`}
                     >
-                      <img src={img} alt={`Gallery ${i + 1}`} className="h-full w-full object-cover" />
+                      <img
+                        src={img}
+                        alt={`Gallery ${i + 1}`}
+                        className="h-full w-full object-cover"
+                      />
                     </button>
                   ))}
                 </div>
@@ -186,8 +236,10 @@ function PropertyDetailPage() {
               const overviewItems = [
                 { label: "Price", value: property.price },
                 { label: "Location", value: property.location },
-                ...((property.category === "pg" || property.category === "rent") ? [{ label: "Brokerage", value: "21 Days Rent" }] : []),
-                ...(property.detailedFeatures || [])
+                ...(property.category === "pg" || property.category === "rent"
+                  ? [{ label: "Brokerage", value: "21 Days Rent" }]
+                  : []),
+                ...(property.detailedFeatures || []),
               ];
 
               return (
@@ -204,8 +256,8 @@ function PropertyDetailPage() {
                     {overviewItems.map((item, idx) => {
                       const Icon = getIconForLabel(item.label);
                       return (
-                        <div 
-                          key={idx} 
+                        <div
+                          key={idx}
                           className="flex items-center gap-3 p-3.5 rounded-xl border border-border/40 bg-muted/10 hover:bg-muted/30 hover:border-accent/40 hover:-translate-y-0.5 transition-all duration-300 group shadow-[0_2px_8px_-3px_rgba(0,0,0,0.03)] hover:shadow-md min-w-0"
                         >
                           <div className="p-2 rounded-lg bg-accent/5 text-accent group-hover:bg-accent group-hover:text-primary transition-all duration-300 shrink-0">
@@ -260,13 +312,19 @@ function PropertyDetailPage() {
                 </h2>
                 <div className="divide-y divide-border rounded-lg border bg-card overflow-hidden">
                   {priceBreakup.map((item, idx) => (
-                    <div 
-                      key={idx} 
+                    <div
+                      key={idx}
                       className={`flex justify-between items-center px-4 py-3.5 sm:px-6 sm:py-4 text-xs sm:text-sm ${
                         item.isTotal ? "bg-accent/10 font-bold border-t border-accent/20" : ""
                       }`}
                     >
-                      <span className={item.isTotal ? "text-primary font-bold" : "text-muted-foreground font-medium"}>
+                      <span
+                        className={
+                          item.isTotal
+                            ? "text-primary font-bold"
+                            : "text-muted-foreground font-medium"
+                        }
+                      >
                         {item.label}
                       </span>
                       <span className="text-primary font-semibold text-right pl-4">
@@ -278,7 +336,8 @@ function PropertyDetailPage() {
                 <div className="flex items-start gap-2.5 text-xs text-muted-foreground bg-muted/20 p-3 rounded border">
                   <ShieldCheck className="h-4 w-4 text-accent flex-shrink-0 mt-0.5" />
                   <p>
-                    Prices listed above are estimates based on standard calculations. Utility bills and actual charges may vary based on exact usage and final agreement.
+                    Prices listed above are estimates based on standard calculations. Utility bills
+                    and actual charges may vary based on exact usage and final agreement.
                   </p>
                 </div>
               </div>
@@ -306,14 +365,20 @@ function PropertyDetailPage() {
                   Prefer direct calling? Speak to our expert property consultant instantly.
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3 pt-2">
-                  <a href="tel:+918595777428" className="flex items-center gap-3 rounded bg-white/10 p-3 hover:bg-white/15 transition min-w-0">
+                  <a
+                    href="tel:+918595777428"
+                    className="flex items-center gap-3 rounded bg-white/10 p-3 hover:bg-white/15 transition min-w-0"
+                  >
                     <Phone className="h-5 w-5 text-accent shrink-0" />
                     <div className="min-w-0">
                       <div className="text-[10px] uppercase font-bold text-accent">Call Agent</div>
                       <div className="text-sm font-bold whitespace-nowrap">+91 8595777428</div>
                     </div>
                   </a>
-                  <a href="tel:+919311510866" className="flex items-center gap-3 rounded bg-white/10 p-3 hover:bg-white/15 transition min-w-0">
+                  <a
+                    href="tel:+919311510866"
+                    className="flex items-center gap-3 rounded bg-white/10 p-3 hover:bg-white/15 transition min-w-0"
+                  >
                     <Phone className="h-5 w-5 text-accent shrink-0" />
                     <div className="min-w-0">
                       <div className="text-[10px] uppercase font-bold text-accent">Office Desk</div>

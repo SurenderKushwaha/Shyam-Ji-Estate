@@ -1,17 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { InquiryForm } from "@/components/InquiryForm";
 import { BRAND, waLink } from "@/lib/brand";
-import {
-  Phone,
-  Mail,
-  MapPin,
-  Globe,
-  Clock,
-  ChevronDown,
-  ChevronUp,
-} from "lucide-react";
+import { Phone, Mail, MapPin, Globe, Clock, ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
-
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -22,8 +13,15 @@ export const Route = createFileRoute("/contact")({
         content:
           "Contact Shyam Ji Estate, the #1 property consultant in Old Rajinder Nagar, New Rajinder Nagar, and Karol Bagh. Call us at +91-8595777428 or visit our office near Batra Medical.",
       },
-      { name: "keywords", content: "shyam ji estate contact number, property dealer old rajinder nagar office address, real estate agent phone number old rajinder nagar, shyam ji estate" },
-      { property: "og:title", content: "Contact Shyam Ji Estate | Best Real Estate Broker in Old Rajinder Nagar" },
+      {
+        name: "keywords",
+        content:
+          "shyam ji estate contact number, property dealer old rajinder nagar office address, real estate agent phone number old rajinder nagar, shyam ji estate",
+      },
+      {
+        property: "og:title",
+        content: "Contact Shyam Ji Estate | Best Real Estate Broker in Old Rajinder Nagar",
+      },
       { property: "og:url", content: "/contact" },
     ],
     links: [{ rel: "canonical", href: "/contact" }],
@@ -65,7 +63,15 @@ function FacebookIcon({ className }: { className?: string }) {
 }
 function InstagramIcon({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+    >
       <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
       <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
       <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
@@ -105,12 +111,12 @@ function FaqItem({ q, a, index }: { q: string; a: string; index: number }) {
           {q}
         </span>
         <span className="shrink-0 h-8 w-8 rounded-full bg-[#C49545]/10 flex items-center justify-center text-[#C49545] transition-transform duration-200">
-          {open?<ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+          {open ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
         </span>
       </button>
       <div
         className="overflow-hidden transition-all duration-300 ease-in-out"
-        style={{ maxHeight: open?"200px" : "0px" }}
+        style={{ maxHeight: open ? "200px" : "0px" }}
       >
         <p className="px-6 py-4 text-sm text-muted-foreground leading-relaxed border-t border-border/30 bg-[#fdfaf5]">
           {a}
@@ -147,8 +153,6 @@ function ContactPage() {
         />
 
         <div className="container-x py-12 sm:py-16 md:py-20 relative z-10">
-
-
           <div className="max-w-2xl">
             <p className="text-[#C49545] text-xs font-bold uppercase tracking-[0.2em] mb-3">
               We're here to help you
@@ -161,11 +165,10 @@ function ContactPage() {
               <span className="text-[#C49545] font-semibold">Right Property</span> for You.
             </p>
             <p className="mt-2 text-white/50 text-sm">
-              Have questions or need assistance?Our team is here to help you find the perfect property that fits your needs.
+              Have questions or need assistance?Our team is here to help you find the perfect
+              property that fits your needs.
             </p>
           </div>
-
-
         </div>
       </section>
 
@@ -173,13 +176,15 @@ function ContactPage() {
       <section className="container-x py-12 sm:py-16 grid gap-10 lg:grid-cols-[1fr_1.25fr] items-start">
         {/* Left: Contact Info */}
         <div>
-          <p className="text-[#C49545] text-xs font-bold uppercase tracking-[0.2em] mb-2">Get in touch</p>
+          <p className="text-[#C49545] text-xs font-bold uppercase tracking-[0.2em] mb-2">
+            Get in touch
+          </p>
           <h2 className="font-display text-2xl md:text-3xl font-bold text-[#0B1528] leading-tight">
             We're Here to <span className="text-[#C49545]">Help You</span>
           </h2>
           <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-            Our team is available 7 days a week. Drop by the office,
-            call, or send us a message?we usually respond within an hour.
+            Our team is available 7 days a week. Drop by the office, call, or send us a message?we
+            usually respond within an hour.
           </p>
 
           {/* Contact cards */}
@@ -190,7 +195,9 @@ function ContactPage() {
                 <Phone className="h-4 w-4" />
               </div>
               <div>
-                <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground/70 mb-1">Phone</div>
+                <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground/70 mb-1">
+                  Phone
+                </div>
                 {BRAND.phones.map((p) => (
                   <a
                     key={p}
@@ -209,7 +216,9 @@ function ContactPage() {
                 <WhatsAppIcon className="h-4 w-4" />
               </div>
               <div>
-                <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground/70 mb-1">WhatsApp</div>
+                <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground/70 mb-1">
+                  WhatsApp
+                </div>
                 {BRAND.whatsapps.map((w) => (
                   <a
                     key={w}
@@ -231,7 +240,9 @@ function ContactPage() {
                 <Mail className="h-4 w-4" />
               </div>
               <div>
-                <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground/70 mb-1">Email</div>
+                <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground/70 mb-1">
+                  Email
+                </div>
                 <a
                   href={`mailto:${BRAND.email}`}
                   className="text-sm font-semibold text-[#0B1528] hover:text-[#C49545] transition-colors break-all"
@@ -247,7 +258,9 @@ function ContactPage() {
                 <Globe className="h-4 w-4" />
               </div>
               <div>
-                <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground/70 mb-1">Website</div>
+                <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground/70 mb-1">
+                  Website
+                </div>
                 <a
                   href={`https://${BRAND.website}`}
                   target="_blank"
@@ -265,7 +278,9 @@ function ContactPage() {
                 <MapPin className="h-4 w-4" />
               </div>
               <div>
-                <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground/70 mb-1">Office</div>
+                <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground/70 mb-1">
+                  Office
+                </div>
                 <div className="text-sm font-semibold text-[#0B1528]">{BRAND.address}</div>
               </div>
             </div>
@@ -276,14 +291,18 @@ function ContactPage() {
                 <Clock className="h-4 w-4" />
               </div>
               <div>
-                <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground/70 mb-1">Office Hours</div>
-                <div className="text-sm font-semibold text-[#0B1528]">Mon – Sun: 10:00 AM – 7:00 PM</div>
-                <div className="text-xs text-muted-foreground mt-0.5">Open every day of the week</div>
+                <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground/70 mb-1">
+                  Office Hours
+                </div>
+                <div className="text-sm font-semibold text-[#0B1528]">
+                  Mon – Sun: 10:00 AM – 7:00 PM
+                </div>
+                <div className="text-xs text-muted-foreground mt-0.5">
+                  Open every day of the week
+                </div>
               </div>
             </div>
           </div>
-
-
         </div>
 
         {/* Right: Inquiry Form */}
@@ -295,7 +314,9 @@ function ContactPage() {
       {/* ── Google Maps ── */}
       <section className="container-x pb-12 sm:pb-16">
         <div className="mb-6">
-          <p className="text-[#C49545] text-xs font-bold uppercase tracking-[0.2em] mb-2">Find Us</p>
+          <p className="text-[#C49545] text-xs font-bold uppercase tracking-[0.2em] mb-2">
+            Find Us
+          </p>
           <h2 className="font-display text-xl sm:text-2xl font-bold text-[#0B1528]">
             Visit Our <span className="text-[#C49545]">Office</span>
           </h2>
@@ -313,21 +334,22 @@ function ContactPage() {
             className="block w-full sm:h-[380px] md:h-[450px]"
           />
         </div>
-        <p className="mt-3 text-sm text-muted-foreground text-center">
-          📍 {BRAND.address}
-        </p>
+        <p className="mt-3 text-sm text-muted-foreground text-center">📍 {BRAND.address}</p>
       </section>
 
       {/* ── FAQ ── */}
       <section className="bg-[#f9f6f0] py-16">
         <div className="container-x">
           <div className="text-center mb-10">
-            <p className="text-[#C49545] text-xs font-bold uppercase tracking-[0.2em] mb-2">Got Questions?</p>
+            <p className="text-[#C49545] text-xs font-bold uppercase tracking-[0.2em] mb-2">
+              Got Questions?
+            </p>
             <h2 className="font-display text-2xl md:text-3xl font-bold text-[#0B1528]">
               Frequently Asked <span className="text-[#C49545]">Questions</span>
             </h2>
             <p className="mt-2 text-sm text-muted-foreground max-w-lg mx-auto">
-              Quick answers to the questions we hear most often. Still not sure?Just ask us directly.
+              Quick answers to the questions we hear most often. Still not sure?Just ask us
+              directly.
             </p>
           </div>
           <div className="max-w-2xl mx-auto space-y-3">
@@ -345,7 +367,8 @@ function ContactPage() {
       >
         <div className="container-x text-center">
           <h2 className="font-display text-2xl md:text-3xl font-black text-white uppercase tracking-wide">
-            Ready to Find Your Dream Property?</h2>
+            Ready to Find Your Dream Property?
+          </h2>
           <p className="mt-2 text-white/80 text-sm md:text-base max-w-md mx-auto">
             Let our experts guide you?zero pressure, just genuine advice.
           </p>

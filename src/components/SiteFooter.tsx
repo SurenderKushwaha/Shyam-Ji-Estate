@@ -23,19 +23,33 @@ export function SiteFooter() {
 
         {/* Navigation Links */}
         <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 mt-7 sm:mt-8 text-xs font-semibold uppercase tracking-wider text-primary/80">
-          <Link to="/" className="hover:text-accent transition py-1">Home</Link>
+          <Link to="/" className="hover:text-accent transition py-1">
+            Home
+          </Link>
           <span className="text-border/60 hidden sm:inline">|</span>
-          <Link to="/contact" className="hover:text-accent transition py-1">Contact</Link>
+          <Link to="/contact" className="hover:text-accent transition py-1">
+            Contact
+          </Link>
           <span className="text-border/60 hidden sm:inline">|</span>
-          <Link to="/blog" className="hover:text-accent transition py-1">Blog</Link>
+          <Link to="/blog" className="hover:text-accent transition py-1">
+            Blog
+          </Link>
           <span className="text-border/60 hidden sm:inline">|</span>
-          <Link to="/about" className="hover:text-accent transition py-1">About</Link>
+          <Link to="/about" className="hover:text-accent transition py-1">
+            About
+          </Link>
           <span className="text-border/60 hidden sm:inline">|</span>
-          <Link to="/privacy-policy" className="hover:text-accent transition py-1">Privacy Policy</Link>
+          <Link to="/privacy-policy" className="hover:text-accent transition py-1">
+            Privacy Policy
+          </Link>
           <span className="text-border/60 hidden sm:inline">|</span>
-          <Link to="/terms-conditions" className="hover:text-accent transition py-1">Terms & Conditions</Link>
+          <Link to="/terms-conditions" className="hover:text-accent transition py-1">
+            Terms & Conditions
+          </Link>
           <span className="text-border/60 hidden sm:inline">|</span>
-          <Link to="/refund-policy" className="hover:text-accent transition py-1">Refund Policy</Link>
+          <Link to="/refund-policy" className="hover:text-accent transition py-1">
+            Refund Policy
+          </Link>
         </nav>
 
         {/* Social Links */}
@@ -54,7 +68,10 @@ export function SiteFooter() {
 
         {/* Contact Summary / Address */}
         <div className="flex flex-col md:flex-row md:items-center justify-center gap-y-3 gap-x-6 mt-8 sm:mt-10 pt-6 sm:pt-8 border-t border-border/40 w-full text-xs text-muted-foreground font-semibold">
-          <a href={`mailto:${BRAND.email}`} className="flex items-center justify-center gap-1.5 hover:text-accent transition font-medium break-all">
+          <a
+            href={`mailto:${BRAND.email}`}
+            className="flex items-center justify-center gap-1.5 hover:text-accent transition font-medium break-all"
+          >
             <Mail className="h-3.5 w-3.5 text-accent shrink-0" /> {BRAND.email}
           </a>
           <span className="text-border/60 hidden md:inline">•</span>

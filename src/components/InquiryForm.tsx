@@ -37,16 +37,13 @@ export function InquiryForm({
 
   const [errors, setErrors] = useState<{ phone?: string; name?: string }>({});
   const [submitted, setSubmitted] = useState<"whatsapp" | "email" | null>(null);
-  
+
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setIsDropdownOpen(false);
       }
     }
@@ -145,9 +142,7 @@ export function InquiryForm({
                 if (errors.name) setErrors((prev) => ({ ...prev, name: undefined }));
               }}
             />
-            {errors.name && (
-              <p className="mt-1 text-xs text-red-500">{errors.name}</p>
-            )}
+            {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name}</p>}
           </div>
 
           {/* Phone */}
@@ -168,9 +163,7 @@ export function InquiryForm({
                 if (errors.phone) setErrors((prev) => ({ ...prev, phone: undefined }));
               }}
             />
-            {errors.phone && (
-              <p className="mt-1 text-xs text-red-500">{errors.phone}</p>
-            )}
+            {errors.phone && <p className="mt-1 text-xs text-red-500">{errors.phone}</p>}
           </div>
         </div>
 
@@ -189,7 +182,7 @@ export function InquiryForm({
           </div>
 
           {/* Custom Select Box */}
-          <div 
+          <div
             ref={dropdownRef}
             className="relative rounded-xl border border-gray-200 bg-white px-4 py-2 flex flex-col justify-center min-h-[50px] shadow-sm cursor-pointer select-none"
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -197,10 +190,10 @@ export function InquiryForm({
             <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground/70">
               I am looking to
             </span>
-            <span className="text-sm font-bold text-[#0B1528] mt-0.5">
-              {data.interest}
-            </span>
-            <ChevronDown className={`absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
+            <span className="text-sm font-bold text-[#0B1528] mt-0.5">{data.interest}</span>
+            <ChevronDown
+              className={`absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none transition-transform duration-200 ${isDropdownOpen ? "rotate-180" : ""}`}
+            />
 
             {/* Dropdown Options */}
             {isDropdownOpen && (

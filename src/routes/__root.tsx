@@ -26,7 +26,10 @@ function NotFoundComponent() {
           The page you're looking for doesn't exist or has been moved.
         </p>
         <div className="mt-6">
-          <Link to="/" className="inline-flex items-center justify-center rounded-md bg-accent px-4 py-2 text-sm font-bold uppercase text-accent-foreground">
+          <Link
+            to="/"
+            className="inline-flex items-center justify-center rounded-md bg-accent px-4 py-2 text-sm font-bold uppercase text-accent-foreground"
+          >
             Go home
           </Link>
         </div>
@@ -46,12 +49,17 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
         <p className="mt-2 text-sm text-muted-foreground">Something went wrong on our end.</p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
-            onClick={() => { router.invalidate(); reset(); }}
+            onClick={() => {
+              router.invalidate();
+              reset();
+            }}
             className="rounded-md bg-accent px-4 py-2 text-sm font-bold uppercase text-accent-foreground"
           >
             Try again
           </button>
-          <a href="/" className="rounded-md border px-4 py-2 text-sm font-medium">Go home</a>
+          <a href="/" className="rounded-md border px-4 py-2 text-sm font-medium">
+            Go home
+          </a>
         </div>
       </div>
     </div>
@@ -91,7 +99,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@type": "RealEstateAgent",
           name: "Shyam Ji Estate",
           image: "/logo.png",
-          description: "Shyam Ji Estate is the premier real estate agency and property dealer in Old Rajinder Nagar (ORN), Karol Bagh, and New Rajinder Nagar, specializing in premium builder floors, flats, PGs, and commercial spaces.",
+          description:
+            "Shyam Ji Estate is the premier real estate agency and property dealer in Old Rajinder Nagar (ORN), Karol Bagh, and New Rajinder Nagar, specializing in premium builder floors, flats, PGs, and commercial spaces.",
           telephone: ["+91-8595777428", "+91-9311510866"],
           email: "info@shyamjiestate.com",
           url: "https://shyamjiestate.com",
@@ -106,22 +115,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           geo: {
             "@type": "GeoCoordinates",
             latitude: "28.6389",
-            longitude: "77.1895"
+            longitude: "77.1895",
           },
           areaServed: [
             {
               "@type": "AdministrativeArea",
-              name: "Old Rajinder Nagar"
+              name: "Old Rajinder Nagar",
             },
             {
               "@type": "AdministrativeArea",
-              name: "New Rajinder Nagar"
+              name: "New Rajinder Nagar",
             },
             {
               "@type": "AdministrativeArea",
-              name: "Karol Bagh"
-            }
-          ]
+              name: "Karol Bagh",
+            },
+          ],
         }),
       },
     ],

@@ -1,20 +1,20 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { 
-  ShieldCheck, 
-  MapPin, 
-  IndianRupee, 
-  Headphones, 
-  Search, 
-  ArrowRight, 
-  Home, 
-  Heart, 
-  Bed, 
-  Maximize, 
+import {
+  ShieldCheck,
+  MapPin,
+  IndianRupee,
+  Headphones,
+  Search,
+  ArrowRight,
+  Home,
+  Heart,
+  Bed,
+  Maximize,
   Bath,
   ChevronDown,
   Clock,
   ClipboardList,
-  Phone
+  Phone,
 } from "lucide-react";
 import { useState } from "react";
 import { properties } from "@/data/properties";
@@ -28,10 +28,25 @@ export const Route = createFileRoute("/rent")({
   head: () => ({
     meta: [
       { title: "Flats & Builder Floors for Rent in Old Rajinder Nagar | Shyam Ji Estate" },
-      { name: "description", content: "Find the best builder floors, flats, and apartments for rent in Old Rajinder Nagar, New Rajinder Nagar, and Karol Bagh. Verified properties ready to move in." },
-      { name: "keywords", content: "flat for rent in old rajinder nagar, builder floor for rent in old rajinder nagar, rent house in old rajinder nagar, apartments for rent in rajinder nagar, shyam ji estate" },
-      { property: "og:title", content: "Premium Flats & Builder Floors for Rent in Old Rajinder Nagar | Shyam Ji Estate" },
-      { property: "og:description", content: "Find verified builder floors, independent rooms, and flats for rent in Old and New Rajinder Nagar. Directly deal with top local property consultants." },
+      {
+        name: "description",
+        content:
+          "Find the best builder floors, flats, and apartments for rent in Old Rajinder Nagar, New Rajinder Nagar, and Karol Bagh. Verified properties ready to move in.",
+      },
+      {
+        name: "keywords",
+        content:
+          "flat for rent in old rajinder nagar, builder floor for rent in old rajinder nagar, rent house in old rajinder nagar, apartments for rent in rajinder nagar, shyam ji estate",
+      },
+      {
+        property: "og:title",
+        content: "Premium Flats & Builder Floors for Rent in Old Rajinder Nagar | Shyam Ji Estate",
+      },
+      {
+        property: "og:description",
+        content:
+          "Find verified builder floors, independent rooms, and flats for rent in Old and New Rajinder Nagar. Directly deal with top local property consultants.",
+      },
       { property: "og:url", content: "/rent" },
     ],
     links: [{ rel: "canonical", href: "/rent" }],
@@ -98,7 +113,7 @@ function RentPage() {
 
   return (
     <>
-      <section 
+      <section
         className="relative bg-[#0B1528] text-white pt-16 pb-20 sm:pt-20 sm:pb-24 lg:pt-24 lg:pb-28 bg-cover bg-center border-b border-border/10"
         style={{ backgroundImage: `url(${galleryLiving})` }}
       >
@@ -111,7 +126,8 @@ function RentPage() {
               Find Your Perfect Rental
             </p>
             <h1 className="font-display text-4xl sm:text-5xl font-extrabold leading-tight text-white md:text-6xl lg:text-7xl uppercase tracking-wide">
-              Find Your Perfect<br />
+              Find Your Perfect
+              <br />
               <span className="text-[#C49545]">Rental Property</span>
             </h1>
             <div className="mt-4 sm:mt-5 space-y-1 text-xs sm:text-sm text-gray-300 leading-relaxed font-medium">
@@ -126,7 +142,9 @@ function RentPage() {
                   <ShieldCheck className="h-4.5 w-4.5" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-white">Verified</span>
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-white">
+                    Verified
+                  </span>
                   <span className="text-[8px] font-medium text-gray-400 mt-0.5">Properties</span>
                 </div>
               </div>
@@ -138,7 +156,9 @@ function RentPage() {
                   <MapPin className="h-4.5 w-4.5" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-white">Prime</span>
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-white">
+                    Prime
+                  </span>
                   <span className="text-[8px] font-medium text-gray-400 mt-0.5">Locations</span>
                 </div>
               </div>
@@ -150,7 +170,9 @@ function RentPage() {
                   <IndianRupee className="h-4 w-4" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-white">Best Value</span>
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-white">
+                    Best Value
+                  </span>
                   <span className="text-[8px] font-medium text-gray-400 mt-0.5">Deals</span>
                 </div>
               </div>
@@ -162,7 +184,9 @@ function RentPage() {
                   <Headphones className="h-4.5 w-4.5" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-white">Dedicated</span>
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider leading-none text-white">
+                    Dedicated
+                  </span>
                   <span className="text-[8px] font-medium text-gray-400 mt-0.5">Support</span>
                 </div>
               </div>
@@ -211,7 +235,7 @@ function RentPage() {
               options={[
                 { value: "latest", label: "Latest First" },
                 { value: "price-asc", label: "Price: Low to High" },
-                { value: "price-desc", label: "Price: High to Low" }
+                { value: "price-desc", label: "Price: High to Low" },
               ]}
               placeholder="Sort by"
               className="w-[170px]"
@@ -223,9 +247,16 @@ function RentPage() {
         <div className="mt-8 grid gap-6 grid-cols-1 lg:grid-cols-2 max-w-5xl mx-auto">
           {sortedList.length > 0 ? (
             sortedList.map((p) => (
-              <article key={p.id} className="group overflow-hidden rounded-2xl bg-white border border-[#C49545]/15 shadow-[0_8px_30px_rgba(0,0,0,0.02)] transition-all duration-300 hover:-translate-y-1 hover:shadow-luxe flex flex-col md:flex-row h-full min-h-[220px]">
+              <article
+                key={p.id}
+                className="group overflow-hidden rounded-2xl bg-white border border-[#C49545]/15 shadow-[0_8px_30px_rgba(0,0,0,0.02)] transition-all duration-300 hover:-translate-y-1 hover:shadow-luxe flex flex-col md:flex-row h-full min-h-[220px]"
+              >
                 {/* Left image */}
-                <Link to="/properties/$id" params={{ id: p.id }} className="relative w-full md:w-[40%] aspect-[4/3] md:aspect-auto md:h-full min-h-[200px] overflow-hidden block">
+                <Link
+                  to="/properties/$id"
+                  params={{ id: p.id }}
+                  className="relative w-full md:w-[40%] aspect-[4/3] md:aspect-auto md:h-full min-h-[200px] overflow-hidden block"
+                >
                   <img
                     src={p.image}
                     alt={p.title}
@@ -243,7 +274,11 @@ function RentPage() {
                 {/* Right content */}
                 <div className="p-6 flex flex-col justify-between flex-grow md:w-[60%]">
                   <div>
-                    <Link to="/properties/$id" params={{ id: p.id }} className="hover:text-[#C49545] transition block">
+                    <Link
+                      to="/properties/$id"
+                      params={{ id: p.id }}
+                      className="hover:text-[#C49545] transition block"
+                    >
                       <h3 className="font-display text-lg md:text-xl font-extrabold text-[#0B1528] leading-tight">
                         {p.title}
                       </h3>
@@ -287,9 +322,15 @@ function RentPage() {
             ))
           ) : (
             <div className="col-span-full text-center py-12 bg-white rounded-2xl border border-dashed border-border/60">
-              <p className="text-sm font-bold text-muted-foreground uppercase">No properties match your filter criteria.</p>
+              <p className="text-sm font-bold text-muted-foreground uppercase">
+                No properties match your filter criteria.
+              </p>
               <button
-                onClick={() => { setLocation(""); setType(""); setBudget(""); }}
+                onClick={() => {
+                  setLocation("");
+                  setType("");
+                  setBudget("");
+                }}
                 className="mt-4 inline-flex items-center gap-1 text-xs font-bold uppercase text-[#C49545] hover:underline"
               >
                 Reset Filters
@@ -314,29 +355,29 @@ function RentPage() {
               <p className="mt-4 text-sm md:text-base text-muted-foreground leading-relaxed max-w-md">
                 Share your preferences and our team will send you the best matching options.
               </p>
-              
+
               {/* Pillars row */}
               <div className="mt-8 grid grid-cols-4 divide-x divide-gray-200 border-t border-gray-100 py-8 text-center max-w-2xl">
                 {[
                   {
                     icon: <Clock className="h-5 w-5 text-[#C49545]" />,
                     title: "Quick Response",
-                    desc: "Immediate assistance and fast property visits."
+                    desc: "Immediate assistance and fast property visits.",
                   },
                   {
                     icon: <Home className="h-5 w-5 text-[#C49545]" />,
                     title: "Verified Properties",
-                    desc: "All rental homes are thoroughly verified and inspected."
+                    desc: "All rental homes are thoroughly verified and inspected.",
                   },
                   {
                     icon: <ClipboardList className="h-5 w-5 text-[#C49545]" />,
                     title: "Best Matches",
-                    desc: "Get personalized recommendations matching your budget."
+                    desc: "Get personalized recommendations matching your budget.",
                   },
                   {
                     icon: <ShieldCheck className="h-5 w-5 text-[#C49545]" />,
                     title: "Safe & Secure",
-                    desc: "Transparent rental agreements and hassle-free documentation."
+                    desc: "Transparent rental agreements and hassle-free documentation.",
                   },
                 ].map(({ icon, title, desc }) => (
                   <div key={title} className="flex flex-col items-center px-2">
@@ -353,7 +394,7 @@ function RentPage() {
                 ))}
               </div>
             </div>
-            
+
             {/* Need expert advice? Banner */}
             <div className="mt-8 flex items-center justify-between rounded-xl bg-[#F5EFE6]/50 border border-[#C49545]/15 p-5 max-w-xl">
               <div className="flex items-center gap-4">
