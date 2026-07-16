@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { MapPin, ArrowRight, BedDouble, ShieldCheck } from "lucide-react";
+import { MapPin, BedDouble, ShieldCheck } from "lucide-react";
 import type { Property } from "@/data/properties";
 
 export function PropertyCard({ p }: { p: Property }) {
@@ -77,8 +77,7 @@ export function PropertyCard({ p }: { p: Property }) {
             params={{ id: p.id }}
             className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#0B1528] py-3 text-xs font-bold uppercase tracking-wider text-white shadow-sm transition-all duration-300 hover:bg-[#C49545] hover:shadow-[0_6px_20px_rgba(196,149,69,0.3)] active:scale-[0.98] cursor-pointer"
           >
-            View Details 
-            <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" />
+            View Details
           </Link>
         </div>
 

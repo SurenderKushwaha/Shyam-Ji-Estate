@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Play, Instagram, X, ArrowRight, Eye } from "lucide-react";
+import { Play, Instagram, X, Eye } from "lucide-react";
 import { BRAND } from "@/lib/brand";
 
 // Local image thumbnails for the property reels
@@ -118,7 +118,13 @@ export function VideoSection() {
               {/* Aspect Ratio 9/16 Card */}
               <div className="relative aspect-[9/16] w-full overflow-hidden bg-muted">
                 <img
-                  src={reel.thumbnail}
+                  src={
+                    reel.thumbnail || 
+                    (reel.type === 'girls' ? girlsPgImg : 
+                     reel.type === 'commercial' ? commercialImg : 
+                     reel.type === 'office' ? officeImg : 
+                     livingRoomImg)
+                  }
                   alt={reel.title}
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
@@ -164,7 +170,7 @@ export function VideoSection() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-2xl bg-[#0B1528] px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-white shadow-md transition hover:bg-[#C49545] hover:text-white active:scale-95 duration-100"
           >
-            <Instagram className="h-4 w-4" /> Visit Our Instagram <ArrowRight className="h-4 w-4" />
+            <Instagram className="h-4 w-4" /> Visit Our Instagram
           </a>
         </div>
 

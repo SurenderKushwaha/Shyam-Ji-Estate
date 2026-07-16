@@ -1,0 +1,47 @@
+name: Fetch Instagram Reels
+
+on:
+  schedule:
+    # Runs every 30 minutes
+    - cron: '*/30 * * * *'
+  workflow_dispatch: # Allows manual trigger from GitHub UI
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'public/reels.json'
+      - 'public/ig-assets/**'
+
+jobs:
+  update-reels:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run Instagram Fetch Script
+        run: node scripts/fetch-instagram.js
+        env:
+          APIFY_TOKEN: ${{ secrets.INSTAVIDEO }}
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          
+          # Check if there are changes to commit
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git add public/reels.json public/ig-assets/
+            git commit -m "chore: auto-update instagram reels [skip ci]"
+            git push
+          else
+            echo "No new Instagram reels to update."
+          fi

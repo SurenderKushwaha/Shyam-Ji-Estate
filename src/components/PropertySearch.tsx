@@ -128,7 +128,7 @@ export function PropertySearch({
         )}
 
         {/* Inputs Stack */}
-        <div className="flex flex-col gap-3.5 md:flex-row md:items-center md:gap-4">
+        <div className="flex flex-col md:flex-row md:flex-wrap items-center gap-3.5 md:gap-4">
           
           {/* Location Input */}
           <CustomSelect
@@ -137,7 +137,7 @@ export function PropertySearch({
             options={locations}
             placeholder="Search Location"
             icon={<Search className="h-4.5 w-4.5" />}
-            className="w-full md:flex-[1.2]"
+            className="w-full md:flex-1 md:min-w-[200px]"
           />
 
           {/* Dynamic Inputs: PG vs Standard Property Type */}
@@ -150,7 +150,7 @@ export function PropertySearch({
                 options={["Boys", "Girls"]}
                 placeholder="Select PG Type"
                 icon={<Building2 className="h-4.5 w-4.5" />}
-                className="w-full md:flex-[1]"
+                className="w-full md:flex-1 md:min-w-[160px]"
               />
 
               {/* Room Type Dropdown */}
@@ -160,7 +160,7 @@ export function PropertySearch({
                 options={["Single Room", "Double Sharing", "Independent", "Attached Washroom", "Attached Balcony"]}
                 placeholder="Select Room Type"
                 icon={<BedDouble className="h-4.5 w-4.5" />}
-                className="w-full md:flex-[1]"
+                className="w-full md:flex-1 md:min-w-[160px]"
               />
             </>
           ) : (
@@ -171,25 +171,27 @@ export function PropertySearch({
               options={propertyTypes}
               placeholder="Property Type"
               icon={<Building2 className="h-4.5 w-4.5" />}
-              className="w-full md:flex-[1]"
+              className="w-full md:flex-1 md:min-w-[160px]"
             />
           )}
 
-          {/* Budget Dropdown */}
-          <CustomSelect
-            value={filters.budget}
-            onChange={(val) => onChange("budget", val)}
-            options={budgets}
-            placeholder="Budget"
-            icon={<Wallet className="h-4.5 w-4.5" />}
-            className="w-full md:flex-[1]"
-          />
+          {/* Budget Dropdown - Hidden for PG & Hostel */}
+          {activeTab !== "PG & Hostel" && (
+            <CustomSelect
+              value={filters.budget}
+              onChange={(val) => onChange("budget", val)}
+              options={budgets}
+              placeholder="Budget"
+              icon={<Wallet className="h-4.5 w-4.5" />}
+              className="w-full md:flex-1 md:min-w-[140px]"
+            />
+          )}
 
           {/* Search Button */}
           <button
             type="button"
             onClick={onSearch}
-            className="w-full md:w-auto inline-flex items-center justify-center gap-2 rounded-2xl bg-[#C49545] px-8 py-3.5 text-xs sm:text-sm font-extrabold uppercase tracking-wider text-white shadow-[0_4px_12px_rgba(196,149,69,0.3)] transition hover:brightness-110 cursor-pointer h-[50px] md:h-[52px] active:scale-[0.99] duration-100 shrink-0 md:px-10"
+            className="w-full md:flex-1 md:min-w-[140px] md:max-w-[200px] inline-flex items-center justify-center gap-2 rounded-2xl bg-[#C49545] px-6 py-3.5 text-xs sm:text-sm font-extrabold uppercase tracking-wider text-white shadow-[0_4px_12px_rgba(196,149,69,0.3)] transition hover:brightness-110 cursor-pointer h-[50px] md:h-[52px] active:scale-[0.99] duration-100 shrink-0"
           >
             Search
           </button>

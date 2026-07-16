@@ -83,6 +83,17 @@ import nrn2bhk3 from "@/assets/2bhk-nrn-3.jpg";
 import nrn2bhk4 from "@/assets/2bhk-nrn-4.jpg";
 import nrn2bhk5 from "@/assets/2bhk-nrn-5.png";
 
+import newGirlsSingle1 from "@/assets/new-girls-single-1.jpg";
+import newGirlsSingle2 from "@/assets/new-girls-single-2.jpg";
+import newGirlsSingle3 from "@/assets/new-girls-single-3.jpg";
+import newGirlsSingle4 from "@/assets/new-girls-single-4.jpg";
+import newGirlsSingle5 from "@/assets/new-girls-single-5.jpg";
+
+import newDoubleSharing1 from "@/assets/new-double-sharing-1.jpg";
+import newDoubleSharing2 from "@/assets/new-double-sharing-2.jpg";
+import newDoubleSharing3 from "@/assets/new-double-sharing-3.jpg";
+import newDoubleSharing4 from "@/assets/new-double-sharing-4.jpg";
+
 export type PriceBreakupItem = {
   label: string;
   value: string;
@@ -557,175 +568,54 @@ export const properties: Property[] = [
     ]
   },
   {
-    id: "3bhk-builder-floor",
-    title: "3 BHK Builder Floor",
+    id: "girls-single-pg-food-18k",
+    title: "Single Room for Girls in PG Building",
     location: "Old Rajinder Nagar",
-    price: "₹2.25 Cr.",
-    badge: "FOR SALE",
-    category: "buy",
-    image: prop3bhk,
-    features: ["3 BHK", "1600 Sq.Ft.", "2 Baths"],
-    description: "Premium independent builder floor situated in the heart of Old Rajinder Nagar. This spacious home features modular kitchen cabinets, premium marble flooring, excellent natural light, and individual water storage tanks. Centrally located with close proximity to Karol Bagh Metro Station and major IAS coaching centers (Vajiram & Ravi, Drishti IAS). Ideal for families or students seeking a premium, quiet, and convenient living space.",
-    gallery: [prop3bhk, galleryBedroom, galleryKitchen, galleryLiving],
-    priceBreakup: [
-      { label: "Base Selling Price", value: "₹2,20,00,000" },
-      { label: "Stamp Duty & Registration", value: "₹13,50,000" },
-      { label: "GST (if applicable)", value: "NIL" },
-      { label: "Maintenance Deposit", value: "₹1,50,000" },
-      { label: "Brokerage Charges (1%)", value: "₹2,20,000" },
-      { label: "Total Price (Estimated)", value: "₹2,37,20,000", isTotal: true }
-    ],
-    detailedFeatures: [
-      { label: "Configuration", value: "3 BHK" },
-      { label: "Super Area", value: "1600 Sq.Ft." },
-      { label: "Furnishing State", value: "Semi-Furnished" },
-      { label: "Facing", value: "North-East" },
-      { label: "Floor", value: "2nd Floor (of 4)" },
-      { label: "Water Availability", value: "24 Hours Available" },
-      { label: "Electricity Status", value: "No Power Cut" }
-    ]
-  },
-  {
-    id: "pg-for-boys",
-    title: "PG for Boys",
-    location: "Old Rajinder Nagar",
-    price: "₹12,000 / Month",
+    price: "₹18,000 / Month",
     badge: "PG / HOSTEL",
     category: "pg",
-    image: propPg,
-    features: ["Twin Sharing", "Wi-Fi", "Food"],
-    description: "Well-managed boys paying guest accommodation in Old Rajinder Nagar. The PG offers clean sharing rooms with air conditioning, high-speed Wi-Fi, laundry service, and healthy home-cooked meals three times a day. Located just a 2-minute walk from major UPSC coachings, making it a peaceful study environment for students.",
-    gallery: [propPg, galleryBedroom, galleryKitchen],
+    image: newGirlsSingle1,
+    features: ["Single Room", "Food Included", "All Amenities"],
+    description: "Premium single room for girls in a safe PG building. The rent includes food, high-speed Wi-Fi, daily cleaning, laundry, and RO water. Electricity up to 12 units is also included.",
+    gallery: [newGirlsSingle1, newGirlsSingle2, newGirlsSingle3, newGirlsSingle4, newGirlsSingle5],
     priceBreakup: [
-      { label: "Monthly Rent (Twin Sharing)", value: "₹12,000" },
-      { label: "Security Deposit (1 Month)", value: "₹12,000" },
-      { label: "Food & Mess Charges", value: "Included" },
-      { label: "Wi-Fi & Housekeeping", value: "Included" },
-      { label: "Electricity Charges", value: "₹10 per Unit" },
-      { label: "Total First Month Cost", value: "₹24,000", isTotal: true }
-    ],
-    detailedFeatures: [
-      { label: "Room Type", value: "Twin Sharing" },
-      { label: "Food Quality", value: "Veg (3 meals/day)" },
-      { label: "AC", value: "Available" },
-      { label: "Wi-Fi Speed", value: "Up to 100 Mbps" },
-      { label: "Housekeeping", value: "Daily cleaning" },
-      { label: "Laundry", value: "2 times a week" },
-      { label: "Security", value: "CCTV & Warden" }
-    ]
-  },
-  {
-    id: "commercial-shop",
-    title: "Commercial Shop",
-    location: "Old Rajinder Nagar",
-    price: "₹85,000 / Month",
-    badge: "FOR RENT",
-    category: "commercial",
-    image: propShop,
-    features: ["450 Sq.Ft.", "Ground Floor", "24x7"],
-    description: "Highly visible retail commercial shop available for rent on the busy streets of Old Rajinder Nagar. Positioned on the ground floor with a wide front glass facade, this space attracts excellent footfall. Suitable for stationery stores, pharmacy, boutiques, coffee shops, or coaching office desks.",
-    gallery: [propShop, galleryLiving],
-    priceBreakup: [
-      { label: "Monthly Rent", value: "₹85,000" },
-      { label: "Security Deposit (3 Months)", value: "₹2,55,000" },
-      { label: "Monthly Maintenance Charges", value: "₹3,000" },
-      { label: "Electricity Charges", value: "Commercial Rates" },
-      { label: "Brokerage Charges", value: "₹85,000" },
-      { label: "Total First Month Cost", value: "₹4,28,000", isTotal: true }
-    ],
-    detailedFeatures: [
-      { label: "Super Area", value: "450 Sq.Ft." },
-      { label: "Floor", value: "Ground Floor" },
-      { label: "Usage", value: "Retail / Office" },
-      { label: "Washroom", value: "1 Private Washroom" },
-      { label: "Road Width", value: "40 Feet Frontage" },
-      { label: "Power Backup", value: "Provision Available" }
-    ]
-  },
-  {
-    id: "4bhk-luxury",
-    title: "4 BHK Luxury Apartment",
-    location: "New Rajinder Nagar",
-    price: "₹3.95 Cr.",
-    badge: "FOR SALE",
-    category: "buy",
-    image: prop3bhk,
-    features: ["4 BHK", "2400 Sq.Ft.", "3 Baths"],
-    description: "Ultra-luxury 4 BHK apartment with high-end designer fittings, modular Italian kitchen, premium false ceilings, and wooden flooring in master bedrooms. Located in a posh street of New Rajinder Nagar with double stilt parking space and lift access. Excellent privacy and highly secure environment.",
-    gallery: [prop3bhk, galleryBedroom, galleryKitchen, galleryLiving],
-    priceBreakup: [
-      { label: "Base Selling Price", value: "₹3,95,00,000" },
-      { label: "Stamp Duty & Registration", value: "₹24,00,000" },
-      { label: "GST (if applicable)", value: "NIL" },
-      { label: "Maintenance Deposit", value: "₹2,00,000" },
-      { label: "Brokerage Charges (1%)", value: "₹3,95,000" },
-      { label: "Total Price (Estimated)", value: "₹4,24,95,000", isTotal: true }
-    ],
-    detailedFeatures: [
-      { label: "Configuration", value: "4 BHK" },
-      { label: "Super Area", value: "2400 Sq.Ft." },
-      { label: "Furnishing State", value: "Semi-Furnished" },
-      { label: "Parking", value: "2 Covered Spaces" },
-      { label: "Facing", value: "South-West" },
-      { label: "Floor", value: "3rd Floor with Lift" },
-      { label: "Construction Age", value: "Newly Built" }
-    ]
-  },
-  {
-    id: "pg-girls",
-    title: "PG for Girls",
-    location: "Old Rajinder Nagar",
-    price: "₹14,000 / Month",
-    badge: "PG / HOSTEL",
-    category: "pg",
-    image: propPg,
-    features: ["Single Room", "Meals", "Wi-Fi"],
-    description: "Safe and secure single-occupancy girls PG in Old Rajinder Nagar. The property offers CCTV cameras, a biometric entry lock, clean daily meals (breakfast, lunch, dinner), and an in-house warden. Situated in a highly residential neighborhood safe for girls, very close to coaching classes.",
-    gallery: [propPg, galleryBedroom, galleryKitchen],
-    priceBreakup: [
-      { label: "Monthly Rent (Single Room)", value: "₹14,000" },
-      { label: "Security Deposit (1 Month)", value: "₹14,000" },
-      { label: "Food & Mess Charges", value: "Included" },
-      { label: "Biometric & CCTV Services", value: "Included" },
-      { label: "Electricity Charges", value: "₹10 per Unit" },
-      { label: "Total First Month Cost", value: "₹28,000", isTotal: true }
+      { label: "Monthly Rent (Single Occupancy)", value: "₹18,000" },
+      { label: "Security Deposit (1 Month)", value: "₹18,000" },
+      { label: "Food, Wi-Fi, Cleaning, Laundry, RO", value: "Included" },
+      { label: "Electricity (Up to 12 units)", value: "Included" },
+      { label: "Total First Month Cost", value: "₹36,000", isTotal: true }
     ],
     detailedFeatures: [
       { label: "Room Type", value: "Single Room" },
-      { label: "Food Quality", value: "Veg (3 meals/day)" },
-      { label: "CCTV Cameras", value: "Yes, 24x7 recording" },
-      { label: "AC", value: "Available" },
-      { label: "Laundry", value: "Included" },
-      { label: "Safety Rating", value: "Excellent" }
+      { label: "Gender Preference", value: "Girls Only" },
+      { label: "Included Amenities", value: "Food, Wi-Fi, Cleaning, Laundry, RO" },
+      { label: "Electricity", value: "First 12 units included" }
     ]
   },
   {
-    id: "office-space",
-    title: "Office Space",
-    location: "Karol Bagh",
-    price: "₹1,20,000 / Month",
-    badge: "FOR RENT",
-    category: "commercial",
-    image: propShop,
-    features: ["900 Sq.Ft.", "1st Floor", "Furnished"],
-    description: "Ready-to-move-in commercial office space located on a main road in Karol Bagh. This property is fully furnished with 12 workstations, 2 private director cabins, a small pantry, and a washroom. Located within walking distance of Karol Bagh Metro Station, making it ideal for startup teams, CA firms, or coaching centers.",
-    gallery: [propShop, galleryLiving, galleryKitchen],
+    id: "double-sharing-pg-food-18k",
+    title: "Best PG in ORN: Double Sharing with Food & All Facilities",
+    location: "Old Rajinder Nagar",
+    price: "₹18,000 / Month",
+    badge: "PG / HOSTEL",
+    category: "pg",
+    image: newDoubleSharing1,
+    features: ["Double Sharing", "4 Time Meals", "All Facilities"],
+    description: "Best PG in ORN offering double sharing accommodation with food included. Enjoy all modern facilities and 4-time meals per day in a clean, secure environment.",
+    gallery: [newDoubleSharing1, newDoubleSharing2, newDoubleSharing3, newDoubleSharing4],
     priceBreakup: [
-      { label: "Monthly Rent", value: "₹1,20,000" },
-      { label: "Security Deposit (3 Months)", value: "₹3,60,000" },
-      { label: "Monthly Maintenance Charges", value: "₹5,000" },
-      { label: "Electricity Charges", value: "Commercial Rates" },
-      { label: "Brokerage Charges", value: "₹1,20,000" },
-      { label: "Total First Month Cost", value: "₹6,05,000", isTotal: true }
+      { label: "Monthly Rent (Double Sharing)", value: "₹18,000" },
+      { label: "Security Deposit (1 Month)", value: "₹18,000" },
+      { label: "Food & Mess Charges (4 Times/Day)", value: "Included" },
+      { label: "Wi-Fi & Housekeeping", value: "Included" },
+      { label: "Total First Month Cost", value: "₹36,000", isTotal: true }
     ],
     detailedFeatures: [
-      { label: "Super Area", value: "900 Sq.Ft." },
-      { label: "Floor", value: "1st Floor" },
-      { label: "Workstations", value: "12 Seats" },
-      { label: "Cabins", value: "2 Cabins" },
-      { label: "Pantry", value: "Available" },
-      { label: "Metro Distance", value: "3 mins walk" },
-      { label: "Power Backup", value: "100% DG Backed" }
+      { label: "Room Type", value: "Double Sharing" },
+      { label: "Food Quality", value: "4 Time Meals Included" },
+      { label: "Facilities", value: "All Modern Facilities" },
+      { label: "Location Advantage", value: "Heart of Old Rajinder Nagar" }
     ]
   }
-];
+].reverse();
+
