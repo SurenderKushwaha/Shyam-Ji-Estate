@@ -43,14 +43,14 @@ export function SiteHeader() {
         <div className="flex items-center gap-2">
           <a
             href={`tel:${BRAND.phones[0]}`}
-            className="hidden md:inline-flex items-center gap-2 rounded-md bg-accent px-4 py-2 text-xs font-bold uppercase text-accent-foreground shadow-gold transition hover:brightness-110 whitespace-nowrap"
+            className="hidden md:inline-flex items-center gap-2 rounded-xl bg-accent px-5 py-2.5 text-xs font-extrabold uppercase text-[#0B1528] shadow-gold transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 whitespace-nowrap"
           >
-            <Phone className="h-4 w-4" /> Call Now
+            <Phone className="h-4 w-4 stroke-[2.5]" /> Call Now
           </a>
 
           <button
             aria-label="Toggle menu"
-            className="lg:hidden p-2.5 text-primary rounded-md hover:bg-muted transition-colors"
+            className="lg:hidden p-2.5 text-primary rounded-xl hover:bg-muted transition-colors"
             onClick={() => setOpen((v) => !v)}
           >
             {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -67,7 +67,7 @@ export function SiteHeader() {
                 key={n.to}
                 to={n.to}
                 onClick={() => setOpen(false)}
-                className="flex items-center py-3 px-2 text-sm font-semibold uppercase tracking-wide text-primary rounded-lg hover:bg-muted transition-colors"
+                className="flex items-center py-3 px-2 text-sm font-semibold uppercase tracking-wide text-primary rounded-xl hover:bg-muted transition-colors"
                 activeProps={{ className: "text-accent bg-accent/5" }}
                 activeOptions={{ exact: n.to === "/" }}
               >
@@ -77,9 +77,9 @@ export function SiteHeader() {
             <div className="mt-3 pt-3 border-t border-border/40">
               <a
                 href={`tel:${BRAND.phones[0]}`}
-                className="flex items-center justify-center gap-2 rounded-md bg-accent px-5 py-3 text-sm font-bold uppercase text-accent-foreground"
+                className="flex items-center justify-center gap-2 rounded-xl bg-accent px-5 py-3 text-sm font-extrabold uppercase text-[#0B1528] transition-all duration-300 hover:brightness-105"
               >
-                <Phone className="h-4 w-4" /> Call Now
+                <Phone className="h-4 w-4 stroke-[2.5]" /> Call Now
               </a>
             </div>
           </div>

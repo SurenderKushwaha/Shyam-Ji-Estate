@@ -94,6 +94,21 @@ import newDoubleSharing2 from "@/assets/new-double-sharing-2.jpg";
 import newDoubleSharing3 from "@/assets/new-double-sharing-3.jpg";
 import newDoubleSharing4 from "@/assets/new-double-sharing-4.jpg";
 
+import oldRajinderRoom1 from "@/assets/old-rajinder-furn-room-1.jpg";
+import oldRajinderRoom2 from "@/assets/old-rajinder-furn-room-2.jpg";
+import oldRajinderRoom3 from "@/assets/old-rajinder-furn-room-3.jpg";
+import oldRajinderRoom4 from "@/assets/old-rajinder-furn-room-4.jpg";
+import oldRajinderRoom5 from "@/assets/old-rajinder-furn-room-5.jpg";
+
+import girlsSingleOrn18k_1 from "@/assets/girls-single-orn-18k-1.jpg";
+import girlsSingleOrn18k_2 from "@/assets/girls-single-orn-18k-2.jpg";
+import girlsSingleOrn18k_3 from "@/assets/girls-single-orn-18k-3.jpg";
+import girlsSingleOrn18k_4 from "@/assets/girls-single-orn-18k-4.jpg";
+
+import boysAttachedBalcony23k_1 from "@/assets/boys-attached-balcony-23k-1.jpg";
+import boysAttachedBalcony23k_2 from "@/assets/boys-attached-balcony-23k-2.jpg";
+import boysAttachedBalcony23k_3 from "@/assets/boys-attached-balcony-23k-3.jpg";
+
 export type PriceBreakupItem = {
   label: string;
   value: string;
@@ -120,7 +135,7 @@ export type Property = {
   detailedFeatures?: DetailedFeature[];
 };
 
-export const properties: Property[] = [
+export const properties: Property[] = ([
   {
     id: "2bhk-nrn-45k",
     title: "Premium 2 BHK Apartment",
@@ -675,4 +690,99 @@ export const properties: Property[] = [
       { label: "Location Advantage", value: "Heart of Old Rajinder Nagar" },
     ],
   },
-].reverse();
+  {
+    id: "old-rajinder-furn-room-25k",
+    title: "Brand-New Fully Furnished Room",
+    location: "Old Rajinder Nagar",
+    price: "₹25,000 / Month",
+    badge: "PG / HOSTEL" as const,
+    category: "pg" as const,
+    image: oldRajinderRoom1,
+    features: ["Private Balcony", "Attached Washroom", "Modular Kitchen", "Free Wi-Fi"],
+    description:
+      "Brand-new fully furnished room available for rent in Old Rajinder Nagar, New Delhi. The room features a comfortable double bed, study desk with executive chair, wall-mounted AC, and elegant lighting. It includes a private balcony with a washing machine and an attached modern washroom. Access to a modular kitchen with basic utensils and refrigerator. Additional amenities include free high-speed Wi-Fi, regular cleaning/housekeeping, and caretaker support.",
+    gallery: [
+      oldRajinderRoom1,
+      oldRajinderRoom2,
+      oldRajinderRoom3,
+      oldRajinderRoom4,
+      oldRajinderRoom5,
+    ],
+    priceBreakup: [
+      { label: "Monthly Rent", value: "₹25,000" },
+      { label: "Security Deposit (1 Month)", value: "₹25,000" },
+      { label: "Wi-Fi & Cleaning", value: "Included" },
+      { label: "Caretaker Support", value: "Included" },
+      { label: "Total First Month Cost", value: "₹50,000", isTotal: true },
+    ],
+    detailedFeatures: [
+      { label: "Room Type", value: "Fully Furnished Room" },
+      { label: "Washroom", value: "Attached Washroom" },
+      { label: "Balcony", value: "Private Balcony (with Washing Machine)" },
+      { label: "Kitchen", value: "Modular Kitchen with Basic Utensils" },
+      { label: "Services", value: "Free Wi-Fi, Regular Housekeeping, Caretaker Support" },
+      { label: "Furnishing State", value: "Fully Furnished" },
+    ],
+  },
+  {
+    id: "girls-independent-single-orn-18k",
+    title: "Independent Single Room for Girls",
+    location: "Old Rajinder Nagar",
+    price: "₹18,000 / Month",
+    badge: "PG / HOSTEL" as const,
+    category: "pg" as const,
+    image: girlsSingleOrn18k_1,
+    features: ["Independent", "Single Room", "Attached Washroom", "Wooden Wardrobe"],
+    description:
+      "Fully independent single occupancy room PG for girls in Old Rajinder Nagar. Fully furnished with a single bed, wall-mounted air conditioner, private washroom, large wooden wardrobes/almirah, vanity mirror sink and shelf, and modern tiles. Conveniently located near coaching institutes with peace, security, and independent access.",
+    gallery: [
+      girlsSingleOrn18k_1,
+      girlsSingleOrn18k_2,
+      girlsSingleOrn18k_3,
+      girlsSingleOrn18k_4,
+    ],
+    priceBreakup: [
+      { label: "Monthly Rent", value: "₹18,000" },
+      { label: "Security Deposit (1 Month)", value: "₹18,000" },
+      { label: "Wi-Fi & Cleaning", value: "Included" },
+      { label: "Total First Month Cost", value: "₹36,000", isTotal: true },
+    ],
+    detailedFeatures: [
+      { label: "Room Type", value: "Independent Single Occupancy" },
+      { label: "Washroom", value: "Attached Washroom (Modern sanitaryware & vanity mirror)" },
+      { label: "Almirah", value: "Spacious Wooden Wardrobes" },
+      { label: "Gender Preference", value: "Girls Only" },
+      { label: "Furnishing State", value: "Fully Furnished (AC & bed)" },
+    ],
+  },
+  {
+    id: "boys-attached-balcony-orn-23k-new",
+    title: "Boys Room with Attached Washroom & Balcony",
+    location: "Old Rajinder Nagar",
+    price: "₹23,000 / Month",
+    badge: "PG / HOSTEL" as const,
+    category: "pg" as const,
+    image: boysAttachedBalcony23k_2,
+    features: ["Attached Washroom", "Attached Balcony", "Wooden Wardrobe", "Study Desk"],
+    description:
+      "Fully furnished single occupancy room for boys available in Old Rajinder Nagar. The room features a comfortable double bed, study table with an executive chair, large wooden wardrobes/almirah, and a wall-mounted AC unit. It includes an attached washroom and a private balcony for ventilation and natural light.",
+    gallery: [
+      boysAttachedBalcony23k_2,
+      boysAttachedBalcony23k_1,
+      boysAttachedBalcony23k_3,
+    ],
+    priceBreakup: [
+      { label: "Monthly Rent", value: "₹23,000" },
+      { label: "Security Deposit (1 Month)", value: "₹23,000" },
+      { label: "Wi-Fi & Cleaning", value: "Included" },
+      { label: "Total First Month Cost", value: "₹46,000", isTotal: true },
+    ],
+    detailedFeatures: [
+      { label: "Room Type", value: "Single Occupancy Room" },
+      { label: "Washroom", value: "Attached Washroom" },
+      { label: "Balcony", value: "Attached Private Balcony" },
+      { label: "Gender Preference", value: "Boys Only" },
+      { label: "Furnishing State", value: "Fully Furnished" },
+    ],
+  },
+] as Property[]).reverse();
